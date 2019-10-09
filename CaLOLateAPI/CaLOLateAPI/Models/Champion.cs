@@ -17,12 +17,12 @@ namespace CaLOLateAPI.Models
         public int Level { get; set; }
         public int HeathFlat { get; set; }
         public double HeathScaling { get; set; }
-        public int HealthRegFlat { get; set; }
+        public double HealthRegFlat { get; set; }
         public double HealthRegScaling { get; set; }
         //TODO:Mana/Mana regen/HpCost/Rage
         public int AdFlat { get; set;}
         public double AdScaling { get; set; }
-        public int AttackSpeedFlat { get; set; }
+        public double AttackSpeedFlat { get; set; }
         public double AttackSpeedScale { get; set; }
         public int ArmourFlat { get; set; }
         public double ArmourScaling { get; set; }

@@ -8,8 +8,10 @@ namespace CaLOLateAPI.Models
 {
     public class Items
     {
+
         [Key]
         public int Id { get; set; }
-        //TODO: item information
+
+        public String name { get; set; }
     }
 }

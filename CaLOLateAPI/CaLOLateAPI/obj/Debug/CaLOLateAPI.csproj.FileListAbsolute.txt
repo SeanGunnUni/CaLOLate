@@ -79,8 +79,13 @@ C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\bin\Syst
 C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\bin\System.Web.WebPages.Razor.xml
 C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\bin\Antlr3.Runtime.pdb
 C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.csprojAssemblyReference.cache
 C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.csproj.CoreCompileInputs.cache
 C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.csproj.CopyComplete
 C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.dll
 C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.pdb
+C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.csprojAssemblyReference.cache
+C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.Migrations.Initial.resources
+C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\obj\Debug\CaLOLateAPI.csproj.GenerateResource.cache
+C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\bin\System.Web.Cors.dll
+C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\bin\System.Web.Http.Cors.dll
+C:\Users\sean\Desktop\FinalYearWebsite\CaLOLate\CaLOLateAPI\CaLOLateAPI\bin\System.Web.Http.Cors.xml

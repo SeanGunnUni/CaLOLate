@@ -13,11 +13,13 @@ namespace CaLOLateAPI.Data
         {
 
         }
+
         /*public AppDbContext() : base("name=ItemsBb")
         {
 
         }*/
 
         public DbSet<Champion> Champions { get; set; }
+        //public DbSet<Items> Itemss { get; set; }
     }
 }
