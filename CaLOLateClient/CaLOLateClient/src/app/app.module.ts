@@ -11,6 +11,9 @@ import {ChampionsService} from './champions.service';
 import { AppRouterModule } from './app-router.module';
 import { HttpClientModule } from '@angular/common/http';
 
+//material design
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRouterModule
+    AppRouterModule,
+    //material design
+    BrowserAnimationsModule
   ],
   providers: [ChampionsService],
   bootstrap: [AppComponent]
