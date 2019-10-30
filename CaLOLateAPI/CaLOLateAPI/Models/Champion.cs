@@ -10,17 +10,14 @@ namespace CaLOLateAPI.Models
     {
         [Key]
         public int Id { get; set; }
-        public String Name { get; set; }
-        public String Image { get; set; }
-
-
-        //Stats
-        public int Level { get; set; }
-        public int HeathFlat { get; set; }
-        public double HeathScaling { get; set; }
-        public double HealthRegFlat { get; set; }
-        public double HealthRegScaling { get; set; }
-        //TODO:Mana/Mana regen/HpCost/Rage
+        //TODO:Add rest
+        public Champion(String Name, String Image)
+        {
+            this.Name = Name;
+            this.Image = Image;
+        }
+        /*
+                 //TODO:Mana/Mana regen/HpCost/Rage
         public int AdFlat { get; set; }
         public double AdScaling { get; set; }
         public double AttackSpeedFlat { get; set; }
@@ -40,114 +37,95 @@ namespace CaLOLateAPI.Models
         public int ArmourPenetrationPecentage { get; set; }
         public int MagicPenetrationFlat { get; set; }
         public int MagicPenetrationPecentage { get; set; }
-
-        public void SetAbilysLevels(int Abilty1Level, int Abilty2Level, int Abilty3Level, int UitmateLevel)
-        {
-            PassiveLevel = 0;
-            this.Abilty1Level = Abilty1Level;
-            this.Abilty2Level = Abilty2Level;
-            this.Abilty3Level = Abilty3Level;
-            this.UitmateLevel = UitmateLevel;
-            LevelOfSpell.Add(PassiveLevel);
-            LevelOfSpell.Add(Abilty1Level);
-            LevelOfSpell.Add(Abilty2Level);
-            LevelOfSpell.Add(Abilty3Level);
-            LevelOfSpell.Add(UitmateLevel);
-        }
-        public void SetAbilysNames(String PassiveName, String Abilty1Name, String Abilty2Name, String Abilty3Name, String UitmateName)
-        {
-            NameOfSpell.Add(PassiveName);
-            NameOfSpell.Add(Abilty1Name);
-            NameOfSpell.Add(Abilty2Name);
-            NameOfSpell.Add(Abilty3Name);
-            NameOfSpell.Add(UitmateName);
-        }
-        public void SetAbilysDescription(String PassiveDescription, String Abilty1Description, String Abilty2Description, String Abilty3Description, String UitmateDescription)
-        {
-            DescriptionOfSpell.Add(PassiveDescription);
-            DescriptionOfSpell.Add(Abilty1Description);
-            DescriptionOfSpell.Add(Abilty2Description);
-            DescriptionOfSpell.Add(Abilty3Description);
-            DescriptionOfSpell.Add(UitmateDescription);
-        }
-        public void SetAbilysImages(String PassiveImage, String Abilty1Image, String Abilty2Image, String Abilty3Image, String UitmateImage)
-        {
-            ImageOfSpell.Add(PassiveImage);
-            ImageOfSpell.Add(Abilty1Image);
-            ImageOfSpell.Add(Abilty2Image);
-            ImageOfSpell.Add(Abilty3Image);
-            ImageOfSpell.Add(UitmateImage);
-        }
-        public void SetRatioAP(Double PassiveRatioAP, Double Abilty1RatioAP, Double Abilty2RatioAP, Double Abilty3RatioAP, Double UitmateRatioAP)
-        {
-            RatioAP.Add(PassiveRatioAP);
-            RatioAP.Add(Abilty1RatioAP);
-            RatioAP.Add(Abilty2RatioAP);
-            RatioAP.Add(Abilty3RatioAP);
-            RatioAP.Add(UitmateRatioAP);
-        }
-        public void SetRatioADFull(Double PassiveRatioADFull, Double Abilty1RatioADFull, Double Abilty2RatioADFull, Double Abilty3RatioADFull, Double UitmateRatioADFull)
-        {
-            RatioADFull.Add(PassiveRatioADFull);
-            RatioADFull.Add(Abilty1RatioADFull);
-            RatioADFull.Add(Abilty2RatioADFull);
-            RatioADFull.Add(Abilty3RatioADFull);
-            RatioADFull.Add(UitmateRatioADFull);
-        }
-        public void SetRatioADBonus(Double PassiveRatioADBonus, Double Abilty1RatioADBonus, Double Abilty2RatioADBonus, Double Abilty3RatioADBonus, Double UitmateRatioADBonus)
-        {
-            RatioADBonus.Add(PassiveRatioADBonus);
-            RatioADBonus.Add(Abilty1RatioADBonus);
-            RatioADBonus.Add(Abilty2RatioADBonus);
-            RatioADBonus.Add(Abilty3RatioADBonus);
-            RatioADBonus.Add(UitmateRatioADBonus);
-        }
-        public void SetDamageIncreaser(Double PassiveDamageIncreaser, Double Abilty1DamageIncreaser, Double Abilty2DamageIncreaser, Double Abilty3DamageIncreaser, Double UitmateDamageIncreaser)
-        {
-            DamageIncreaser.Add(PassiveDamageIncreaser);
-            DamageIncreaser.Add(Abilty1DamageIncreaser);
-            DamageIncreaser.Add(Abilty2DamageIncreaser);
-            DamageIncreaser.Add(Abilty3DamageIncreaser);
-            DamageIncreaser.Add(UitmateDamageIncreaser);
-        }
-        public void SetManaCost(Double Abilty1ManaCost, Double Abilty2ManaCost, Double Abilty3ManaCost, Double UitmateManaCost)
-        {
-            ManaCost.Add(Abilty1ManaCost);
-            ManaCost.Add(Abilty2ManaCost);
-            ManaCost.Add(Abilty3ManaCost);
-            ManaCost.Add(UitmateManaCost);
-        }
+             */
+       
 
         //Setting the lists into lower classes
-        public void SetChampionAbiltys()
-        {
-            ChampionAbilty = new ChampionAbiltys(NameOfSpell, DescriptionOfSpell, ImageOfSpell, LevelOfSpell, RatioAP, RatioADFull, RatioADBonus, DamageIncreaser, ManaCost);
+        public void SetChampionAbiltys( String NameOfSpell1, String DescriptionOfSpell1, String ImageOfSpell1,int LevelOfSpell1,
+            String NameOfSpell2, String DescriptionOfSpell2, String ImageOfSpell2, int LevelOfSpell2,
+            String NameOfSpell3, String DescriptionOfSpell3, String ImageOfSpell3, int LevelOfSpell3,
+            String NameOfSpell4, String DescriptionOfSpell4, String ImageOfSpell4, int LevelOfSpell4,
+            String NameOfSpell5, String DescriptionOfSpell5, String ImageOfSpell5, int LevelOfSpell5)
+        {//TODO:PASS IN
+            //TODO: PUT IN CTOR
+            ChampionAbilty1 = new ChampionAbiltys(NameOfSpell1, DescriptionOfSpell1, ImageOfSpell1, LevelOfSpell1);
+            ChampionAbilty2 = new ChampionAbiltys(NameOfSpell2, DescriptionOfSpell2, ImageOfSpell2, LevelOfSpell2);
+            ChampionAbilty3 = new ChampionAbiltys(NameOfSpell3, DescriptionOfSpell3, ImageOfSpell3, LevelOfSpell3);
+            ChampionAbilty4 = new ChampionAbiltys(NameOfSpell4, DescriptionOfSpell4, ImageOfSpell4, LevelOfSpell4);
+            ChampionAbilty5 = new ChampionAbiltys(NameOfSpell5, DescriptionOfSpell5, ImageOfSpell5, LevelOfSpell5);
+            AbitysNamesAndEffects.Add(ChampionAbilty1);
+            AbitysNamesAndEffects.Add(ChampionAbilty2);
+            AbitysNamesAndEffects.Add(ChampionAbilty3);
+            AbitysNamesAndEffects.Add(ChampionAbilty4);
+            AbitysNamesAndEffects.Add(ChampionAbilty5);
         }
         public void SetSummonerSpells()
         {
-            SummonerSpells = new SummonerSpells();
+            //TODO: Set both SummonerSpells
         }
         public void SetItems()
         {
-            Items = new Items();
-            Items.GetName();
+            //TODO: Set items sum starts with
         }
-        private ChampionAbiltys ChampionAbilty;
-        private SummonerSpells SummonerSpells;
-        private Items Items;
-        private List<String> NameOfSpell = new List<String>();
-        private List<String> DescriptionOfSpell = new List<String>();
-        private List<String> ImageOfSpell = new List<String>();
-        private List<int> LevelOfSpell = new List<int>();
-        private List<Double> RatioAP = new List<Double>();
-        private List<Double> RatioADFull = new List<Double>();
-        private List<Double> RatioADBonus = new List<Double>();
-        private List<Double> DamageIncreaser = new List<Double>();
-        private List<Double> ManaCost = new List<Double>();
+        //ChampionAbiltys
+        private ChampionAbiltys ChampionAbilty1;
+        private ChampionAbiltys ChampionAbilty2;
+        private ChampionAbiltys ChampionAbilty3;
+        private ChampionAbiltys ChampionAbilty4;
+        private ChampionAbiltys ChampionAbilty5;
+        private List<ChampionAbiltys> AbitysNamesAndEffects;
         private int PassiveLevel;
         private int Abilty1Level;
         private int Abilty2Level;
         private int Abilty3Level;
         private int UitmateLevel;
+        //SummonerSpells
+        private SummonerSpells SummonerSpells1;
+        private SummonerSpells SummonerSpells2;
+        private List<SummonerSpells> SummonerSpellChampHas;
+        //Items
+        private Items Item1;
+        private Items Item2;
+        private Items Item3;
+        private Items Item4;
+        private Items Item5;
+        private Items Item6;
+        private List<Items> ItemsChampHas;
+        //ChampionInformation
+        private String Name;
+        private String Image;
+        private int Level;
+        private int HeathFlat;
+        private double HeathScaling;
+        private double HealthRegFlat;
+        private double HealthRegScaling;
+        private int ManaFlat;
+        private double ManaScaling;
+        private double ManaRegFlat;
+        private double ManaRegScaling;
+        private int RageFlat;
+        private int EnergyFlat;
+        private double EnergyRegFlat;
+        private double EnergyRegScaling;
+        private int AdFlat;
+        private double AdScaling;
+        private double AttackSpeedFlat;
+        private double AttackSpeedScale;
+        private int ArmourFlat;
+        private double ArmourScaling;
+        private int MagicResistFlat;
+        private double MagicResistScaling;
+        private int Movespeed;
+        private int CooldownReduction;
+        private int Tenacity;
+        private double AbiltyPower;
+        private int CritStrike;
+        private int CritDamage;
+        private int LifeSteal;
+        private int ArmourPenetrationFlat;
+        private int ArmourPenetrationPecentage;
+        private int MagicPenetrationFlat;
+        private int MagicPenetrationPecentage;
+        //TODO: ADD Current Values And Add Max Values
     }
 }
