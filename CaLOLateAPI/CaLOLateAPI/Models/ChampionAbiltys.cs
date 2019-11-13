@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -60,25 +61,53 @@ namespace CaLOLateAPI.Models
             ManaCost.Add(Abilty3ManaCost);
             ManaCost.Add(UitmateManaCost);
         }
+        public int GetID()
+        {
+            return ID;
+        }
+        public void SetID(int ID)
+        {
+            this.ID = ID;
+        }
         public String GetNameOfSpell()
         {
             return NameOfSpell;
+        }
+        public void SetNameOfSpell(String NameOfSpell)
+        {
+            this.NameOfSpell = NameOfSpell;
         }
         public int GetLevelOfSpell()
         {
             return SpellLevel;
         }
+        public void SetLevelOfSpell(int SpellLevel)
+        {
+           this.SpellLevel = SpellLevel;
+        }
         public int GetMaxLevelOfSpell()
         {
             return MaxSpellLevel;
+        }
+        public void SetMaxLevelOfSpell(int MaxSpellLevel)
+        {
+            this.MaxSpellLevel = MaxSpellLevel;
         }
         public String GetDescriptionOfSpell()
         {
             return DescriptionOfSpell;
         }
+        public void SetDescriptionOfSpell(String DescriptionOfSpell)
+        {
+            this.DescriptionOfSpell = DescriptionOfSpell;
+        }
         public String GetImageOfSpell()
         {
             return ImageOfSpell;
+        }
+        public void SetImageOfSpell(String ImageOfSpell)
+        {
+            this.ImageOfSpell = ImageOfSpell;
         }
         //TODO:Fix/Add damage calculator
         public Double GetPassiveDamage()
@@ -109,6 +138,8 @@ namespace CaLOLateAPI.Models
         private List<Double> DamageIncreaser = new List<Double>();
         private List<Double> ManaCost = new List<Double>();
         //
+        [Key]
+        private int ID;
         private int MaxSpellLevel;
         private int SpellLevel;
         private String NameOfSpell;
