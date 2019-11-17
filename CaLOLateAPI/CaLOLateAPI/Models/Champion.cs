@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 
 namespace CaLOLateAPI.Models
 {
@@ -13,14 +12,8 @@ namespace CaLOLateAPI.Models
             this.Name = Name;
             this.Image = Image;
         }
-        public void SetSummonerSpells()
-        {
-            SummonerSpells1 = new SummonerSpells();
-            SummonerSpells2 = new SummonerSpells();
-            SummonerSpellChampHas.Add(SummonerSpells1);
-            SummonerSpellChampHas.Add(SummonerSpells2);
-            //TODO: Set both SummonerSpells
-        }
+
+        //abiltys
         public void SetChampionAbiltys( String NameOfSpell1, String DescriptionOfSpell1, String ImageOfSpell1,int LevelOfSpell1,
             String NameOfSpell2, String DescriptionOfSpell2, String ImageOfSpell2, int LevelOfSpell2,
             String NameOfSpell3, String DescriptionOfSpell3, String ImageOfSpell3, int LevelOfSpell3,
@@ -38,6 +31,11 @@ namespace CaLOLateAPI.Models
             AbitysNamesAndEffects.Add(ChampionAbilty4);
             AbitysNamesAndEffects.Add(ChampionAbilty5);
         }
+        public String GetChampionAbilty(int a)
+        {
+            return AbitysNamesAndEffects.ElementAt(a).GetNameOfSpell();
+        }
+        //items
         public void SetItems()
         {
             Item1 = new Items();
@@ -53,6 +51,22 @@ namespace CaLOLateAPI.Models
             ItemsChampHas.Add(Item5);
             ItemsChampHas.Add(Item6);
         }
+        public Items GetItem(int a)
+        {
+            return ItemsChampHas.ElementAt(a);
+        }
+        //SummonerSpells
+        public void SetSummonerSpells()
+        {
+            SummonerSpells1 = new SummonerSpells();
+            SummonerSpells2 = new SummonerSpells();
+            SummonerSpellChampHas.Add(SummonerSpells1);
+            SummonerSpellChampHas.Add(SummonerSpells2);
+        }
+        public SummonerSpells GetSummonerSpells(int a)
+        {
+            return SummonerSpellChampHas.ElementAt(a);
+        }
         //ChampionAbiltys
         private ChampionAbiltys ChampionAbilty1;
         private ChampionAbiltys ChampionAbilty2;
@@ -60,11 +74,6 @@ namespace CaLOLateAPI.Models
         private ChampionAbiltys ChampionAbilty4;
         private ChampionAbiltys ChampionAbilty5;
         private List<ChampionAbiltys> AbitysNamesAndEffects;
-        private int PassiveLevel;
-        private int Abilty1Level;
-        private int Abilty2Level;
-        private int Abilty3Level;
-        private int UitmateLevel;
         //SummonerSpells
         private SummonerSpells SummonerSpells1;
         private SummonerSpells SummonerSpells2;
@@ -365,35 +374,58 @@ namespace CaLOLateAPI.Models
         private int Level;
         private int HeathFlat;
         private double HeathScaling;
+        private double HeathOutput;
         private double HealthRegFlat;
         private double HealthRegScaling;
+        private double HeathRegOutput;
         private int ManaFlat;
         private double ManaScaling;
+        private double ManaOutput;
         private double ManaRegFlat;
         private double ManaRegScaling;
+        private double ManaRegOutput;
         private int RageFlat;
+        private double RageOutput;
         private int EnergyFlat;
+        private double EnergyOutput;
         private double EnergyRegFlat;
         private double EnergyRegScaling;
+        private double EnergyRegOutput;
         private int AdFlat;
         private double AdScaling;
+        private double ADOutput;
         private double AttackSpeedFlat;
         private double AttackSpeedScale;
+        private double AttackSpeedOutput;
         private int ArmourFlat;
         private double ArmourScaling;
+        private double ArmourOutput;
         private int MagicResistFlat;
         private double MagicResistScaling;
+        private double MagicResistOutput;
         private int Movespeed;
+        private double MovespeedOutput;
         private int CooldownReduction;
+        private double CooldownReductionOutput;
         private int Tenacity;
+        private double TenacityOutput;
         private double AbiltyPower;
+        private double AbiltyPowerOutput;
         private int CritStrike;
+        private double CritStrikeOutput;
         private int CritDamage;
+        private double CritDamageOutput;
         private int LifeSteal;
+        private double LifeStealOutput;
         private int ArmourPenetrationFlat;
+        private double ArmourPenetrationOutput;
         private int ArmourPenetrationPecentage;
+        private double ArmourPenetrationPecentageOutput;
         private int MagicPenetrationFlat;
+        private double MagicPenetrationOutput;
         private int MagicPenetrationPecentage;
-        //TODO: ADD Current Values And Add Max Values
+        private double MagicPenetrationPecentageOutput;
+        private int MaxLevel = 18;
+        //TODO: Add champion stat calculators
     }
 }

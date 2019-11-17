@@ -17,7 +17,6 @@ namespace CaLOLateAPI.Models
             this.Image = Image;
             this.Description = Description;
         }
-        //TODO:See if Ratio on atives is lvl based
         public int GetID()
         {
             return ID;
@@ -38,7 +37,7 @@ namespace CaLOLateAPI.Models
         {
             return Image;
         }
-        public void SetImagee(String Image)
+        public void SetImage(String Image)
         {
             this.Image = Image;
         }

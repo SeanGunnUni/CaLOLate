@@ -109,7 +109,28 @@ namespace CaLOLateAPI.Models
         {
             this.ImageOfSpell = ImageOfSpell;
         }
-        //TODO:Fix/Add damage calculator
+        //TODO:Fix/Add damage calculator (decided if champion controls or spell controls damageout)
+         /*
+        public double GetManaCost(int a)
+        {
+            return ManaCost.ElementAt(a);
+        }
+        public double GetDamageIncreaser(int a)
+        {
+            return DamageIncreaser.ElementAt(a);
+        }
+        public double GetRatioAP(int a)
+        {
+            return RatioAP.ElementAt(a);
+        }
+        public double GetRatioADFull(int a)
+        {
+            return RatioADFull.ElementAt(a);
+        }
+        public double GetRatioADBonus(int a)
+        {
+            return RatioADBonus.ElementAt(a);
+        }
         public Double GetPassiveDamage()
         {
             return PassiveDamageOutput;
@@ -130,7 +151,7 @@ namespace CaLOLateAPI.Models
         {
             return Abilty4DamageOutput;
         }
-
+        */
         //
         private List<Double> RatioAP = new List<Double>();
         private List<Double> RatioADFull = new List<Double>();
