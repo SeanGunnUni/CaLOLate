@@ -12,19 +12,20 @@ namespace CaLOLateAPI.Models
             this.Name = Name;
             this.Image = Image;
         }
+ 
 
         //abiltys
-        public void SetChampionAbiltys( String NameOfSpell1, String DescriptionOfSpell1, String ImageOfSpell1,int LevelOfSpell1,
-            String NameOfSpell2, String DescriptionOfSpell2, String ImageOfSpell2, int LevelOfSpell2,
-            String NameOfSpell3, String DescriptionOfSpell3, String ImageOfSpell3, int LevelOfSpell3,
-            String NameOfSpell4, String DescriptionOfSpell4, String ImageOfSpell4, int LevelOfSpell4,
-            String NameOfSpell5, String DescriptionOfSpell5, String ImageOfSpell5, int LevelOfSpell5)
+        public void SetChampionAbiltys( String NameOfSpell1, String DescriptionOfSpell1, String ImageOfSpell1,int LevelOfSpell1, bool SpellHaveAPRatio1, bool SpellHaveADFullRatio1, bool SpellHaveADBonusRatio1, bool SpellHaveDamageIncreaser1
+            String NameOfSpell2, String DescriptionOfSpell2, String ImageOfSpell2, int LevelOfSpell2, bool SpellHaveAPRatio2, bool SpellHaveADFullRatio2, bool SpellHaveADBonusRatio2, bool SpellHaveDamageIncreaser2
+            String NameOfSpell3, String DescriptionOfSpell3, String ImageOfSpell3, int LevelOfSpell3, bool SpellHaveAPRatio3, bool SpellHaveADFullRatio3, bool SpellHaveADBonusRatio3, bool SpellHaveDamageIncreaser3
+            String NameOfSpell4, String DescriptionOfSpell4, String ImageOfSpell4, int LevelOfSpell4, bool SpellHaveAPRatio4, bool SpellHaveADFullRatio4, bool SpellHaveADBonusRatio4, bool SpellHaveDamageIncreaser4
+            String NameOfSpell5, String DescriptionOfSpell5, String ImageOfSpell5, int LevelOfSpell5, bool SpellHaveAPRatio5, bool SpellHaveADFullRatio5, bool SpellHaveADBonusRatio5, bool SpellHaveDamageIncreaser5)
         {
-            ChampionAbilty1 = new ChampionAbiltys(NameOfSpell1, DescriptionOfSpell1, ImageOfSpell1, LevelOfSpell1);
-            ChampionAbilty2 = new ChampionAbiltys(NameOfSpell2, DescriptionOfSpell2, ImageOfSpell2, LevelOfSpell2);
-            ChampionAbilty3 = new ChampionAbiltys(NameOfSpell3, DescriptionOfSpell3, ImageOfSpell3, LevelOfSpell3);
-            ChampionAbilty4 = new ChampionAbiltys(NameOfSpell4, DescriptionOfSpell4, ImageOfSpell4, LevelOfSpell4);
-            ChampionAbilty5 = new ChampionAbiltys(NameOfSpell5, DescriptionOfSpell5, ImageOfSpell5, LevelOfSpell5);
+            ChampionAbilty1 = new ChampionAbiltys(NameOfSpell1, DescriptionOfSpell1, ImageOfSpell1, LevelOfSpell1, SpellHaveAPRatio1, SpellHaveADFullRatio1, SpellHaveADBonusRatio1, SpellHaveDamageIncreaser1);
+            ChampionAbilty2 = new ChampionAbiltys(NameOfSpell2, DescriptionOfSpell2, ImageOfSpell2, LevelOfSpell2, SpellHaveAPRatio2, SpellHaveADFullRatio2, SpellHaveADBonusRatio2, SpellHaveDamageIncreaser2);
+            ChampionAbilty3 = new ChampionAbiltys(NameOfSpell3, DescriptionOfSpell3, ImageOfSpell3, LevelOfSpell3, SpellHaveAPRatio3, SpellHaveADFullRatio3, SpellHaveADBonusRatio3, SpellHaveDamageIncreaser3);
+            ChampionAbilty4 = new ChampionAbiltys(NameOfSpell4, DescriptionOfSpell4, ImageOfSpell4, LevelOfSpell4, SpellHaveAPRatio4, SpellHaveADFullRatio4, SpellHaveADBonusRatio4, SpellHaveDamageIncreaser4);
+            ChampionAbilty5 = new ChampionAbiltys(NameOfSpell5, DescriptionOfSpell5, ImageOfSpell5, LevelOfSpell5, SpellHaveAPRatio5, SpellHaveADFullRatio5, SpellHaveADBonusRatio5, SpellHaveDamageIncreaser5);
             AbitysNamesAndEffects.Add(ChampionAbilty1);
             AbitysNamesAndEffects.Add(ChampionAbilty2);
             AbitysNamesAndEffects.Add(ChampionAbilty3);
@@ -34,6 +35,15 @@ namespace CaLOLateAPI.Models
         public String GetChampionAbilty(int a)
         {
             return AbitysNamesAndEffects.ElementAt(a).GetNameOfSpell();
+        }
+        //TODO:
+        public double GetPassiveDamage()
+        {
+            return
+        }
+        public void SetPassiveDamage()
+        {
+
         }
         //items
         public void SetItems()

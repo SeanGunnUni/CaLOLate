@@ -10,56 +10,66 @@ namespace CaLOLateAPI.Models
 {
     public class ChampionAbiltys
     {
-        public ChampionAbiltys(String NameOfSpell, String DescriptionOfSpell, String ImageOfSpell, int MaxLevels)
+        public ChampionAbiltys(String NameOfSpell, String DescriptionOfSpell, String ImageOfSpell, int MaxLevels, bool SpellHaveAPRatio, bool SpellHaveADFullRatio, bool SpellHaveADBonusRatio, bool SpellHaveDamageIncreaser)
         {
             this.NameOfSpell = NameOfSpell;
             this.DescriptionOfSpell = DescriptionOfSpell;
             this.ImageOfSpell = ImageOfSpell;
             this.MaxSpellLevel = MaxLevels;
+            this.SpellHaveAPRatio = SpellHaveAPRatio;
+            this.SpellHaveADFullRatio = SpellHaveADFullRatio;
+            this.SpellHaveADBonusRatio = SpellHaveADBonusRatio;
+            this.SpellHaveDamageIncreaser = SpellHaveDamageIncreaser;
         }
         //TODO:Change to check amout of max levels
-        public void SetRatioAP(Double PassiveRatioAP, Double Abilty1RatioAP, Double Abilty2RatioAP, Double Abilty3RatioAP, Double UitmateRatioAP)
+        public void SetRatioAP(Double RatioAP1, Double RatioAP2, Double RatioAP3, Double RatioAP4)
         {
-            RatioAP.Add(PassiveRatioAP);
-            RatioAP.Add(Abilty1RatioAP);
-            RatioAP.Add(Abilty2RatioAP);
-            RatioAP.Add(Abilty3RatioAP);
-            RatioAP.Add(UitmateRatioAP);
+            RatioAP.Add(RatioAP1);
+            RatioAP.Add(RatioAP2);
+            RatioAP.Add(RatioAP3);
+            RatioAP.Add(RatioAP4);
+
         }
         //TODO:Change to check amout of max levels
-        public void SetRatioADFull(Double PassiveRatioADFull, Double Abilty1RatioADFull, Double Abilty2RatioADFull, Double Abilty3RatioADFull, Double UitmateRatioADFull)
+        public void SetRatioADFull(Double RatioADFull1, Double RatioADFull2, Double RatioADFull3, Double RatioADFull4)
         {
-            RatioADFull.Add(PassiveRatioADFull);
-            RatioADFull.Add(Abilty1RatioADFull);
-            RatioADFull.Add(Abilty2RatioADFull);
-            RatioADFull.Add(Abilty3RatioADFull);
-            RatioADFull.Add(UitmateRatioADFull);
+            RatioADFull.Add(RatioADFull1);
+            RatioADFull.Add(RatioADFull2);
+            RatioADFull.Add(RatioADFull3);
+            RatioADFull.Add(RatioADFull4);
+
         }
         //TODO:Change to check amout of max levels
-        public void SetRatioADBonus(Double PassiveRatioADBonus, Double Abilty1RatioADBonus, Double Abilty2RatioADBonus, Double Abilty3RatioADBonus, Double UitmateRatioADBonus)
+        public void SetRatioADBonus(Double RatioADBonus1, Double RatioADBonus2, Double RatioADBonus3, Double RatioADBonus4)
         {
-            RatioADBonus.Add(PassiveRatioADBonus);
-            RatioADBonus.Add(Abilty1RatioADBonus);
-            RatioADBonus.Add(Abilty2RatioADBonus);
-            RatioADBonus.Add(Abilty3RatioADBonus);
-            RatioADBonus.Add(UitmateRatioADBonus);
+            RatioADBonus.Add(RatioADBonus1);
+            RatioADBonus.Add(RatioADBonus2);
+            RatioADBonus.Add(RatioADBonus3);
+            RatioADBonus.Add(RatioADBonus4);
+
         }
         //TODO:Change to check amout of max levels
-        public void SetDamageIncreaser(Double PassiveDamageIncreaser, Double Abilty1DamageIncreaser, Double Abilty2DamageIncreaser, Double Abilty3DamageIncreaser, Double UitmateDamageIncreaser)
+        public void SetDamageIncreaser(Double Increaser1, Double Increaser2, Double Increaser3, Double Increaser4)
         {
-            DamageIncreaser.Add(PassiveDamageIncreaser);
-            DamageIncreaser.Add(Abilty1DamageIncreaser);
-            DamageIncreaser.Add(Abilty2DamageIncreaser);
-            DamageIncreaser.Add(Abilty3DamageIncreaser);
-            DamageIncreaser.Add(UitmateDamageIncreaser);
+            DamageIncreaser.Add(Increaser1);
+            DamageIncreaser.Add(Increaser2);
+            DamageIncreaser.Add(Increaser3);
+            DamageIncreaser.Add(Increaser4);
         }
         //TODO:Change to check amout of max levels
-        public void SetManaCost(Double Abilty1ManaCost, Double Abilty2ManaCost, Double Abilty3ManaCost, Double UitmateManaCost)
+        public void SetManaCost(Double Abilty1ManaCost, Double Abilty2ManaCost, Double Abilty3ManaCost, Double Abilty4ManaCost)
         {
             ManaCost.Add(Abilty1ManaCost);
             ManaCost.Add(Abilty2ManaCost);
             ManaCost.Add(Abilty3ManaCost);
-            ManaCost.Add(UitmateManaCost);
+            ManaCost.Add(Abilty4ManaCost);
+        }
+        public void SetNormalSpellDamage(Double Abilty1NormalSpellDamage, Double Abilty2NormalSpellDamage, Double Abilty3NormalSpellDamage, Double Abilty4NormalSpellDamage)
+        {
+            NormalSpellDamage.Add(Abilty1NormalSpellDamage);
+            NormalSpellDamage.Add(Abilty2NormalSpellDamage);
+            NormalSpellDamage.Add(Abilty3NormalSpellDamage);
+            NormalSpellDamage.Add(Abilty4NormalSpellDamage);
         }
         public int GetID()
         {
@@ -109,55 +119,89 @@ namespace CaLOLateAPI.Models
         {
             this.ImageOfSpell = ImageOfSpell;
         }
+
+        public Boolean GetSpellHaveAPRatio()
+        {
+            return SpellHaveAPRatio;
+        }
+        public void SetSpellHaveAPRatio(bool SpellHaveAPRatio)
+        {
+            this.SpellHaveAPRatio = SpellHaveAPRatio;
+        }
+        public Boolean GetSpellHaveADFullRatio()
+        {
+            return SpellHaveADFullRatio;
+        }
+        public void SetSpellHaveADFullRatio(bool SpellHaveADFullRatio)
+        {
+            this.SpellHaveADFullRatio = SpellHaveADFullRatio;
+        }
+        public Boolean GetSpellHaveADBonusRatio()
+        {
+            return SpellHaveADBonusRatio;
+        }
+        public void SetSpellHaveADBonusRatio(bool SpellHaveADBonusRatio)
+        {
+            this.SpellHaveADBonusRatio = SpellHaveADBonusRatio;
+        }
+        public Boolean GetSpellHaveDamageIncreaser()
+        {
+            return SpellHaveDamageIncreaser;
+        }
+        public void SetSpellHaveDamageIncreaser(bool SpellHaveDamageIncreaser)
+        {
+            this.SpellHaveDamageIncreaser = SpellHaveDamageIncreaser;
+        }
         //TODO:Fix/Add damage calculator (decided if champion controls or spell controls damageout)
-         /*
-        public double GetManaCost(int a)
-        {
-            return ManaCost.ElementAt(a);
-        }
-        public double GetDamageIncreaser(int a)
-        {
-            return DamageIncreaser.ElementAt(a);
-        }
-        public double GetRatioAP(int a)
-        {
-            return RatioAP.ElementAt(a);
-        }
-        public double GetRatioADFull(int a)
-        {
-            return RatioADFull.ElementAt(a);
-        }
-        public double GetRatioADBonus(int a)
-        {
-            return RatioADBonus.ElementAt(a);
-        }
-        public Double GetPassiveDamage()
-        {
-            return PassiveDamageOutput;
-        }
-        public Double GetAbilty1Damage()
-        {
-            return Abilty1DamageOutput;
-        }
-        public Double GetAbilty2Damage()
-        {
-            return Abilty2DamageOutput;
-        }
-        public Double GetAbilty3Damage()
-        {
-            return Abilty3DamageOutput;
-        }
-        public Double GetAbilty4Damage()
-        {
-            return Abilty4DamageOutput;
-        }
-        */
+        /*
+       public double GetManaCost(int a)
+       {
+           return ManaCost.ElementAt(a);
+       }
+       public double GetDamageIncreaser(int a)
+       {
+           return DamageIncreaser.ElementAt(a);
+       }
+       public double GetRatioAP(int a)
+       {
+           return RatioAP.ElementAt(a);
+       }
+       public double GetRatioADFull(int a)
+       {
+           return RatioADFull.ElementAt(a);
+       }
+       public double GetRatioADBonus(int a)
+       {
+           return RatioADBonus.ElementAt(a);
+       }
+       public Double GetPassiveDamage()
+       {
+           return PassiveDamageOutput;
+       }
+       public Double GetAbilty1Damage()
+       {
+           return Abilty1DamageOutput;
+       }
+       public Double GetAbilty2Damage()
+       {
+           return Abilty2DamageOutput;
+       }
+       public Double GetAbilty3Damage()
+       {
+           return Abilty3DamageOutput;
+       }
+       public Double GetAbilty4Damage()
+       {
+           return Abilty4DamageOutput;
+       }
+       */
         //
         private List<Double> RatioAP = new List<Double>();
         private List<Double> RatioADFull = new List<Double>();
         private List<Double> RatioADBonus = new List<Double>();
         private List<Double> DamageIncreaser = new List<Double>();
         private List<Double> ManaCost = new List<Double>();
+        private List<Double> NormalSpellDamage = new List<Double>();
         //
         [Key]
         private int ID;
@@ -166,6 +210,10 @@ namespace CaLOLateAPI.Models
         private String NameOfSpell;
         private String DescriptionOfSpell;
         private String ImageOfSpell;
+        private bool SpellHaveAPRatio;
+        private bool SpellHaveADFullRatio;
+        private bool SpellHaveADBonusRatio;
+        private bool SpellHaveDamageIncreaser;
         private double PassiveDamageOutput;
         private double Abilty1DamageOutput;
         private double Abilty2DamageOutput;

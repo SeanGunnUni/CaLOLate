@@ -179,6 +179,7 @@
       <DependentUpon>201910090854216_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Battler.cs" />
     <Compile Include="Models\ChampionAbiltys.cs" />
     <Compile Include="Models\Champion.cs" />
     <Compile Include="Models\Items.cs" />
