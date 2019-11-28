@@ -15,10 +15,10 @@ namespace CaLOLateAPI.Models
  
 
         //abiltys
-        public void SetChampionAbiltys( String NameOfSpell1, String DescriptionOfSpell1, String ImageOfSpell1,int LevelOfSpell1, bool SpellHaveAPRatio1, bool SpellHaveADFullRatio1, bool SpellHaveADBonusRatio1, bool SpellHaveDamageIncreaser1
-            String NameOfSpell2, String DescriptionOfSpell2, String ImageOfSpell2, int LevelOfSpell2, bool SpellHaveAPRatio2, bool SpellHaveADFullRatio2, bool SpellHaveADBonusRatio2, bool SpellHaveDamageIncreaser2
-            String NameOfSpell3, String DescriptionOfSpell3, String ImageOfSpell3, int LevelOfSpell3, bool SpellHaveAPRatio3, bool SpellHaveADFullRatio3, bool SpellHaveADBonusRatio3, bool SpellHaveDamageIncreaser3
-            String NameOfSpell4, String DescriptionOfSpell4, String ImageOfSpell4, int LevelOfSpell4, bool SpellHaveAPRatio4, bool SpellHaveADFullRatio4, bool SpellHaveADBonusRatio4, bool SpellHaveDamageIncreaser4
+        public void SetChampionAbiltys( String NameOfSpell1, String DescriptionOfSpell1, String ImageOfSpell1,int LevelOfSpell1, bool SpellHaveAPRatio1, bool SpellHaveADFullRatio1, bool SpellHaveADBonusRatio1, bool SpellHaveDamageIncreaser1,
+            String NameOfSpell2, String DescriptionOfSpell2, String ImageOfSpell2, int LevelOfSpell2, bool SpellHaveAPRatio2, bool SpellHaveADFullRatio2, bool SpellHaveADBonusRatio2, bool SpellHaveDamageIncreaser2,
+            String NameOfSpell3, String DescriptionOfSpell3, String ImageOfSpell3, int LevelOfSpell3, bool SpellHaveAPRatio3, bool SpellHaveADFullRatio3, bool SpellHaveADBonusRatio3, bool SpellHaveDamageIncreaser3,
+            String NameOfSpell4, String DescriptionOfSpell4, String ImageOfSpell4, int LevelOfSpell4, bool SpellHaveAPRatio4, bool SpellHaveADFullRatio4, bool SpellHaveADBonusRatio4, bool SpellHaveDamageIncreaser4,
             String NameOfSpell5, String DescriptionOfSpell5, String ImageOfSpell5, int LevelOfSpell5, bool SpellHaveAPRatio5, bool SpellHaveADFullRatio5, bool SpellHaveADBonusRatio5, bool SpellHaveDamageIncreaser5)
         {
             ChampionAbilty1 = new ChampionAbiltys(NameOfSpell1, DescriptionOfSpell1, ImageOfSpell1, LevelOfSpell1, SpellHaveAPRatio1, SpellHaveADFullRatio1, SpellHaveADBonusRatio1, SpellHaveDamageIncreaser1);
@@ -36,14 +36,251 @@ namespace CaLOLateAPI.Models
         {
             return AbitysNamesAndEffects.ElementAt(a).GetNameOfSpell();
         }
-        //TODO:
+        //TODO:Forgot to add the itens into calculations
         public double GetPassiveDamage()
         {
-            return
+            return PassiveDamage;
         }
         public void SetPassiveDamage()
         {
-
+            bool ADRatioB, ADRatioF, APRatio, DamIn;
+            ADRatioB = ChampionAbilty1.GetSpellHaveADBonusRatio();
+            ADRatioF = ChampionAbilty1.GetSpellHaveADFullRatio();
+            APRatio = ChampionAbilty1.GetSpellHaveAPRatio();
+            DamIn = ChampionAbilty1.GetSpellHaveDamageIncreaser();
+            int Level = ChampionAbilty1.GetLevelOfSpell();
+            if (ADRatioB == true && ADRatioF == false && APRatio == false)
+            {
+                PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetADRatioBonus(Level));
+            }
+            else
+            {
+                if(ADRatioB == false && ADRatioF == true && APRatio == false)
+                {
+                    PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetADRatioFull(Level));
+                }
+                else
+                {
+                    if (ADRatioB == false && ADRatioF == false && APRatio == true)
+                    {
+                        PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetAPRatio(Level));
+                    }
+                    else
+                    {
+                        if (ADRatioB == true && ADRatioF == false && APRatio == true)
+                        {
+                            PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetAPRatio(Level) + ChampionAbilty1.GetADRatioBonus(Level));
+                        }
+                        else
+                        {
+                            if (ADRatioB == false && ADRatioF == true && APRatio == true)
+                            {
+                                PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetAPRatio(Level) + ChampionAbilty1.GetADRatioFull(Level));
+                            }
+                        }
+                    }
+                }
+            }
+            if(DamIn == true)
+            {
+                PassiveDamage = PassiveDamage * (ChampionAbilty1.GetDamageIncreaser(Level));
+            }
+        }
+        public double GetAbilty1Damage()
+        {
+            return Abilty1Damage;
+        }
+        public void SetAbilty1Damage()
+        {
+            bool ADRatioB, ADRatioF, APRatio, DamIn;
+            ADRatioB = ChampionAbilty2.GetSpellHaveADBonusRatio();
+            ADRatioF = ChampionAbilty2.GetSpellHaveADFullRatio();
+            APRatio = ChampionAbilty2.GetSpellHaveAPRatio();
+            DamIn = ChampionAbilty2.GetSpellHaveDamageIncreaser();
+            int Level = ChampionAbilty2.GetLevelOfSpell();
+            if (ADRatioB == true && ADRatioF == false && APRatio == false)
+            {
+                Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetADRatioBonus(Level));
+            }
+            else
+            {
+                if (ADRatioB == false && ADRatioF == true && APRatio == false)
+                {
+                    Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetADRatioFull(Level));
+                }
+                else
+                {
+                    if (ADRatioB == false && ADRatioF == false && APRatio == true)
+                    {
+                        Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetAPRatio(Level));
+                    }
+                    else
+                    {
+                        if (ADRatioB == true && ADRatioF == false && APRatio == true)
+                        {
+                            Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetAPRatio(Level) + ChampionAbilty2.GetADRatioBonus(Level));
+                        }
+                        else
+                        {
+                            if (ADRatioB == false && ADRatioF == true && APRatio == true)
+                            {
+                                Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetAPRatio(Level) + ChampionAbilty2.GetADRatioFull(Level));
+                            }
+                        }
+                    }
+                }
+            }
+            if (DamIn == true)
+            {
+                Abilty1Damage = Abilty1Damage * (ChampionAbilty2.GetDamageIncreaser(Level));
+            }
+        }
+        public double GetAbilty2Damage()
+        {
+            return Abilty2Damage;
+        }
+        public void SetAbilty2Damage()
+        {
+            bool ADRatioB, ADRatioF, APRatio, DamIn;
+            ADRatioB = ChampionAbilty3.GetSpellHaveADBonusRatio();
+            ADRatioF = ChampionAbilty3.GetSpellHaveADFullRatio();
+            APRatio = ChampionAbilty3.GetSpellHaveAPRatio();
+            DamIn = ChampionAbilty3.GetSpellHaveDamageIncreaser();
+            int Level = ChampionAbilty3.GetLevelOfSpell();
+            if (ADRatioB == true && ADRatioF == false && APRatio == false)
+            {
+                Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetADRatioBonus(Level));
+            }
+            else
+            {
+                if (ADRatioB == false && ADRatioF == true && APRatio == false)
+                {
+                    Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetADRatioFull(Level));
+                }
+                else
+                {
+                    if (ADRatioB == false && ADRatioF == false && APRatio == true)
+                    {
+                        Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetAPRatio(Level));
+                    }
+                    else
+                    {
+                        if (ADRatioB == true && ADRatioF == false && APRatio == true)
+                        {
+                            Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetAPRatio(Level) + ChampionAbilty3.GetADRatioBonus(Level));
+                        }
+                        else
+                        {
+                            if (ADRatioB == false && ADRatioF == true && APRatio == true)
+                            {
+                                Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetAPRatio(Level) + ChampionAbilty3.GetADRatioFull(Level));
+                            }
+                        }
+                    }
+                }
+            }
+            if (DamIn == true)
+            {
+                Abilty2Damage = Abilty2Damage * (ChampionAbilty3.GetDamageIncreaser(Level));
+            }
+        }
+        public double GetAbilty3Damage()
+        {
+            return Abilty3Damage;
+        }
+        public void SetAbilty3Damage()
+        {
+            bool ADRatioB, ADRatioF, APRatio, DamIn;
+            ADRatioB = ChampionAbilty4.GetSpellHaveADBonusRatio();
+            ADRatioF = ChampionAbilty4.GetSpellHaveADFullRatio();
+            APRatio = ChampionAbilty4.GetSpellHaveAPRatio();
+            DamIn = ChampionAbilty4.GetSpellHaveDamageIncreaser();
+            int Level = ChampionAbilty4.GetLevelOfSpell();
+            if (ADRatioB == true && ADRatioF == false && APRatio == false)
+            {
+                Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetADRatioBonus(Level));
+            }
+            else
+            {
+                if (ADRatioB == false && ADRatioF == true && APRatio == false)
+                {
+                    Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetADRatioFull(Level));
+                }
+                else
+                {
+                    if (ADRatioB == false && ADRatioF == false && APRatio == true)
+                    {
+                        Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetAPRatio(Level));
+                    }
+                    else
+                    {
+                        if (ADRatioB == true && ADRatioF == false && APRatio == true)
+                        {
+                            Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetAPRatio(Level) + ChampionAbilty4.GetADRatioBonus(Level));
+                        }
+                        else
+                        {
+                            if (ADRatioB == false && ADRatioF == true && APRatio == true)
+                            {
+                                Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetAPRatio(Level) + ChampionAbilty4.GetADRatioFull(Level));
+                            }
+                        }
+                    }
+                }
+            }
+            if (DamIn == true)
+            {
+                Abilty3Damage = Abilty3Damage * (ChampionAbilty4.GetDamageIncreaser(Level));
+            }
+        }
+        public double GetUltimateDamage()
+        {
+            return UltimateDamage;
+        }
+        public void SetUltimateDamage()
+        {
+            bool ADRatioB, ADRatioF, APRatio, DamIn;
+            ADRatioB = ChampionAbilty5.GetSpellHaveADBonusRatio();
+            ADRatioF = ChampionAbilty5.GetSpellHaveADFullRatio();
+            APRatio = ChampionAbilty5.GetSpellHaveAPRatio();
+            DamIn = ChampionAbilty5.GetSpellHaveDamageIncreaser();
+            int Level = ChampionAbilty5.GetLevelOfSpell();
+            if (ADRatioB == true && ADRatioF == false && APRatio == false)
+            {
+                UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetADRatioBonus(Level));
+            }
+            else
+            {
+                if (ADRatioB == false && ADRatioF == true && APRatio == false)
+                {
+                    UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetADRatioFull(Level));
+                }
+                else
+                {
+                    if (ADRatioB == false && ADRatioF == false && APRatio == true)
+                    {
+                        UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetAPRatio(Level));
+                    }
+                    else
+                    {
+                        if (ADRatioB == true && ADRatioF == false && APRatio == true)
+                        {
+                            UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetAPRatio(Level) + ChampionAbilty5.GetADRatioBonus(Level));
+                        }
+                        else
+                        {
+                            if (ADRatioB == false && ADRatioF == true && APRatio == true)
+                            {
+                                UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetAPRatio(Level) + ChampionAbilty5.GetADRatioFull(Level));
+                            }
+                        }
+                    }
+                }
+            }
+            if (DamIn == true)
+            {
+                UltimateDamage = UltimateDamage * (ChampionAbilty5.GetDamageIncreaser(Level));
+            }
         }
         //items
         public void SetItems()
@@ -61,10 +298,7 @@ namespace CaLOLateAPI.Models
             ItemsChampHas.Add(Item5);
             ItemsChampHas.Add(Item6);
         }
-        public Items GetItem(int a)
-        {
-            return ItemsChampHas.ElementAt(a);
-        }
+
         //SummonerSpells
         public void SetSummonerSpells()
         {
@@ -73,10 +307,7 @@ namespace CaLOLateAPI.Models
             SummonerSpellChampHas.Add(SummonerSpells1);
             SummonerSpellChampHas.Add(SummonerSpells2);
         }
-        public SummonerSpells GetSummonerSpells(int a)
-        {
-            return SummonerSpellChampHas.ElementAt(a);
-        }
+
         //ChampionAbiltys
         private ChampionAbiltys ChampionAbilty1;
         private ChampionAbiltys ChampionAbilty2;
@@ -84,6 +315,11 @@ namespace CaLOLateAPI.Models
         private ChampionAbiltys ChampionAbilty4;
         private ChampionAbiltys ChampionAbilty5;
         private List<ChampionAbiltys> AbitysNamesAndEffects;
+        private double PassiveDamage;
+        private double Abilty1Damage;
+        private double Abilty2Damage;
+        private double Abilty3Damage;
+        private double UltimateDamage;
         //SummonerSpells
         private SummonerSpells SummonerSpells1;
         private SummonerSpells SummonerSpells2;
@@ -301,9 +537,15 @@ namespace CaLOLateAPI.Models
         {
             return CooldownReduction;
         }
+        //TODO:Set Stats based on items then call in calculator part
         public void SetCooldownReduction(int CooldownReduction)
         {
-            this.CooldownReduction = CooldownReduction;
+            int a = 0;
+            foreach(Items item in ItemsChampHas)
+            {
+                a = a + item.GetAP();
+            }
+            this.CooldownReduction = a;
         }
         public int GetTenacity()
         {
@@ -329,11 +571,11 @@ namespace CaLOLateAPI.Models
         {
             this.CritStrike = CritStrike;
         }
-        public int GetCritDamage()
+        public double GetCritDamage()
         {
             return CritDamage;
         }
-        public void SetCritDamage(int CritDamage)
+        public void SetCritDamage(double CritDamage)
         {
             this.CritDamage = CritDamage;
         }
@@ -415,25 +657,25 @@ namespace CaLOLateAPI.Models
         private double MagicResistOutput;
         private int Movespeed;
         private double MovespeedOutput;
-        private int CooldownReduction;
+        private int CooldownReduction = 0;
         private double CooldownReductionOutput;
-        private int Tenacity;
+        private int Tenacity = 0;
         private double TenacityOutput;
-        private double AbiltyPower;
+        private double AbiltyPower = 0;
         private double AbiltyPowerOutput;
-        private int CritStrike;
+        private int CritStrike = 0;
         private double CritStrikeOutput;
-        private int CritDamage;
+        private double CritDamage = 1.5;
         private double CritDamageOutput;
-        private int LifeSteal;
+        private int LifeSteal = 0;
         private double LifeStealOutput;
-        private int ArmourPenetrationFlat;
+        private int ArmourPenetrationFlat = 0;
         private double ArmourPenetrationOutput;
-        private int ArmourPenetrationPecentage;
+        private int ArmourPenetrationPecentage = 0;
         private double ArmourPenetrationPecentageOutput;
-        private int MagicPenetrationFlat;
+        private int MagicPenetrationFlat = 0;
         private double MagicPenetrationOutput;
-        private int MagicPenetrationPecentage;
+        private int MagicPenetrationPecentage = 0;
         private double MagicPenetrationPecentageOutput;
         private int MaxLevel = 18;
         //TODO: Add champion stat calculators

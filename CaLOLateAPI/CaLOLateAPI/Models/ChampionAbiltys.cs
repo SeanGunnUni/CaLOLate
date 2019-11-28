@@ -31,46 +31,73 @@ namespace CaLOLateAPI.Models
 
         }
         //TODO:Change to check amout of max levels
-        public void SetRatioADFull(Double RatioADFull1, Double RatioADFull2, Double RatioADFull3, Double RatioADFull4)
+        public void SetRatioADFull(Double RatioADFull1, Double RatioADFull2, Double RatioADFull3, Double RatioADFull4, Double RatioADFull5)
         {
             RatioADFull.Add(RatioADFull1);
             RatioADFull.Add(RatioADFull2);
             RatioADFull.Add(RatioADFull3);
             RatioADFull.Add(RatioADFull4);
-
+            RatioADFull.Add(RatioADFull5);
         }
         //TODO:Change to check amout of max levels
-        public void SetRatioADBonus(Double RatioADBonus1, Double RatioADBonus2, Double RatioADBonus3, Double RatioADBonus4)
+        public void SetRatioADBonus(Double RatioADBonus1, Double RatioADBonus2, Double RatioADBonus3, Double RatioADBonus4, Double RatioADBonus5)
         {
             RatioADBonus.Add(RatioADBonus1);
             RatioADBonus.Add(RatioADBonus2);
             RatioADBonus.Add(RatioADBonus3);
             RatioADBonus.Add(RatioADBonus4);
-
+            RatioADBonus.Add(RatioADBonus4);
         }
         //TODO:Change to check amout of max levels
-        public void SetDamageIncreaser(Double Increaser1, Double Increaser2, Double Increaser3, Double Increaser4)
+        public void SetDamageIncreaser(Double Increaser1, Double Increaser2, Double Increaser3, Double Increaser4, Double Increaser5)
         {
             DamageIncreaser.Add(Increaser1);
             DamageIncreaser.Add(Increaser2);
             DamageIncreaser.Add(Increaser3);
             DamageIncreaser.Add(Increaser4);
+            DamageIncreaser.Add(Increaser5);
         }
         //TODO:Change to check amout of max levels
-        public void SetManaCost(Double Abilty1ManaCost, Double Abilty2ManaCost, Double Abilty3ManaCost, Double Abilty4ManaCost)
+        public void SetManaCost(Double Abilty1ManaCost, Double Abilty2ManaCost, Double Abilty3ManaCost, Double Abilty4ManaCost, Double Abilty5ManaCost)
         {
             ManaCost.Add(Abilty1ManaCost);
             ManaCost.Add(Abilty2ManaCost);
             ManaCost.Add(Abilty3ManaCost);
             ManaCost.Add(Abilty4ManaCost);
+            ManaCost.Add(Abilty5ManaCost);
         }
-        public void SetNormalSpellDamage(Double Abilty1NormalSpellDamage, Double Abilty2NormalSpellDamage, Double Abilty3NormalSpellDamage, Double Abilty4NormalSpellDamage)
+        public void SetNormalSpellDamage(Double Abilty1NormalSpellDamage, Double Abilty2NormalSpellDamage, Double Abilty3NormalSpellDamage, Double Abilty4NormalSpellDamage, Double Abilty5NormalSpellDamage)
         {
             NormalSpellDamage.Add(Abilty1NormalSpellDamage);
             NormalSpellDamage.Add(Abilty2NormalSpellDamage);
             NormalSpellDamage.Add(Abilty3NormalSpellDamage);
             NormalSpellDamage.Add(Abilty4NormalSpellDamage);
+            NormalSpellDamage.Add(Abilty5NormalSpellDamage);
         }
+
+
+        public double GetNormalSpellDamage(int a)
+        {
+            return NormalSpellDamage.ElementAt(a);
+        }
+        public double GetADRatioBonus(int a)
+        {
+            return RatioADBonus.ElementAt(a);
+        }
+        public double GetADRatioFull(int a)
+        {
+            return RatioADFull.ElementAt(a);
+        }
+        public double GetAPRatio(int a)
+        {
+            return RatioAP.ElementAt(a);
+        }
+        public double GetDamageIncreaser(int a)
+        {
+            return DamageIncreaser.ElementAt(a);
+        }
+
+
         public int GetID()
         {
             return ID;
