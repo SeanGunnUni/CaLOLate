@@ -49,33 +49,43 @@ namespace CaLOLateAPI.Models
             APRatio = ChampionAbilty1.GetSpellHaveAPRatio();
             DamIn = ChampionAbilty1.GetSpellHaveDamageIncreaser();
             int Level = ChampionAbilty1.GetLevelOfSpell();
+            double AP = GetAbiltyPowerOutput();
+            double ADF = GetADOutput();
+            double ADB = GetADBonusOutput();
             if (ADRatioB == true && ADRatioF == false && APRatio == false)
             {
-                PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetADRatioBonus(Level));
+                double a = ChampionAbilty1.GetADRatioBonus(Level) * ADB;
+                PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + a);
             }
             else
             {
                 if(ADRatioB == false && ADRatioF == true && APRatio == false)
                 {
-                    PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetADRatioFull(Level));
+                    double a = ChampionAbilty1.GetADRatioFull(Level) * ADF;
+                    PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + a);
                 }
                 else
                 {
                     if (ADRatioB == false && ADRatioF == false && APRatio == true)
                     {
-                        PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetAPRatio(Level));
+                        double a = ChampionAbilty1.GetAPRatio(Level) * AP;
+                        PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + a);
                     }
                     else
                     {
                         if (ADRatioB == true && ADRatioF == false && APRatio == true)
                         {
-                            PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetAPRatio(Level) + ChampionAbilty1.GetADRatioBonus(Level));
+                            double ad = ChampionAbilty1.GetADRatioBonus(Level) * ADB;
+                            double ap = ChampionAbilty1.GetAPRatio(Level) * AP;
+                            PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ap + ad);
                         }
                         else
                         {
                             if (ADRatioB == false && ADRatioF == true && APRatio == true)
                             {
-                                PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ChampionAbilty1.GetAPRatio(Level) + ChampionAbilty1.GetADRatioFull(Level));
+                                double ad = ChampionAbilty1.GetADRatioFull(Level) * ADF;
+                                double ap = ChampionAbilty1.GetAPRatio(Level) * AP;
+                                PassiveDamage = (ChampionAbilty1.GetNormalSpellDamage(Level) + ap + ad);
                             }
                         }
                     }
@@ -98,33 +108,43 @@ namespace CaLOLateAPI.Models
             APRatio = ChampionAbilty2.GetSpellHaveAPRatio();
             DamIn = ChampionAbilty2.GetSpellHaveDamageIncreaser();
             int Level = ChampionAbilty2.GetLevelOfSpell();
+            double AP = GetAbiltyPowerOutput();
+            double ADF = GetADOutput();
+            double ADB = GetADBonusOutput();
             if (ADRatioB == true && ADRatioF == false && APRatio == false)
             {
-                Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetADRatioBonus(Level));
+                double a = ChampionAbilty2.GetADRatioBonus(Level) * ADB;
+                Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + a);
             }
             else
             {
                 if (ADRatioB == false && ADRatioF == true && APRatio == false)
                 {
-                    Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetADRatioFull(Level));
+                    double a = ChampionAbilty2.GetADRatioFull(Level) * ADF;
+                    Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + a);
                 }
                 else
                 {
                     if (ADRatioB == false && ADRatioF == false && APRatio == true)
                     {
-                        Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetAPRatio(Level));
+                        double a = ChampionAbilty2.GetAPRatio(Level) * AP;
+                        Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + a);
                     }
                     else
                     {
                         if (ADRatioB == true && ADRatioF == false && APRatio == true)
                         {
-                            Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetAPRatio(Level) + ChampionAbilty2.GetADRatioBonus(Level));
+                            double ad = ChampionAbilty2.GetADRatioBonus(Level) * ADB;
+                            double ap = ChampionAbilty2.GetAPRatio(Level) * AP;
+                            Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ap + ad);
                         }
                         else
                         {
                             if (ADRatioB == false && ADRatioF == true && APRatio == true)
                             {
-                                Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ChampionAbilty2.GetAPRatio(Level) + ChampionAbilty2.GetADRatioFull(Level));
+                                double ad = ChampionAbilty2.GetADRatioFull(Level) * ADF;
+                                double ap = ChampionAbilty2.GetAPRatio(Level) * AP;
+                                Abilty1Damage = (ChampionAbilty2.GetNormalSpellDamage(Level) + ap + ad);
                             }
                         }
                     }
@@ -147,33 +167,43 @@ namespace CaLOLateAPI.Models
             APRatio = ChampionAbilty3.GetSpellHaveAPRatio();
             DamIn = ChampionAbilty3.GetSpellHaveDamageIncreaser();
             int Level = ChampionAbilty3.GetLevelOfSpell();
+            double AP = GetAbiltyPowerOutput();
+            double ADF = GetADOutput();
+            double ADB = GetADBonusOutput();
             if (ADRatioB == true && ADRatioF == false && APRatio == false)
             {
-                Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetADRatioBonus(Level));
+                double a = ChampionAbilty3.GetADRatioBonus(Level) * ADB;
+                Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + a);
             }
             else
             {
                 if (ADRatioB == false && ADRatioF == true && APRatio == false)
                 {
-                    Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetADRatioFull(Level));
+                    double a = ChampionAbilty3.GetADRatioFull(Level) * ADF;
+                    Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + a);
                 }
                 else
                 {
                     if (ADRatioB == false && ADRatioF == false && APRatio == true)
                     {
-                        Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetAPRatio(Level));
+                        double a = ChampionAbilty3.GetAPRatio(Level) * AP;
+                        Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + a);
                     }
                     else
                     {
                         if (ADRatioB == true && ADRatioF == false && APRatio == true)
                         {
-                            Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetAPRatio(Level) + ChampionAbilty3.GetADRatioBonus(Level));
+                            double ad = ChampionAbilty3.GetADRatioBonus(Level) * ADB;
+                            double ap = ChampionAbilty3.GetAPRatio(Level) * AP;
+                            Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ad + ap);
                         }
                         else
                         {
                             if (ADRatioB == false && ADRatioF == true && APRatio == true)
                             {
-                                Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ChampionAbilty3.GetAPRatio(Level) + ChampionAbilty3.GetADRatioFull(Level));
+                                double ad = ChampionAbilty3.GetADRatioFull(Level) * ADF;
+                                double ap = ChampionAbilty3.GetAPRatio(Level) * AP;
+                                Abilty2Damage = (ChampionAbilty3.GetNormalSpellDamage(Level) + ap + ad);
                             }
                         }
                     }
@@ -196,33 +226,43 @@ namespace CaLOLateAPI.Models
             APRatio = ChampionAbilty4.GetSpellHaveAPRatio();
             DamIn = ChampionAbilty4.GetSpellHaveDamageIncreaser();
             int Level = ChampionAbilty4.GetLevelOfSpell();
+            double AP = GetAbiltyPowerOutput();
+            double ADF = GetADOutput();
+            double ADB = GetADBonusOutput();
             if (ADRatioB == true && ADRatioF == false && APRatio == false)
             {
-                Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetADRatioBonus(Level));
+                double a = ChampionAbilty4.GetADRatioBonus(Level) * ADB;
+                Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + a);
             }
             else
             {
                 if (ADRatioB == false && ADRatioF == true && APRatio == false)
                 {
-                    Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetADRatioFull(Level));
+                    double a = ChampionAbilty4.GetADRatioFull(Level) * ADF;
+                    Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + a);
                 }
                 else
                 {
                     if (ADRatioB == false && ADRatioF == false && APRatio == true)
                     {
-                        Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetAPRatio(Level));
+                        double a = ChampionAbilty4.GetAPRatio(Level) * AP;
+                        Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + a);
                     }
                     else
                     {
                         if (ADRatioB == true && ADRatioF == false && APRatio == true)
                         {
-                            Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetAPRatio(Level) + ChampionAbilty4.GetADRatioBonus(Level));
+                            double ad = ChampionAbilty4.GetADRatioBonus(Level) * ADB;
+                            double ap = ChampionAbilty4.GetAPRatio(Level) * AP;
+                            Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ad + ap);
                         }
                         else
                         {
                             if (ADRatioB == false && ADRatioF == true && APRatio == true)
                             {
-                                Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ChampionAbilty4.GetAPRatio(Level) + ChampionAbilty4.GetADRatioFull(Level));
+                                double ad = ChampionAbilty4.GetADRatioFull(Level) * ADF;
+                                double ap = ChampionAbilty4.GetAPRatio(Level) * AP;
+                                Abilty3Damage = (ChampionAbilty4.GetNormalSpellDamage(Level) + ap + ad);
                             }
                         }
                     }
@@ -245,33 +285,43 @@ namespace CaLOLateAPI.Models
             APRatio = ChampionAbilty5.GetSpellHaveAPRatio();
             DamIn = ChampionAbilty5.GetSpellHaveDamageIncreaser();
             int Level = ChampionAbilty5.GetLevelOfSpell();
+            double AP = GetAbiltyPowerOutput();
+            double ADF = GetADOutput();
+            double ADB = GetADBonusOutput();
             if (ADRatioB == true && ADRatioF == false && APRatio == false)
             {
-                UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetADRatioBonus(Level));
+                double a = ChampionAbilty5.GetADRatioBonus(Level) * ADB;
+                UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + a);
             }
             else
             {
                 if (ADRatioB == false && ADRatioF == true && APRatio == false)
                 {
-                    UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetADRatioFull(Level));
+                    double a = ChampionAbilty5.GetADRatioFull(Level) * ADF;
+                    UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + a);
                 }
                 else
                 {
                     if (ADRatioB == false && ADRatioF == false && APRatio == true)
                     {
-                        UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetAPRatio(Level));
+                        double a = ChampionAbilty5.GetAPRatio(Level) * AP;
+                        UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ap);
                     }
                     else
                     {
                         if (ADRatioB == true && ADRatioF == false && APRatio == true)
                         {
-                            UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetAPRatio(Level) + ChampionAbilty5.GetADRatioBonus(Level));
+                            double ad = ChampionAbilty5.GetADRatioBonus(Level) * ADB;
+                            double ap = ChampionAbilty5.GetAPRatio(Level) * AP;
+                            UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ap + ad);
                         }
                         else
                         {
                             if (ADRatioB == false && ADRatioF == true && APRatio == true)
                             {
-                                UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ChampionAbilty5.GetAPRatio(Level) + ChampionAbilty5.GetADRatioFull(Level));
+                                double ad = ChampionAbilty5.GetADRatioFull(Level) * ADF;
+                                double ap = ChampionAbilty5.GetAPRatio(Level) * AP;
+                                UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ap + ad);
                             }
                         }
                     }
@@ -453,14 +503,6 @@ namespace CaLOLateAPI.Models
         {
             this.EnergyRegFlat = EnergyRegFlat;
         }
-        public double GetEnergyRegScaling()
-        {
-            return EnergyRegScaling;
-        }
-        public void SetEnergyRegScaling(double EnergyRegScaling)
-        {
-            this.EnergyRegScaling = EnergyRegScaling;
-        }
         public int GetAdFlat()
         {
             return AdFlat;
@@ -540,12 +582,7 @@ namespace CaLOLateAPI.Models
         //TODO:Set Stats based on items then call in calculator part
         public void SetCooldownReduction(int CooldownReduction)
         {
-            int a = 0;
-            foreach(Items item in ItemsChampHas)
-            {
-                a = a + item.GetAP();
-            }
-            this.CooldownReduction = a;
+            this.CooldownReduction = CooldownReduction;
         }
         public int GetTenacity()
         {
@@ -626,58 +663,280 @@ namespace CaLOLateAPI.Models
         private int Level;
         private int HeathFlat;
         private double HeathScaling;
-        private double HeathOutput;
         private double HealthRegFlat;
         private double HealthRegScaling;
-        private double HeathRegOutput;
         private int ManaFlat;
         private double ManaScaling;
-        private double ManaOutput;
         private double ManaRegFlat;
         private double ManaRegScaling;
-        private double ManaRegOutput;
         private int RageFlat;
-        private double RageOutput;
         private int EnergyFlat;
-        private double EnergyOutput;
         private double EnergyRegFlat;
-        private double EnergyRegScaling;
-        private double EnergyRegOutput;
         private int AdFlat;
         private double AdScaling;
-        private double ADOutput;
         private double AttackSpeedFlat;
         private double AttackSpeedScale;
-        private double AttackSpeedOutput;
         private int ArmourFlat;
         private double ArmourScaling;
-        private double ArmourOutput;
         private int MagicResistFlat;
         private double MagicResistScaling;
-        private double MagicResistOutput;
         private int Movespeed;
-        private double MovespeedOutput;
         private int CooldownReduction = 0;
-        private double CooldownReductionOutput;
         private int Tenacity = 0;
-        private double TenacityOutput;
         private double AbiltyPower = 0;
-        private double AbiltyPowerOutput;
         private int CritStrike = 0;
-        private double CritStrikeOutput;
         private double CritDamage = 1.5;
-        private double CritDamageOutput;
         private int LifeSteal = 0;
-        private double LifeStealOutput;
         private int ArmourPenetrationFlat = 0;
-        private double ArmourPenetrationOutput;
         private int ArmourPenetrationPecentage = 0;
-        private double ArmourPenetrationPecentageOutput;
         private int MagicPenetrationFlat = 0;
-        private double MagicPenetrationOutput;
         private int MagicPenetrationPecentage = 0;
-        private double MagicPenetrationPecentageOutput;
         private int MaxLevel = 18;
         //TODO: Add champion stat calculators
+        //Outputs
+        private readonly double HealthOutput;
+        private readonly double HealthRegOutput;
+        private readonly double ManaOutput;
+        private readonly double ManaRegOutput;
+        private readonly double RageOutput;
+        private readonly double EnergyOutput;
+        private readonly double EnergyRegOutput;
+        private readonly double ADOutput;
+        private readonly double ADBonusOutput;
+        private readonly double AttackSpeedOutput;
+        private readonly double ArmourOutput;
+        private readonly double MagicResistOutput;
+        private readonly double CooldownReductionOutput;
+        private readonly double TenacityOutput;
+        private readonly double AbiltyPowerOutput;
+        private readonly double CritStrikeOutput;
+        private readonly double CritDamageOutput;
+        private readonly double LifeStealOutput;
+        private readonly double ArmourPenetrationFlatOutput;
+        private readonly double ArmourPenetrationPecentageOutput;
+        private readonly double MagicPenetrationFlatOutput;
+        private readonly double MagicPenetrationPecentageOutput;
+
+        //Gets/Sets outputs
+        public double GetHealthOutput()
+        {
+            double HealthOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                HealthOutput = + items.GetHealth();
+            }
+            HealthOutput =+ (level * GetHeathScaling()) + GetHeathFlat(); 
+            return HealthOutput;
+        }
+        public double GetHealthRegOutput()
+        {
+            double HealthRegOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                HealthRegOutput = +items.GetHealthReg();
+            }
+            HealthRegOutput = +(level * GetHealthRegScaling()) + GetHealthRegFlat();
+            return HealthRegOutput;
+        }
+        public double GetManaOutput()
+        {
+            double ManaOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                ManaOutput = +items.GetMana();
+            }
+            ManaOutput = +(level * GetManaScaling()) + GetManaFlat();
+            return ManaOutput;
+        }
+        public double GetManaRegOutput()
+        {
+            double ManaRegOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                ManaRegOutput = +items.GetManaReg();
+            }
+            ManaRegOutput = +(level * GetManaRegScaling()) + GetManaRegFlat();
+            return ManaRegOutput;
+        }
+        public double GetRageOutput()
+        {
+            double RageOutput;
+            RageOutput = GetRageFlat();
+            return RageOutput;
+        }
+        public double GetEnergyOutput()
+        {
+            double EnergyOutput;
+            EnergyOutput = GetEnergyFlat();
+            return EnergyOutput;
+        }
+        public double GetEnergyRegOutput()
+        {
+            double EnergyRegOutput;
+            EnergyRegOutput = GetEnergyRegFlat();
+            return EnergyRegOutput;
+        }
+        public double GetADOutput()
+        {
+            double ADOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                ADOutput =+ items.GetAD();
+            }
+            ADOutput = + (level * GetAdScaling()) + GetAdFlat();
+            return ADOutput;
+        }
+
+        public double GetADBonusOutput()
+        {
+            double ADBonusOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                ADBonusOutput = +items.GetAD();
+            }
+            ADBonusOutput = +(level * GetAdScaling());
+            return ADBonusOutput;
+        }
+
+        public double GetAttackSpeedOutput()
+        {
+            //TODO: this is wrong but doesn't exactly matter atm since program doesnt work like that
+            double AttackSpeedOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                AttackSpeedOutput = +items.GetAttackSpeed();
+            }
+            AttackSpeedOutput = +(level * GetAttackSpeedScale()) + GetAttackSpeedFlat();
+            return AttackSpeedOutput;
+        }
+        public double GetArmourOutput()
+        {
+            double ArmourOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                ArmourOutput = +items.GetArmour();
+            }
+            ArmourOutput = +(level * GetArmourScaling()) + GetArmourFlat();
+            return ArmourOutput;
+        }
+        public double GetMagicResistOutput()
+        {
+            double MagicResistOutput;
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                MagicResistOutput = +items.GetMagicResist();
+            }
+            MagicResistOutput = +(level * GetMagicResistScaling()) + GetMagicResistFlat();
+            return MagicResistOutput;
+        }
+        public double GetCooldownReductionOutput()
+        {
+            double CooldownReductionOutput = GetCooldownReduction();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                CooldownReductionOutput = +items.GetMagicResist();
+            }
+            return CooldownReductionOutput;
+        }
+        public double GetTenacityOutput()
+        {
+            double TenacityOutput = GetTenacity();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                TenacityOutput = +items.GetTenacity();
+            }
+            return TenacityOutput;
+        }
+        public double GetAbiltyPowerOutput()
+        {
+            double AbiltyPowerOutput = GetAbiltyPower();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                AbiltyPowerOutput = +items.GetAP();
+            }
+            return AbiltyPowerOutput;
+        }
+        public double GetCritStrikeOutput()
+        {
+            double CritStrikeOutput = GetCritStrike();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                CritStrikeOutput = +items.GetCritStrike();
+            }
+            return CritStrikeOutput;
+        }
+        public double GetCritDamageOutput()
+        {
+            double CritDamageOutput = GetCritDamage();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                CritDamageOutput = +items.GetCritDamage();
+            }
+            return CritDamageOutput;
+        }
+        public double GetLifeStealOutput()
+        {
+            double LifeStealOutput = GetLifeSteal();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                LifeStealOutput = +items.GetLifeSteal();
+            }
+            return LifeStealOutput;
+        }
+        public double GetArmourPenetrationFlatOutput()
+        {
+            double ArmourPenetrationFlatOutput = GetArmourPenetrationFlat();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                ArmourPenetrationFlatOutput = +items.GetArmourPenetrationFlat();
+            }
+            return ArmourPenetrationFlatOutput;
+        }
+        public double GetArmourPenetrationPecentageOutput()
+        {
+            double ArmourPenetrationPecentageOutput = GetArmourPenetrationPecentage();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                ArmourPenetrationPecentageOutput = +items.GetArmourPenetrationPecentage();
+            }
+            return ArmourPenetrationPecentageOutput;
+        }
+        public double GetMagicPenetrationFlatOutput()
+        {
+            double MagicPenetrationFlatOutput = GetMagicPenetrationFlat();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                MagicPenetrationFlatOutput = +items.GetMagicPenetrationFlat();
+            }
+            return MagicPenetrationFlatOutput;
+        }
+        public double GetMagicPenetrationPecentageOutput()
+        {
+            double MagicPenetrationPecentageOutput = GetMagicPenetrationPecentage();
+            int level = GetLevel();
+            foreach (Items items in ItemsChampHas)
+            {
+                MagicPenetrationPecentageOutput = +items.GetMagicPenetrationPecentage();
+            }
+            return MagicPenetrationPecentageOutput;
+        }
     }
 }
