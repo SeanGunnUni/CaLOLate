@@ -305,7 +305,7 @@ namespace CaLOLateAPI.Models
                     if (ADRatioB == false && ADRatioF == false && APRatio == true)
                     {
                         double a = ChampionAbilty5.GetAPRatio(Level) * AP;
-                        UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + ap);
+                        UltimateDamage = (ChampionAbilty5.GetNormalSpellDamage(Level) + AP);
                     }
                     else
                     {
@@ -374,6 +374,12 @@ namespace CaLOLateAPI.Models
         private SummonerSpells SummonerSpells1;
         private SummonerSpells SummonerSpells2;
         private List<SummonerSpells> SummonerSpellChampHas;
+        private int SummonerSpellDamage;
+        //TODO:SummonerspellDamage
+        void SummonerSpellDamageOutput()
+        {
+
+        }
         //Items
         private Items Item1;
         private Items Item2;
@@ -382,6 +388,13 @@ namespace CaLOLateAPI.Models
         private Items Item5;
         private Items Item6;
         private List<Items> ItemsChampHas;
+        private double ItemsDamageFromActives;
+        //TODO:ItemsDamage
+        void ItemsDamageOutput()
+        {
+
+        }
+
         //ChampionInformation
         public int GetID()
         {

@@ -48,13 +48,13 @@ namespace CaLOLateAPI.Models
         {
             this.SpellLevel = SpellLevel;
         }
-        public int GetDamageOutput()
+        public int GetDamagePerLevel()
         {
-            return DamageOutput;
+            return DamagePerLevel;
         }
-        public void SetDamageOutput(int DamageOutput)
+        public void SetDamageOutput(int DamagePerLevel)
         {
-            this.DamageOutput = DamageOutput;
+            this.DamagePerLevel = DamagePerLevel;
         }
         [Key]
         private int ID;
@@ -62,6 +62,6 @@ namespace CaLOLateAPI.Models
         private String Image;
         private String Description;
         private int SpellLevel;
-        private int DamageOutput;
+        private int DamagePerLevel;
     }
 }

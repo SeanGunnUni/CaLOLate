@@ -179,50 +179,7 @@ namespace CaLOLateAPI.Models
         {
             this.SpellHaveDamageIncreaser = SpellHaveDamageIncreaser;
         }
-        //TODO:Fix/Add damage calculator (decided if champion controls or spell controls damageout)
-        /*
-       public double GetManaCost(int a)
-       {
-           return ManaCost.ElementAt(a);
-       }
-       public double GetDamageIncreaser(int a)
-       {
-           return DamageIncreaser.ElementAt(a);
-       }
-       public double GetRatioAP(int a)
-       {
-           return RatioAP.ElementAt(a);
-       }
-       public double GetRatioADFull(int a)
-       {
-           return RatioADFull.ElementAt(a);
-       }
-       public double GetRatioADBonus(int a)
-       {
-           return RatioADBonus.ElementAt(a);
-       }
-       public Double GetPassiveDamage()
-       {
-           return PassiveDamageOutput;
-       }
-       public Double GetAbilty1Damage()
-       {
-           return Abilty1DamageOutput;
-       }
-       public Double GetAbilty2Damage()
-       {
-           return Abilty2DamageOutput;
-       }
-       public Double GetAbilty3Damage()
-       {
-           return Abilty3DamageOutput;
-       }
-       public Double GetAbilty4Damage()
-       {
-           return Abilty4DamageOutput;
-       }
-       */
-        //
+  
         private List<Double> RatioAP = new List<Double>();
         private List<Double> RatioADFull = new List<Double>();
         private List<Double> RatioADBonus = new List<Double>();
@@ -241,11 +198,6 @@ namespace CaLOLateAPI.Models
         private bool SpellHaveADFullRatio;
         private bool SpellHaveADBonusRatio;
         private bool SpellHaveDamageIncreaser;
-        private double PassiveDamageOutput;
-        private double Abilty1DamageOutput;
-        private double Abilty2DamageOutput;
-        private double Abilty3DamageOutput;
-        private double Abilty4DamageOutput;
 
     }
 }

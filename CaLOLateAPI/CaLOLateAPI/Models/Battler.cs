@@ -31,20 +31,26 @@ namespace CaLOLateAPI.Models
         {
             Champion2.SetLevel(Level);
         }
-        public void SetPassiveDamageChamp1()
-        {
-            PassiveDamageChamp1 = Champion1.
-        }
+
         private Champion Champion1;
         private Champion Champion2;
-        private double PassiveDamageChamp1;
-        private double PassiveDamageChamp2;
-        private double Abilty1DamageChamp1;
-        private double Abilty1DamageChamp2;
-        private double Abilty2DamageChamp1;
-        private double Abilty2DamageChamp2;
-        private double Abilty3DamageChamp1;
-        private double Abilty3DamageChamp2;
+        private int ChampionOneDamage;
+        private int ChampionTwoDamage;
+        private bool WouldChampionOneComeOutWithAWin;
+        //TODO:Player output as whole
+        void ChampionOneDamageOutput()
+        {
 
+        }
+
+        void ChampionTwoDamageOutput()
+        {
+
+        }
+        //TODO:Would he win?
+        void CalculateIfChampionOneWouldWin()
+        {
+
+        }
     }
 }
