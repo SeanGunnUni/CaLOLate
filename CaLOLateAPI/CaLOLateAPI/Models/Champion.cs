@@ -11,6 +11,12 @@ namespace CaLOLateAPI.Models
         {
             this.Name = Name;
             this.Image = Image;
+            SetItems();
+            SetSummonerSpells();
+            //TODO:SET CHAMPS IN DATA BASE
+            //TODO:GET THE CHAMP FROM DATA BASE BASED ON NAME
+
+            SetChampionAbiltys();
         }
  
 
@@ -348,7 +354,115 @@ namespace CaLOLateAPI.Models
             ItemsChampHas.Add(Item5);
             ItemsChampHas.Add(Item6);
         }
+        public void SetItem1(String item)
+        {
+            Items temp = new Items();
+            //TODO: calls item from database then adds to user
+            //
+            //TODO: SETS TO item temp
 
+            int index = 0;
+            ItemsChampHas[index] = temp;
+        }
+        public void SetItem2(String item)
+        {
+            Items temp = new Items();
+            //TODO: calls item from database then adds to user
+            //
+            //TODO: SETS TO item temp
+
+            int index = 1;
+            ItemsChampHas[index] = temp;
+        }
+        public void SetItem3(String item)
+        {
+            Items temp = new Items();
+            //TODO: calls item from database then adds to user
+            //
+            //TODO: SETS TO item temp
+
+            int index = 2;
+            ItemsChampHas[index] = temp;
+        }
+        public void SetItem4(String item)
+        {
+            Items temp = new Items();
+            //TODO: calls item from database then adds to user
+            //
+            //TODO: SETS TO item temp
+
+            int index = 3;
+            ItemsChampHas[index] = temp;
+        }
+        public void SetItem5(String item)
+        {
+            Items temp = new Items();
+            //TODO: calls item from database then adds to user
+            //
+            //TODO: SETS TO item temp
+
+            int index = 4;
+            ItemsChampHas[index] = temp;
+        }
+        public void SetItem6(String item)
+        {
+            Items temp = new Items();
+            //TODO: calls item from database then adds to user
+            //
+            //TODO: SETS TO item temp
+
+            int index = 5;
+            ItemsChampHas[index] = temp;
+        }
+        //Get items image
+        public String GetItem1Image() {
+            return ItemsChampHas.ElementAt(0).GetImage();
+        }
+        public String GetItem2Image()
+        {
+            return ItemsChampHas.ElementAt(1).GetImage();
+        }
+        public String GetItem3Image()
+        {
+            return ItemsChampHas.ElementAt(2).GetImage();
+        }
+        public String GetItem4Image()
+        {
+            return ItemsChampHas.ElementAt(3).GetImage();
+        }
+        public String GetItem5Image()
+        {
+            return ItemsChampHas.ElementAt(5).GetImage();
+        }
+        public String GetItem6Image()
+        {
+            return ItemsChampHas.ElementAt(5).GetImage();
+        }
+        //Get items Name
+        public String GetItem1Name()
+        {
+            return ItemsChampHas.ElementAt(0).GetName();
+        }
+        public String GetItem2Name()
+        {
+            return ItemsChampHas.ElementAt(1).GetName();
+        }
+        public String GetItem3Name()
+        {
+            return ItemsChampHas.ElementAt(2).GetName();
+        }
+        public String GetItem4Name()
+        {
+            return ItemsChampHas.ElementAt(3).GetName();
+        }
+        public String GetItem5Name()
+        {
+            return ItemsChampHas.ElementAt(5).GetName();
+        }
+        public String GetItem6Name()
+        {
+            return ItemsChampHas.ElementAt(5).GetName();
+        }
         //SummonerSpells
         public void SetSummonerSpells()
         {
@@ -370,6 +484,40 @@ namespace CaLOLateAPI.Models
         private double Abilty2Damage;
         private double Abilty3Damage;
         private double UltimateDamage;
+        //increase abilty level
+        public void IncreaseAbilty1Level(int a)
+        {
+            ChampionAbilty2.SetLevelOfSpell(a);
+        }
+        public void IncreaseAbilty2Level(int a)
+        {
+            ChampionAbilty3.SetLevelOfSpell(a);
+        }
+        public void IncreaseAbilty3Level(int a)
+        {
+            ChampionAbilty4.SetLevelOfSpell(a);
+        }
+        public void IncreaseAbilty4Level(int a)
+        {
+            ChampionAbilty5.SetLevelOfSpell(a);
+        }
+        //Decrease abilty level
+        public void DecreaseAbilty1Level(int a)
+        {
+            ChampionAbilty2.SetLevelOfSpell(a);
+        }
+        public void DecreaseAbilty2Level(int a)
+        {
+            ChampionAbilty3.SetLevelOfSpell(a);
+        }
+        public void DecreaseAbilty3Level(int a)
+        {
+            ChampionAbilty4.SetLevelOfSpell(a);
+        }
+        public void DecreaseAbilty4Level(int a)
+        {
+            ChampionAbilty5.SetLevelOfSpell(a);
+        }
         //SummonerSpells
         private SummonerSpells SummonerSpells1;
         private SummonerSpells SummonerSpells2;

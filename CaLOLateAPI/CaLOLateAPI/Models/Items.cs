@@ -275,8 +275,8 @@ namespace CaLOLateAPI.Models
         }
         [Key]
         private int ID;
-        private String Name;
-        private String Image;
+        private String Name = "";
+        private String Image = "";
         private String Description;
         private int AD;
         private int AP;
