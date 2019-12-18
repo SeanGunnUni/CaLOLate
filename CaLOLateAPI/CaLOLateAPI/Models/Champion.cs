@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace CaLOLateAPI.Models
@@ -11,38 +13,1196 @@ namespace CaLOLateAPI.Models
         {
             this.Name = Name;
             this.Image = Image;
+            Level = 0;
             SetItems();
             SetSummonerSpells();
-            //TODO:SET CHAMPS IN DATA BASE
-            //TODO:GET THE CHAMP FROM DATA BASE BASED ON NAME
+            String ImageOfChampion = "";
+            String PassiveN = "";
+            String Abilty1N = "";
+            String Abilty2N = "";
+            String Abilty3N = "";
+            String UltimateN = "";
+            String ImageOfAbilty = "";
+            String DecripOfAbilty = "";
+            int MaxSpellLevel = 0;
+            bool HaveADBonus = false;
+            bool HaveADFull = false;
+            bool HaveAP = false;
+            bool HaveSpellIncreaser = false;
+            String ManacostSpellN = "";
+            String RADBonusSpellN = "";
+            String RADFullSpellN = "";
+            String RAPSpellN = "";
+            String DISpellN = "";
+            String NormalSpellDamageN = "";
+            int ADRatioB = 0;
+            int ADRatioF = 0;
+            int APRatio = 0;
+            int Increaser = 0;
+            int ManaCost = 0;
+            int NormalSpellD = 0;
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from Champion where ChampionName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Name);
+                    myConnection.Open();
+                    using(SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ImageOfChampion = oReader["ImageOfChampionAbilty"].ToString();
+                            PassiveN = oReader["PassiveName"].ToString();
+                            Abilty1N = oReader["Abilty1Name"].ToString();
+                            Abilty2N = oReader["Abilty2Name"].ToString();
+                            Abilty3N = oReader["Abilty3Name"].ToString();
+                            UltimateN = oReader["UltimateName"].ToString();
+                        }
+                        myConnection.Close();
+                    }
+                    
+                }
 
-            SetChampionAbiltys();
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion";
+            }
+            SetName(Name);
+            SetImage(ImageOfChampion);
+            ChampionAbilty1.SetNameOfSpell(PassiveN);
+            ChampionAbilty1.SetLevelOfSpell(0);
+            ChampionAbilty2.SetNameOfSpell(Abilty1N);
+            ChampionAbilty2.SetLevelOfSpell(0);
+            ChampionAbilty3.SetNameOfSpell(Abilty2N);
+            ChampionAbilty3.SetLevelOfSpell(0);
+            ChampionAbilty4.SetNameOfSpell(Abilty3N);
+            ChampionAbilty4.SetLevelOfSpell(0);
+            ChampionAbilty5.SetNameOfSpell(UltimateN);
+            ChampionAbilty5.SetLevelOfSpell(0);
+            ///////////////////////////////////
+            ///Abilty1
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ChampionAbiltyName where ChampionName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", PassiveN);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ImageOfAbilty = oReader["ImageOfChampionAbilty"].ToString();
+                            DecripOfAbilty = oReader["DescriptionOfAbilty"].ToString();
+                            HaveADBonus = (bool)oReader["HaveADBonusRatio"];
+                            HaveADFull = (bool)oReader["HaveADFullRatio"];
+                            HaveAP = (bool)oReader["HaveAPRatio"];
+                            HaveSpellIncreaser = (bool)oReader["HaveSpellIncreaser"];
+                            ManacostSpellN = oReader["ManaCostSpellName"].ToString();
+                            RADBonusSpellN = oReader["RatioADBonusSpellName"].ToString();
+                            RADFullSpellN = oReader["RatioADFullSpellName"].ToString();
+                            RAPSpellN = oReader["RatioAPSpellName"].ToString();
+                            DISpellN = oReader["DamageIncreaserSpellName"].ToString();
+                            MaxSpellLevel = (int)oReader["MaxSpellLevel"];
+                            NormalSpellDamageN = oReader["NormalSpellDamageName"].ToString();
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            ChampionAbilty1.SetImageOfSpell(ImageOfAbilty);
+            ChampionAbilty1.SetDescriptionOfSpell(DecripOfAbilty);
+            ChampionAbilty1.SetMaxLevelOfSpell(MaxSpellLevel);
+            ChampionAbilty1.SetSpellHaveADBonusRatio(HaveADBonus);
+            ChampionAbilty1.SetSpellHaveADFullRatio(HaveADFull);
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ManaCost where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", PassiveN);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ManaCost = (int)oReader["RatioADBonus"];
+                            ChampionAbilty1.SetManaCost(ManaCost);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from NormalSpellDamage where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", PassiveN);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            NormalSpellD = (int)oReader["NormalSpellDamage"];
+                            ChampionAbilty1.SetNormalSpellDamage(NormalSpellD);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            if (HaveADBonus == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADBonus where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", PassiveN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADBonus"];
+                                ChampionAbilty1.SetRatioADBonus(ADRatioB);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            if(HaveADFull == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADFull where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", PassiveN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADFull"];
+                                ChampionAbilty1.SetRatioADFull(ADRatioF);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+                
+            }
+            if(HaveSpellIncreaser == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from DamageIncreaser where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", PassiveN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                Increaser = (int)oReader["DamageIncreaser"];
+                                ChampionAbilty1.SetDamageIncreaser(Increaser);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+                
+            }
+            if(HaveAP == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioAP where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", PassiveN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                APRatio = (int)oReader["RatioAP"];
+                                ChampionAbilty1.SetRatioAP(APRatio);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            ///////Abilty2
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ChampionAbiltyName where ChampionName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty1N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ImageOfAbilty = oReader["ImageOfChampionAbilty"].ToString();
+                            DecripOfAbilty = oReader["DescriptionOfAbilty"].ToString();
+                            HaveADBonus = (bool)oReader["HaveADBonusRatio"];
+                            HaveADFull = (bool)oReader["HaveADFullRatio"];
+                            HaveAP = (bool)oReader["HaveAPRatio"];
+                            HaveSpellIncreaser = (bool)oReader["HaveSpellIncreaser"];
+                            ManacostSpellN = oReader["ManaCostSpellName"].ToString();
+                            RADBonusSpellN = oReader["RatioADBonusSpellName"].ToString();
+                            RADFullSpellN = oReader["RatioADFullSpellName"].ToString();
+                            RAPSpellN = oReader["RatioAPSpellName"].ToString();
+                            DISpellN = oReader["DamageIncreaserSpellName"].ToString();
+                            MaxSpellLevel = (int)oReader["MaxSpellLevel"];
+                            NormalSpellDamageN = oReader["NormalSpellDamageName"].ToString();
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            ChampionAbilty2.SetImageOfSpell(ImageOfAbilty);
+            ChampionAbilty2.SetDescriptionOfSpell(DecripOfAbilty);
+            ChampionAbilty2.SetMaxLevelOfSpell(MaxSpellLevel);
+            ChampionAbilty2.SetSpellHaveADBonusRatio(HaveADBonus);
+            ChampionAbilty2.SetSpellHaveADFullRatio(HaveADFull);
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ManaCost where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty1N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ManaCost = (int)oReader["RatioADBonus"];
+                            ChampionAbilty2.SetManaCost(ManaCost);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from NormalSpellDamage where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty1N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            NormalSpellD = (int)oReader["NormalSpellDamage"];
+                            ChampionAbilty2.SetNormalSpellDamage(NormalSpellD);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            if (HaveADBonus == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADBonus where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty1N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADBonus"];
+                                ChampionAbilty2.SetRatioADBonus(ADRatioB);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            if (HaveADFull == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADFull where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty1N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADFull"];
+                                ChampionAbilty2.SetRatioADFull(ADRatioF);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveSpellIncreaser == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from DamageIncreaser where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty1N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                Increaser = (int)oReader["DamageIncreaser"];
+                                ChampionAbilty2.SetDamageIncreaser(Increaser);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveAP == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioAP where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty1N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                APRatio = (int)oReader["RatioAP"];
+                                ChampionAbilty2.SetRatioAP(APRatio);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            ///////Abilty3
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ChampionAbiltyName where ChampionName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty2N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ImageOfAbilty = oReader["ImageOfChampionAbilty"].ToString();
+                            DecripOfAbilty = oReader["DescriptionOfAbilty"].ToString();
+                            HaveADBonus = (bool)oReader["HaveADBonusRatio"];
+                            HaveADFull = (bool)oReader["HaveADFullRatio"];
+                            HaveAP = (bool)oReader["HaveAPRatio"];
+                            HaveSpellIncreaser = (bool)oReader["HaveSpellIncreaser"];
+                            ManacostSpellN = oReader["ManaCostSpellName"].ToString();
+                            RADBonusSpellN = oReader["RatioADBonusSpellName"].ToString();
+                            RADFullSpellN = oReader["RatioADFullSpellName"].ToString();
+                            RAPSpellN = oReader["RatioAPSpellName"].ToString();
+                            DISpellN = oReader["DamageIncreaserSpellName"].ToString();
+                            MaxSpellLevel = (int)oReader["MaxSpellLevel"];
+                            NormalSpellDamageN = oReader["NormalSpellDamageName"].ToString();
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            ChampionAbilty3.SetImageOfSpell(ImageOfAbilty);
+            ChampionAbilty3.SetDescriptionOfSpell(DecripOfAbilty);
+            ChampionAbilty3.SetMaxLevelOfSpell(MaxSpellLevel);
+            ChampionAbilty3.SetSpellHaveADBonusRatio(HaveADBonus);
+            ChampionAbilty3.SetSpellHaveADFullRatio(HaveADFull);
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ManaCost where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty2N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ManaCost = (int)oReader["RatioADBonus"];
+                            ChampionAbilty3.SetManaCost(ManaCost);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from NormalSpellDamage where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty2N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            NormalSpellD = (int)oReader["NormalSpellDamage"];
+                            ChampionAbilty3.SetNormalSpellDamage(NormalSpellD);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            if (HaveADBonus == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADBonus where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty2N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADBonus"];
+                                ChampionAbilty3.SetRatioADBonus(ADRatioB);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            if (HaveADFull == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADFull where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty2N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADFull"];
+                                ChampionAbilty3.SetRatioADFull(ADRatioF);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveSpellIncreaser == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from DamageIncreaser where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty2N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                Increaser = (int)oReader["DamageIncreaser"];
+                                ChampionAbilty3.SetDamageIncreaser(Increaser);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveAP == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioAP where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty2N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                APRatio = (int)oReader["RatioAP"];
+                                ChampionAbilty2.SetRatioAP(APRatio);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            //Abilty4
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ChampionAbiltyName where ChampionName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty3N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ImageOfAbilty = oReader["ImageOfChampionAbilty"].ToString();
+                            DecripOfAbilty = oReader["DescriptionOfAbilty"].ToString();
+                            HaveADBonus = (bool)oReader["HaveADBonusRatio"];
+                            HaveADFull = (bool)oReader["HaveADFullRatio"];
+                            HaveAP = (bool)oReader["HaveAPRatio"];
+                            HaveSpellIncreaser = (bool)oReader["HaveSpellIncreaser"];
+                            ManacostSpellN = oReader["ManaCostSpellName"].ToString();
+                            RADBonusSpellN = oReader["RatioADBonusSpellName"].ToString();
+                            RADFullSpellN = oReader["RatioADFullSpellName"].ToString();
+                            RAPSpellN = oReader["RatioAPSpellName"].ToString();
+                            DISpellN = oReader["DamageIncreaserSpellName"].ToString();
+                            MaxSpellLevel = (int)oReader["MaxSpellLevel"];
+                            NormalSpellDamageN = oReader["NormalSpellDamageName"].ToString();
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            ChampionAbilty4.SetImageOfSpell(ImageOfAbilty);
+            ChampionAbilty4.SetDescriptionOfSpell(DecripOfAbilty);
+            ChampionAbilty4.SetMaxLevelOfSpell(MaxSpellLevel);
+            ChampionAbilty4.SetSpellHaveADBonusRatio(HaveADBonus);
+            ChampionAbilty4.SetSpellHaveADFullRatio(HaveADFull);
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ManaCost where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty3N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ManaCost = (int)oReader["RatioADBonus"];
+                            ChampionAbilty4.SetManaCost(ManaCost);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from NormalSpellDamage where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Abilty3N);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            NormalSpellD = (int)oReader["NormalSpellDamage"];
+                            ChampionAbilty4.SetNormalSpellDamage(NormalSpellD);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            if (HaveADBonus == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADBonus where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty3N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADBonus"];
+                                ChampionAbilty4.SetRatioADBonus(ADRatioB);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            if (HaveADFull == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADFull where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty3N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADFull"];
+                                ChampionAbilty4.SetRatioADFull(ADRatioF);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveSpellIncreaser == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from DamageIncreaser where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty3N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                Increaser = (int)oReader["DamageIncreaser"];
+                                ChampionAbilty4.SetDamageIncreaser(Increaser);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveAP == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioAP where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", Abilty3N);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                APRatio = (int)oReader["RatioAP"];
+                                ChampionAbilty4.SetRatioAP(APRatio);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            //Abilty5
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ChampionAbiltyName where ChampionName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", UltimateN);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ImageOfAbilty = oReader["ImageOfChampionAbilty"].ToString();
+                            DecripOfAbilty = oReader["DescriptionOfAbilty"].ToString();
+                            HaveADBonus = (bool)oReader["HaveADBonusRatio"];
+                            HaveADFull = (bool)oReader["HaveADFullRatio"];
+                            HaveAP = (bool)oReader["HaveAPRatio"];
+                            HaveSpellIncreaser = (bool)oReader["HaveSpellIncreaser"];
+                            ManacostSpellN = oReader["ManaCostSpellName"].ToString();
+                            RADBonusSpellN = oReader["RatioADBonusSpellName"].ToString();
+                            RADFullSpellN = oReader["RatioADFullSpellName"].ToString();
+                            RAPSpellN = oReader["RatioAPSpellName"].ToString();
+                            DISpellN = oReader["DamageIncreaserSpellName"].ToString();
+                            MaxSpellLevel = (int)oReader["MaxSpellLevel"];
+                            NormalSpellDamageN = oReader["NormalSpellDamageName"].ToString();
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            ChampionAbilty5.SetImageOfSpell(ImageOfAbilty);
+            ChampionAbilty5.SetDescriptionOfSpell(DecripOfAbilty);
+            ChampionAbilty5.SetMaxLevelOfSpell(MaxSpellLevel);
+            ChampionAbilty5.SetSpellHaveADBonusRatio(HaveADBonus);
+            ChampionAbilty5.SetSpellHaveADFullRatio(HaveADFull);
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from ManaCost where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", UltimateN);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ManaCost = (int)oReader["RatioADBonus"];
+                            ChampionAbilty5.SetManaCost(ManaCost);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from NormalSpellDamage where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", UltimateN);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            NormalSpellD = (int)oReader["NormalSpellDamage"];
+                            ChampionAbilty5.SetNormalSpellDamage(NormalSpellD);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+            if (HaveADBonus == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADBonus where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", UltimateN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADBonus"];
+                                ChampionAbilty5.SetRatioADBonus(ADRatioB);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            if (HaveADFull == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioADFull where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", UltimateN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                ADRatioB = (int)oReader["RatioADFull"];
+                                ChampionAbilty5.SetRatioADFull(ADRatioF);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveSpellIncreaser == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from DamageIncreaser where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", UltimateN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                Increaser = (int)oReader["DamageIncreaser"];
+                                ChampionAbilty5.SetDamageIncreaser(Increaser);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+
+            }
+            if (HaveAP == true)
+            {
+                try
+                {
+                    var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                    var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                    using (SqlConnection myConnection = new SqlConnection(con))
+                    {
+                        string oString = "Select * from RatioAP where AbiltyName=@cName";
+                        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                        oCmd.Parameters.AddWithValue("@cName", UltimateN);
+                        myConnection.Open();
+                        using (SqlDataReader oReader = oCmd.ExecuteReader())
+                        {
+                            while (oReader.Read())
+                            {
+                                APRatio = (int)oReader["RatioAP"];
+                                ChampionAbilty5.SetRatioAP(APRatio);
+                            }
+                            myConnection.Close();
+                        }
+
+                    }
+                }
+                catch
+                {
+                    String nope = "Wasn't able to find champion abilty";
+                }
+            }
+            //TODO:display nopes to user
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from Champion where ChampionStatsName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", Name);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            AdFlat = (int)oReader["AdFlat"];
+                            AdScaling = (int)oReader["AdScaling"];
+                            ArmourFlat = (int)oReader["ArmourFlat"];
+                            ArmourScaling = (int)oReader["ArmourScaling"];
+                            AttackSpeedFlat = (int)oReader["AttackSpeedFlat"];
+                            AttackSpeedScale = (int)oReader["AttackSpeedScaling"];
+                            EnergyFlat = (int)oReader["EnergyFlat"];
+                            EnergyRegFlat = (int)oReader["EnergyRegFlat"];
+                            HealthRegScaling = (int)oReader["HealthRegScaling"];
+                            HeathFlat = (int)oReader["HealthFlat"];
+                            HeathScaling = (int)oReader["HealthScaling"];
+                            MagicResistFlat = (int)oReader["MagicResistFlat"];
+                            MagicResistScaling = (int)oReader["MagicResistScaling"];
+                            ManaFlat = (int)oReader["ManaFlat"];
+                            ManaRegFlat = (int)oReader["ManaRegFlat"];
+                            ManaRegScaling = (int)oReader["ManaRegenScaling"];
+                            ManaScaling = (int)oReader["ManaScaling"];
+                            Movespeed = (int)oReader["MoveSpeed"];
+                            RageFlat = (int)oReader["RageFlat"];
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion";
+            }
         }
  
 
         //abiltys
-        public void SetChampionAbiltys( String NameOfSpell1, String DescriptionOfSpell1, String ImageOfSpell1,int LevelOfSpell1, bool SpellHaveAPRatio1, bool SpellHaveADFullRatio1, bool SpellHaveADBonusRatio1, bool SpellHaveDamageIncreaser1,
-            String NameOfSpell2, String DescriptionOfSpell2, String ImageOfSpell2, int LevelOfSpell2, bool SpellHaveAPRatio2, bool SpellHaveADFullRatio2, bool SpellHaveADBonusRatio2, bool SpellHaveDamageIncreaser2,
-            String NameOfSpell3, String DescriptionOfSpell3, String ImageOfSpell3, int LevelOfSpell3, bool SpellHaveAPRatio3, bool SpellHaveADFullRatio3, bool SpellHaveADBonusRatio3, bool SpellHaveDamageIncreaser3,
-            String NameOfSpell4, String DescriptionOfSpell4, String ImageOfSpell4, int LevelOfSpell4, bool SpellHaveAPRatio4, bool SpellHaveADFullRatio4, bool SpellHaveADBonusRatio4, bool SpellHaveDamageIncreaser4,
-            String NameOfSpell5, String DescriptionOfSpell5, String ImageOfSpell5, int LevelOfSpell5, bool SpellHaveAPRatio5, bool SpellHaveADFullRatio5, bool SpellHaveADBonusRatio5, bool SpellHaveDamageIncreaser5)
-        {
-            ChampionAbilty1 = new ChampionAbiltys(NameOfSpell1, DescriptionOfSpell1, ImageOfSpell1, LevelOfSpell1, SpellHaveAPRatio1, SpellHaveADFullRatio1, SpellHaveADBonusRatio1, SpellHaveDamageIncreaser1);
-            ChampionAbilty2 = new ChampionAbiltys(NameOfSpell2, DescriptionOfSpell2, ImageOfSpell2, LevelOfSpell2, SpellHaveAPRatio2, SpellHaveADFullRatio2, SpellHaveADBonusRatio2, SpellHaveDamageIncreaser2);
-            ChampionAbilty3 = new ChampionAbiltys(NameOfSpell3, DescriptionOfSpell3, ImageOfSpell3, LevelOfSpell3, SpellHaveAPRatio3, SpellHaveADFullRatio3, SpellHaveADBonusRatio3, SpellHaveDamageIncreaser3);
-            ChampionAbilty4 = new ChampionAbiltys(NameOfSpell4, DescriptionOfSpell4, ImageOfSpell4, LevelOfSpell4, SpellHaveAPRatio4, SpellHaveADFullRatio4, SpellHaveADBonusRatio4, SpellHaveDamageIncreaser4);
-            ChampionAbilty5 = new ChampionAbiltys(NameOfSpell5, DescriptionOfSpell5, ImageOfSpell5, LevelOfSpell5, SpellHaveAPRatio5, SpellHaveADFullRatio5, SpellHaveADBonusRatio5, SpellHaveDamageIncreaser5);
-            AbitysNamesAndEffects.Add(ChampionAbilty1);
-            AbitysNamesAndEffects.Add(ChampionAbilty2);
-            AbitysNamesAndEffects.Add(ChampionAbilty3);
-            AbitysNamesAndEffects.Add(ChampionAbilty4);
-            AbitysNamesAndEffects.Add(ChampionAbilty5);
-        }
         public String GetChampionAbilty(int a)
         {
             return AbitysNamesAndEffects.ElementAt(a).GetNameOfSpell();
         }
-        //TODO:Forgot to add the itens into calculations
         public double GetPassiveDamage()
         {
             return PassiveDamage;
@@ -357,9 +1517,61 @@ namespace CaLOLateAPI.Models
         public void SetItem1(String item)
         {
             Items temp = new Items();
-            //TODO: calls item from database then adds to user
-            //
-            //TODO: SETS TO item temp
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from RatioAP where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", item);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            temp.SetAD((int)oReader["AP"]);
+                            temp.SetAP( (int)oReader["AD"]);
+                            temp.SetMovespeed((int)oReader["Movespeed"]);
+                            temp.SetAtiveDamage( (int)oReader["ActiveDamage"]);
+                            temp.SetArmour( (int)oReader["Armour"]);
+                            temp.SetArmourPenetrationFlat( (int)oReader["ArmourPenetrationFlat"]);
+                            temp.SetArmourPenetrationPecentage( (int)oReader["ArmourPenetrationPecentage"]);
+                            temp.SetAttackSpeed( (int)oReader["AttackSpeed"]);
+                            temp.SetCooldownReduction( (int)oReader["CooldownReduction"]);
+                            temp.SetCritDamagea( (int)oReader["CritDamage"]);
+                            temp.SetCritStrike( (int)oReader["CritStrike"]);
+                            temp.SetDescription(oReader["Decription"].ToString());
+                            temp.SetHaveAtive( (bool)oReader["HaveActive"]);
+                            temp.SetHealth( (int)oReader["Health"]);
+                            temp.SetHealthReg( (int)oReader["HealthReg"]);
+                            temp.SetImage(oReader["ImageOfItem"].ToString());
+                            temp.SetLifeSteal( (int)oReader["LifeSteal"]);
+                            temp.SetMagicPenetrationFlat( (int)oReader["MagicPenetrationFlat"]);
+                            temp.SetMagicPenetrationPecentage( (int)oReader["MagicPenetrationPecentage"]);
+                            temp.SetMagicResist( (int)oReader["MagicResist"]);
+                            temp.SetMana( (int)oReader["Mana"]);
+                            temp.SetManaReg( (int)oReader["ManaReg"]);
+                            temp.SetTenacity( (int)oReader["Tenacity"]);
+                            temp.SetUnique( (bool)oReader["UniqueItem"]);
+                            temp.SetUniqueAtiveADRatioBonus( (int)oReader["UniqueActiveADRatioBonus"]);
+                            temp.SetUniqueAtiveADRatioFull( (int)oReader["UniqueActiveADRatioFull"]);
+                            temp.SetUniqueAtiveADRatioFlat( (int)oReader["UniqueActiveADRatioFlat"]);
+                            temp.SetUniqueAtiveAPRatio( (int)oReader["UniqueActiveAPRatio"]);
+                            temp.SetUniqueAtiveDamage( (int)oReader["UniqueActiveDamage"]);
+                            temp.SetUniqueAtiveEffect( (int)oReader["UniqueActiveEffect"]);
+                        }
+                        myConnection.Close();
+                    }
+
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
+
 
             int index = 0;
             ItemsChampHas[index] = temp;
@@ -367,50 +1579,300 @@ namespace CaLOLateAPI.Models
         public void SetItem2(String item)
         {
             Items temp = new Items();
-            //TODO: calls item from database then adds to user
-            //
-            //TODO: SETS TO item temp
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from RatioAP where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", item);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            temp.SetAD((int)oReader["AP"]);
+                            temp.SetAP((int)oReader["AD"]);
+                            temp.SetMovespeed((int)oReader["Movespeed"]);
+                            temp.SetAtiveDamage((int)oReader["ActiveDamage"]);
+                            temp.SetArmour((int)oReader["Armour"]);
+                            temp.SetArmourPenetrationFlat((int)oReader["ArmourPenetrationFlat"]);
+                            temp.SetArmourPenetrationPecentage((int)oReader["ArmourPenetrationPecentage"]);
+                            temp.SetAttackSpeed((int)oReader["AttackSpeed"]);
+                            temp.SetCooldownReduction((int)oReader["CooldownReduction"]);
+                            temp.SetCritDamagea((int)oReader["CritDamage"]);
+                            temp.SetCritStrike((int)oReader["CritStrike"]);
+                            temp.SetDescription(oReader["Decription"].ToString());
+                            temp.SetHaveAtive((bool)oReader["HaveActive"]);
+                            temp.SetHealth((int)oReader["Health"]);
+                            temp.SetHealthReg((int)oReader["HealthReg"]);
+                            temp.SetImage(oReader["ImageOfItem"].ToString());
+                            temp.SetLifeSteal((int)oReader["LifeSteal"]);
+                            temp.SetMagicPenetrationFlat((int)oReader["MagicPenetrationFlat"]);
+                            temp.SetMagicPenetrationPecentage((int)oReader["MagicPenetrationPecentage"]);
+                            temp.SetMagicResist((int)oReader["MagicResist"]);
+                            temp.SetMana((int)oReader["Mana"]);
+                            temp.SetManaReg((int)oReader["ManaReg"]);
+                            temp.SetTenacity((int)oReader["Tenacity"]);
+                            temp.SetUnique((bool)oReader["UniqueItem"]);
+                            temp.SetUniqueAtiveADRatioBonus((int)oReader["UniqueActiveADRatioBonus"]);
+                            temp.SetUniqueAtiveADRatioFull((int)oReader["UniqueActiveADRatioFull"]);
+                            temp.SetUniqueAtiveADRatioFlat((int)oReader["UniqueActiveADRatioFlat"]);
+                            temp.SetUniqueAtiveAPRatio((int)oReader["UniqueActiveAPRatio"]);
+                            temp.SetUniqueAtiveDamage((int)oReader["UniqueActiveDamage"]);
+                            temp.SetUniqueAtiveEffect((int)oReader["UniqueActiveEffect"]);
+                        }
+                        myConnection.Close();
+                    }
 
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
             int index = 1;
             ItemsChampHas[index] = temp;
         }
         public void SetItem3(String item)
         {
             Items temp = new Items();
-            //TODO: calls item from database then adds to user
-            //
-            //TODO: SETS TO item temp
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from RatioAP where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", item);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            temp.SetAD((int)oReader["AP"]);
+                            temp.SetAP((int)oReader["AD"]);
+                            temp.SetMovespeed((int)oReader["Movespeed"]);
+                            temp.SetAtiveDamage((int)oReader["ActiveDamage"]);
+                            temp.SetArmour((int)oReader["Armour"]);
+                            temp.SetArmourPenetrationFlat((int)oReader["ArmourPenetrationFlat"]);
+                            temp.SetArmourPenetrationPecentage((int)oReader["ArmourPenetrationPecentage"]);
+                            temp.SetAttackSpeed((int)oReader["AttackSpeed"]);
+                            temp.SetCooldownReduction((int)oReader["CooldownReduction"]);
+                            temp.SetCritDamagea((int)oReader["CritDamage"]);
+                            temp.SetCritStrike((int)oReader["CritStrike"]);
+                            temp.SetDescription(oReader["Decription"].ToString());
+                            temp.SetHaveAtive((bool)oReader["HaveActive"]);
+                            temp.SetHealth((int)oReader["Health"]);
+                            temp.SetHealthReg((int)oReader["HealthReg"]);
+                            temp.SetImage(oReader["ImageOfItem"].ToString());
+                            temp.SetLifeSteal((int)oReader["LifeSteal"]);
+                            temp.SetMagicPenetrationFlat((int)oReader["MagicPenetrationFlat"]);
+                            temp.SetMagicPenetrationPecentage((int)oReader["MagicPenetrationPecentage"]);
+                            temp.SetMagicResist((int)oReader["MagicResist"]);
+                            temp.SetMana((int)oReader["Mana"]);
+                            temp.SetManaReg((int)oReader["ManaReg"]);
+                            temp.SetTenacity((int)oReader["Tenacity"]);
+                            temp.SetUnique((bool)oReader["UniqueItem"]);
+                            temp.SetUniqueAtiveADRatioBonus((int)oReader["UniqueActiveADRatioBonus"]);
+                            temp.SetUniqueAtiveADRatioFull((int)oReader["UniqueActiveADRatioFull"]);
+                            temp.SetUniqueAtiveADRatioFlat((int)oReader["UniqueActiveADRatioFlat"]);
+                            temp.SetUniqueAtiveAPRatio((int)oReader["UniqueActiveAPRatio"]);
+                            temp.SetUniqueAtiveDamage((int)oReader["UniqueActiveDamage"]);
+                            temp.SetUniqueAtiveEffect((int)oReader["UniqueActiveEffect"]);
+                        }
+                        myConnection.Close();
+                    }
 
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
             int index = 2;
             ItemsChampHas[index] = temp;
         }
         public void SetItem4(String item)
         {
             Items temp = new Items();
-            //TODO: calls item from database then adds to user
-            //
-            //TODO: SETS TO item temp
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from RatioAP where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", item);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            temp.SetAD((int)oReader["AP"]);
+                            temp.SetAP((int)oReader["AD"]);
+                            temp.SetMovespeed((int)oReader["Movespeed"]);
+                            temp.SetAtiveDamage((int)oReader["ActiveDamage"]);
+                            temp.SetArmour((int)oReader["Armour"]);
+                            temp.SetArmourPenetrationFlat((int)oReader["ArmourPenetrationFlat"]);
+                            temp.SetArmourPenetrationPecentage((int)oReader["ArmourPenetrationPecentage"]);
+                            temp.SetAttackSpeed((int)oReader["AttackSpeed"]);
+                            temp.SetCooldownReduction((int)oReader["CooldownReduction"]);
+                            temp.SetCritDamagea((int)oReader["CritDamage"]);
+                            temp.SetCritStrike((int)oReader["CritStrike"]);
+                            temp.SetDescription(oReader["Decription"].ToString());
+                            temp.SetHaveAtive((bool)oReader["HaveActive"]);
+                            temp.SetHealth((int)oReader["Health"]);
+                            temp.SetHealthReg((int)oReader["HealthReg"]);
+                            temp.SetImage(oReader["ImageOfItem"].ToString());
+                            temp.SetLifeSteal((int)oReader["LifeSteal"]);
+                            temp.SetMagicPenetrationFlat((int)oReader["MagicPenetrationFlat"]);
+                            temp.SetMagicPenetrationPecentage((int)oReader["MagicPenetrationPecentage"]);
+                            temp.SetMagicResist((int)oReader["MagicResist"]);
+                            temp.SetMana((int)oReader["Mana"]);
+                            temp.SetManaReg((int)oReader["ManaReg"]);
+                            temp.SetTenacity((int)oReader["Tenacity"]);
+                            temp.SetUnique((bool)oReader["UniqueItem"]);
+                            temp.SetUniqueAtiveADRatioBonus((int)oReader["UniqueActiveADRatioBonus"]);
+                            temp.SetUniqueAtiveADRatioFull((int)oReader["UniqueActiveADRatioFull"]);
+                            temp.SetUniqueAtiveADRatioFlat((int)oReader["UniqueActiveADRatioFlat"]);
+                            temp.SetUniqueAtiveAPRatio((int)oReader["UniqueActiveAPRatio"]);
+                            temp.SetUniqueAtiveDamage((int)oReader["UniqueActiveDamage"]);
+                            temp.SetUniqueAtiveEffect((int)oReader["UniqueActiveEffect"]);
+                        }
+                        myConnection.Close();
+                    }
 
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
             int index = 3;
             ItemsChampHas[index] = temp;
         }
         public void SetItem5(String item)
         {
             Items temp = new Items();
-            //TODO: calls item from database then adds to user
-            //
-            //TODO: SETS TO item temp
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from RatioAP where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", item);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            temp.SetAD((int)oReader["AP"]);
+                            temp.SetAP((int)oReader["AD"]);
+                            temp.SetMovespeed((int)oReader["Movespeed"]);
+                            temp.SetAtiveDamage((int)oReader["ActiveDamage"]);
+                            temp.SetArmour((int)oReader["Armour"]);
+                            temp.SetArmourPenetrationFlat((int)oReader["ArmourPenetrationFlat"]);
+                            temp.SetArmourPenetrationPecentage((int)oReader["ArmourPenetrationPecentage"]);
+                            temp.SetAttackSpeed((int)oReader["AttackSpeed"]);
+                            temp.SetCooldownReduction((int)oReader["CooldownReduction"]);
+                            temp.SetCritDamagea((int)oReader["CritDamage"]);
+                            temp.SetCritStrike((int)oReader["CritStrike"]);
+                            temp.SetDescription(oReader["Decription"].ToString());
+                            temp.SetHaveAtive((bool)oReader["HaveActive"]);
+                            temp.SetHealth((int)oReader["Health"]);
+                            temp.SetHealthReg((int)oReader["HealthReg"]);
+                            temp.SetImage(oReader["ImageOfItem"].ToString());
+                            temp.SetLifeSteal((int)oReader["LifeSteal"]);
+                            temp.SetMagicPenetrationFlat((int)oReader["MagicPenetrationFlat"]);
+                            temp.SetMagicPenetrationPecentage((int)oReader["MagicPenetrationPecentage"]);
+                            temp.SetMagicResist((int)oReader["MagicResist"]);
+                            temp.SetMana((int)oReader["Mana"]);
+                            temp.SetManaReg((int)oReader["ManaReg"]);
+                            temp.SetTenacity((int)oReader["Tenacity"]);
+                            temp.SetUnique((bool)oReader["UniqueItem"]);
+                            temp.SetUniqueAtiveADRatioBonus((int)oReader["UniqueActiveADRatioBonus"]);
+                            temp.SetUniqueAtiveADRatioFull((int)oReader["UniqueActiveADRatioFull"]);
+                            temp.SetUniqueAtiveADRatioFlat((int)oReader["UniqueActiveADRatioFlat"]);
+                            temp.SetUniqueAtiveAPRatio((int)oReader["UniqueActiveAPRatio"]);
+                            temp.SetUniqueAtiveDamage((int)oReader["UniqueActiveDamage"]);
+                            temp.SetUniqueAtiveEffect((int)oReader["UniqueActiveEffect"]);
+                        }
+                        myConnection.Close();
+                    }
 
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
             int index = 4;
             ItemsChampHas[index] = temp;
         }
         public void SetItem6(String item)
         {
             Items temp = new Items();
-            //TODO: calls item from database then adds to user
-            //
-            //TODO: SETS TO item temp
+            try
+            {
+                var connectionString = "Data Source=DESKTOP-BGM3617\\SQLEXPRESS;Initial Catalog=ChampionsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                var con = ConfigurationManager.ConnectionStrings[connectionString].ToString();
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "Select * from RatioAP where AbiltyName=@cName";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@cName", item);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            temp.SetAD((int)oReader["AP"]);
+                            temp.SetAP((int)oReader["AD"]);
+                            temp.SetMovespeed((int)oReader["Movespeed"]);
+                            temp.SetAtiveDamage((int)oReader["ActiveDamage"]);
+                            temp.SetArmour((int)oReader["Armour"]);
+                            temp.SetArmourPenetrationFlat((int)oReader["ArmourPenetrationFlat"]);
+                            temp.SetArmourPenetrationPecentage((int)oReader["ArmourPenetrationPecentage"]);
+                            temp.SetAttackSpeed((int)oReader["AttackSpeed"]);
+                            temp.SetCooldownReduction((int)oReader["CooldownReduction"]);
+                            temp.SetCritDamagea((int)oReader["CritDamage"]);
+                            temp.SetCritStrike((int)oReader["CritStrike"]);
+                            temp.SetDescription(oReader["Decription"].ToString());
+                            temp.SetHaveAtive((bool)oReader["HaveActive"]);
+                            temp.SetHealth((int)oReader["Health"]);
+                            temp.SetHealthReg((int)oReader["HealthReg"]);
+                            temp.SetImage(oReader["ImageOfItem"].ToString());
+                            temp.SetLifeSteal((int)oReader["LifeSteal"]);
+                            temp.SetMagicPenetrationFlat((int)oReader["MagicPenetrationFlat"]);
+                            temp.SetMagicPenetrationPecentage((int)oReader["MagicPenetrationPecentage"]);
+                            temp.SetMagicResist((int)oReader["MagicResist"]);
+                            temp.SetMana((int)oReader["Mana"]);
+                            temp.SetManaReg((int)oReader["ManaReg"]);
+                            temp.SetTenacity((int)oReader["Tenacity"]);
+                            temp.SetUnique((bool)oReader["UniqueItem"]);
+                            temp.SetUniqueAtiveADRatioBonus((int)oReader["UniqueActiveADRatioBonus"]);
+                            temp.SetUniqueAtiveADRatioFull((int)oReader["UniqueActiveADRatioFull"]);
+                            temp.SetUniqueAtiveADRatioFlat((int)oReader["UniqueActiveADRatioFlat"]);
+                            temp.SetUniqueAtiveAPRatio((int)oReader["UniqueActiveAPRatio"]);
+                            temp.SetUniqueAtiveDamage((int)oReader["UniqueActiveDamage"]);
+                            temp.SetUniqueAtiveEffect((int)oReader["UniqueActiveEffect"]);
+                        }
+                        myConnection.Close();
+                    }
 
+                }
+            }
+            catch
+            {
+                String nope = "Wasn't able to find champion abilty";
+            }
             int index = 5;
             ItemsChampHas[index] = temp;
         }
@@ -523,7 +1985,7 @@ namespace CaLOLateAPI.Models
         private SummonerSpells SummonerSpells2;
         private List<SummonerSpells> SummonerSpellChampHas;
         private int SummonerSpellDamage;
-        //TODO:SummonerspellDamage
+
         void SummonerSpellDamageOutput()
         {
 
@@ -537,7 +1999,7 @@ namespace CaLOLateAPI.Models
         private Items Item6;
         private List<Items> ItemsChampHas;
         private double ItemsDamageFromActives;
-        //TODO:ItemsDamage
+
         void ItemsDamageOutput()
         {
 
@@ -564,7 +2026,7 @@ namespace CaLOLateAPI.Models
         {
             return Image;
         }
-        public void SetImagee(String Image)
+        public void SetImage(String Image)
         {
             this.Image = Image;
         }
@@ -740,7 +2202,6 @@ namespace CaLOLateAPI.Models
         {
             return CooldownReduction;
         }
-        //TODO:Set Stats based on items then call in calculator part
         public void SetCooldownReduction(int CooldownReduction)
         {
             this.CooldownReduction = CooldownReduction;
@@ -853,7 +2314,6 @@ namespace CaLOLateAPI.Models
         private int MagicPenetrationFlat = 0;
         private int MagicPenetrationPecentage = 0;
         private int MaxLevel = 18;
-        //TODO: Add champion stat calculators
         //Outputs
         private readonly double HealthOutput;
         private readonly double HealthRegOutput;
@@ -967,7 +2427,6 @@ namespace CaLOLateAPI.Models
 
         public double GetAttackSpeedOutput()
         {
-            //TODO: this is wrong but doesn't exactly matter atm since program doesnt work like that
             double AttackSpeedOutput;
             int level = GetLevel();
             foreach (Items items in ItemsChampHas)

@@ -10,69 +10,40 @@ namespace CaLOLateAPI.Models
 {
     public class ChampionAbiltys
     {
-        public ChampionAbiltys(String NameOfSpell, String DescriptionOfSpell, String ImageOfSpell, int MaxLevels, bool SpellHaveAPRatio, bool SpellHaveADFullRatio, bool SpellHaveADBonusRatio, bool SpellHaveDamageIncreaser)
+        public ChampionAbiltys()
         {
-            this.NameOfSpell = NameOfSpell;
-            this.DescriptionOfSpell = DescriptionOfSpell;
-            this.ImageOfSpell = ImageOfSpell;
-            this.MaxSpellLevel = MaxLevels;
-            this.SpellHaveAPRatio = SpellHaveAPRatio;
-            this.SpellHaveADFullRatio = SpellHaveADFullRatio;
-            this.SpellHaveADBonusRatio = SpellHaveADBonusRatio;
-            this.SpellHaveDamageIncreaser = SpellHaveDamageIncreaser;
         }
-        //TODO:Change to check amout of max levels
-        public void SetRatioAP(Double RatioAP1, Double RatioAP2, Double RatioAP3, Double RatioAP4)
+
+        public void SetRatioAP(Double RatioAP1)
         {
             RatioAP.Add(RatioAP1);
-            RatioAP.Add(RatioAP2);
-            RatioAP.Add(RatioAP3);
-            RatioAP.Add(RatioAP4);
-
         }
-        //TODO:Change to check amout of max levels
-        public void SetRatioADFull(Double RatioADFull1, Double RatioADFull2, Double RatioADFull3, Double RatioADFull4, Double RatioADFull5)
+
+        public void SetRatioADFull(Double RatioADFull1)
         {
             RatioADFull.Add(RatioADFull1);
-            RatioADFull.Add(RatioADFull2);
-            RatioADFull.Add(RatioADFull3);
-            RatioADFull.Add(RatioADFull4);
-            RatioADFull.Add(RatioADFull5);
         }
-        //TODO:Change to check amout of max levels
-        public void SetRatioADBonus(Double RatioADBonus1, Double RatioADBonus2, Double RatioADBonus3, Double RatioADBonus4, Double RatioADBonus5)
+
+        public void SetRatioADBonus(Double RatioADBonus1)
         {
             RatioADBonus.Add(RatioADBonus1);
-            RatioADBonus.Add(RatioADBonus2);
-            RatioADBonus.Add(RatioADBonus3);
-            RatioADBonus.Add(RatioADBonus4);
-            RatioADBonus.Add(RatioADBonus4);
         }
-        //TODO:Change to check amout of max levels
-        public void SetDamageIncreaser(Double Increaser1, Double Increaser2, Double Increaser3, Double Increaser4, Double Increaser5)
+  
+        public void SetDamageIncreaser(Double Increaser1)
         {
             DamageIncreaser.Add(Increaser1);
-            DamageIncreaser.Add(Increaser2);
-            DamageIncreaser.Add(Increaser3);
-            DamageIncreaser.Add(Increaser4);
-            DamageIncreaser.Add(Increaser5);
+
         }
-        //TODO:Change to check amout of max levels
-        public void SetManaCost(Double Abilty1ManaCost, Double Abilty2ManaCost, Double Abilty3ManaCost, Double Abilty4ManaCost, Double Abilty5ManaCost)
+
+        public void SetManaCost(Double Abilty1ManaCost)
         {
             ManaCost.Add(Abilty1ManaCost);
-            ManaCost.Add(Abilty2ManaCost);
-            ManaCost.Add(Abilty3ManaCost);
-            ManaCost.Add(Abilty4ManaCost);
-            ManaCost.Add(Abilty5ManaCost);
+
         }
-        public void SetNormalSpellDamage(Double Abilty1NormalSpellDamage, Double Abilty2NormalSpellDamage, Double Abilty3NormalSpellDamage, Double Abilty4NormalSpellDamage, Double Abilty5NormalSpellDamage)
+        public void SetNormalSpellDamage(Double Abilty1NormalSpellDamage)
         {
             NormalSpellDamage.Add(Abilty1NormalSpellDamage);
-            NormalSpellDamage.Add(Abilty2NormalSpellDamage);
-            NormalSpellDamage.Add(Abilty3NormalSpellDamage);
-            NormalSpellDamage.Add(Abilty4NormalSpellDamage);
-            NormalSpellDamage.Add(Abilty5NormalSpellDamage);
+
         }
 
 

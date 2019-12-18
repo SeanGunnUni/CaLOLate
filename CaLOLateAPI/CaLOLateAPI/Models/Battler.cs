@@ -147,7 +147,7 @@ namespace CaLOLateAPI.Models
         private double ChampionOneDamage;
         private double ChampionTwoDamage;
         private bool WouldChampionOneComeOutWithAWin;
-        //TODO:Player output as whole
+
         void ChampionOneDamageOutput()
         {
             Champion1.SetPassiveDamage();
@@ -167,7 +167,7 @@ namespace CaLOLateAPI.Models
             Champion2.SetUltimateDamage();
             ChampionTwoDamage = (Champion2.GetPassiveDamage() + Champion2.GetAbilty1Damage() + Champion2.GetAbilty2Damage() + Champion2.GetAbilty3Damage() + Champion2.GetUltimateDamage());
         }
-        //TODO:Would he win?
+
         void CalculateIfChampionOneWouldWin()
         {
             double HPChamp1 = (Champion1.GetHealthOutput() - ChampionTwoDamage);
