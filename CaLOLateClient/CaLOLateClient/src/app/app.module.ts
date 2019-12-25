@@ -13,22 +13,26 @@ import { HttpClientModule } from '@angular/common/http';
 
 //material design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MaterialModule } from './materialMods/material.module';
+import { ModalComponent } from './modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
     ChampionsComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRouterModule,
     //material design
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule 
   ],
   providers: [ChampionsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }
