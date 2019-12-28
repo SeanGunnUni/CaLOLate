@@ -1,7 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
 
 //component
-import {ChampionsComponent} from './champions/champions.component';
+import {ChampionsComponent} from './championsFromHTML/champions.component';
 import { NgModule } from '@angular/core';
 
 //routes

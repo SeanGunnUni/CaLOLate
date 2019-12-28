@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { DialogData } from './DialogData';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './HELP POPUPS/help.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

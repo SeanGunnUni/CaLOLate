@@ -168,17 +168,17 @@ namespace CaLOLateAPI.Models
             ChampionTwoDamage = (Champion2.GetPassiveDamage() + Champion2.GetAbilty1Damage() + Champion2.GetAbilty2Damage() + Champion2.GetAbilty3Damage() + Champion2.GetUltimateDamage());
         }
 
-        void CalculateIfChampionOneWouldWin()
+        public bool CalculateIfChampionOneWouldWin()
         {
             double HPChamp1 = (Champion1.GetHealthOutput() - ChampionTwoDamage);
             double HPChamp2 = (Champion2.GetHealthOutput() - ChampionOneDamage);
             if ((HPChamp1 >= 0) && (HPChamp2 <= 0))
             {
-                WouldChampionOneComeOutWithAWin = true;
+                return WouldChampionOneComeOutWithAWin = true;
             }
             else
             {
-                WouldChampionOneComeOutWithAWin = false;
+                return WouldChampionOneComeOutWithAWin = false;
             }
         }
     }

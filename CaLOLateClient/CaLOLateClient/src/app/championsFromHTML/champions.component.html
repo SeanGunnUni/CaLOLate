@@ -1,0 +1,20 @@
+
+
+<h1>champion that is currently picked is {{ Champ }};</h1>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Favorite food" value="Sushi">
+    </mat-form-field>
+
+</form>
+<div class="champion-container">
+    <div class="pick-champion-title">
+        <h1>Pick a champion for your data.</ h1>
+    </div>
+    <div class="champion-button-row">
+        <button mat-stroked-button (click)="clickAshe()">Ashe</button>
+        <button mat-stroked-button (click)="clickAnnie()">Annie</button>
+        <button mat-stroked-button (click)="clickGaren()">Garen</button>
+        <button mat-stroked-button (click)="clickZilean()">Zilean</button>
+    </div>
+</div>
