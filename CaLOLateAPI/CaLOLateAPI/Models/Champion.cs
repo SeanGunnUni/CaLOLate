@@ -9,10 +9,15 @@ namespace CaLOLateAPI.Models
 {
     public class Champion
     {
-        public Champion(String Name, String Image)
+        public Champion(String Name)
         {
             this.Name = Name;
-            this.Image = Image;
+           
+        }
+ 
+        public void SetPlayersInformation()
+        {
+            this.Image = "";
             Level = 0;
             SetItems();
             SetSummonerSpells();
@@ -51,7 +56,7 @@ namespace CaLOLateAPI.Models
                     SqlCommand oCmd = new SqlCommand(oString, myConnection);
                     oCmd.Parameters.AddWithValue("@cName", Name);
                     myConnection.Open();
-                    using(SqlDataReader oReader = oCmd.ExecuteReader())
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
                     {
                         while (oReader.Read())
                         {
@@ -64,7 +69,7 @@ namespace CaLOLateAPI.Models
                         }
                         myConnection.Close();
                     }
-                    
+
                 }
 
             }
@@ -209,7 +214,7 @@ namespace CaLOLateAPI.Models
                     String nope = "Wasn't able to find champion abilty";
                 }
             }
-            if(HaveADFull == true)
+            if (HaveADFull == true)
             {
                 try
                 {
@@ -237,9 +242,9 @@ namespace CaLOLateAPI.Models
                 {
                     String nope = "Wasn't able to find champion abilty";
                 }
-                
+
             }
-            if(HaveSpellIncreaser == true)
+            if (HaveSpellIncreaser == true)
             {
                 try
                 {
@@ -267,9 +272,9 @@ namespace CaLOLateAPI.Models
                 {
                     String nope = "Wasn't able to find champion abilty";
                 }
-                
+
             }
-            if(HaveAP == true)
+            if (HaveAP == true)
             {
                 try
                 {
@@ -1196,7 +1201,6 @@ namespace CaLOLateAPI.Models
                 String nope = "Wasn't able to find champion";
             }
         }
- 
 
         //abiltys
         public String GetChampionAbilty(int a)

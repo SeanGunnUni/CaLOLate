@@ -7,13 +7,19 @@ namespace CaLOLateAPI.Models
 {
     public class Battler
     {
-        public Battler(String Name, String Image)
+        public Battler(String Name)
         {
-            Champion1 = new Champion(Name, Image);
+            Champion1 = new Champion(Name);
         }
-        public void SetChampion2(String Name, String Image)
+        public void SetChampion1(String Name)
         {
-            Champion2 = new Champion(Name, Image);
+            Champion1 = new Champion(Name);
+            Champion1.SetPlayersInformation();
+        }
+        public void SetChampion2(String Name)
+        {
+            Champion2 = new Champion(Name);
+            Champion2.SetPlayersInformation();
         }
         public void SetChamp1Level(int Level)
         {
@@ -170,6 +176,8 @@ namespace CaLOLateAPI.Models
 
         public bool CalculateIfChampionOneWouldWin()
         {
+            ChampionOneDamageOutput();
+            ChampionTwoDamageOutput();
             double HPChamp1 = (Champion1.GetHealthOutput() - ChampionTwoDamage);
             double HPChamp2 = (Champion2.GetHealthOutput() - ChampionOneDamage);
             if ((HPChamp1 >= 0) && (HPChamp2 <= 0))
