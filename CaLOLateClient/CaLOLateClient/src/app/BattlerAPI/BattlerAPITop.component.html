@@ -1,0 +1,71 @@
+<div class="champion-information">
+    <h1>Name: {{ChampName}}</h1>
+    <h1>Health: {{ChampHealth}}</h1>
+    <h1>Mana: {{ChampMana}}</h1>
+    <h1>Level: </h1>
+    <kendo-dropdownlist [data]="listItemsChampLevel"></kendo-dropdownlist>
+    <h1>Abilty Power: {{ChampAbiltyPower}}</h1>
+    <h1>Attack Damage: {{ChampAttackDamage}}</h1>
+</div>
+<div class="abilty-area">
+    <div class="abilty-buttons">
+        <h1>Passive</h1>
+        <p>{{passiveInformation}}</p>
+    </div>
+    <div class="abilty-buttons">
+        <h1>Abilty1</h1>
+        <p>{{Abilty1Information}}</p>
+        <button mat-stroked-button (click)="">Abilty1</button>
+    </div>
+    <div class="abilty-buttons">
+        <h1>Abilty2</h1>
+        <p>{{Abilty2Information}}</p>
+        <button mat-stroked-button (click)="">Abilty2</button>
+    </div>
+    <div class="abilty-buttons">
+        <h1>Abilty3</h1>
+        <p>{{Abilty3Information}}</p>
+        <button mat-stroked-button (click)="">Abilty3</button>
+    </div>
+    <div class="abilty-buttons">
+        <h1>Ultimate</h1>
+        <p>{{UltimateInformation}}</p>
+        <button mat-stroked-button (click)="">Ultimate</button>
+    </div>
+</div>
+<div class="items-area">
+    <div class="items-buttons">
+        <h1>Item1</h1>
+        <p>{{Item1Information}}</p>
+        <button mat-stroked-button (click)="">Item1</button>
+    </div>
+    <div class="items-buttons">
+        <h1>Item2</h1>
+        <p>{{Item2Information}}</p>
+        <button mat-stroked-button (click)="">Item2</button>
+    </div>
+    <div class="items-buttons">
+        <h1>Item3</h1>
+        <p>{{Item3Information}}</p>
+        <button mat-stroked-button (click)="">Item3</button>
+    </div>
+    <div class="items-buttons">
+        <h1>Item4</h1>
+        <p>{{Item4Information}}</p>
+        <button mat-stroked-button (click)="">Item4</button>
+    </div>
+    <div class="items-buttons">
+        <h1>Item5</h1>
+        <p>{{Item5Information}}</p>
+        <button mat-stroked-button (click)="">Item5</button>
+    </div>
+    <div class="items-buttons">
+        <h1>Item6</h1>
+        <p>{{Item6Information}}</p>
+        <button mat-stroked-button (click)="">Item6</button>
+    </div>
+</div>
+<div class="timer">
+    <h1>How long do you want the battle to last?</h1>
+    <kendo-dropdownlist [data]="listItemsBattlerLength"></kendo-dropdownlist>
+</div>
