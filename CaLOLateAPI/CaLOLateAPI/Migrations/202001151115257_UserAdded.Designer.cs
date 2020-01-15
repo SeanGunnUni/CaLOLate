@@ -7,13 +7,13 @@ namespace CaLOLateAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class UserAdded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UserAdded));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910090854216_Initial"; }
+            get { return "202001151115257_UserAdded"; }
         }
         
         string IMigrationMetadata.Source

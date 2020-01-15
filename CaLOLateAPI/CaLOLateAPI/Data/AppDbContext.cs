@@ -9,7 +9,7 @@ namespace CaLOLateAPI.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext() : base("name=BattlersBb")
+        public AppDbContext() : base("name=UsersBb")
         {
 
         }
@@ -19,7 +19,7 @@ namespace CaLOLateAPI.Data
 
         }*/
 
-        public DbSet<Battler> Battler { get; set; }
-        //public DbSet<Items> Itemss { get; set; }
+        //public DbSet<Battler> Battler { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

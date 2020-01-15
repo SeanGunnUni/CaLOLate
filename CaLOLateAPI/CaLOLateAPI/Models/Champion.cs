@@ -9,6 +9,7 @@ namespace CaLOLateAPI.Models
 {
     public class Champion
     {
+
         public Champion(String Name)
         {
             this.Name = Name;
@@ -2342,6 +2343,26 @@ namespace CaLOLateAPI.Models
         private readonly double MagicPenetrationFlatOutput;
         private readonly double MagicPenetrationPecentageOutput;
 
+        public string GetAbilty1Des()
+        {
+            return ChampionAbilty1.GetDescriptionOfSpell();
+        }
+        public string GetAbilty2Des()
+        {
+            return ChampionAbilty2.GetDescriptionOfSpell();
+        }
+        public string GetAbilty3Des()
+        {
+            return ChampionAbilty3.GetDescriptionOfSpell();
+        }
+        public string GetAbilty4Des()
+        {
+            return ChampionAbilty4.GetDescriptionOfSpell();
+        }
+        public string GetAbilty5Des()
+        {
+            return ChampionAbilty5.GetDescriptionOfSpell();
+        }
         //Gets/Sets outputs
         public double GetHealthOutput()
         {

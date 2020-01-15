@@ -1,1 +1,8 @@
-<p>header </p>
+<mat-toolbar colour="primary">
+    <button mat-button routerLink="/champions">Home</button>
+    <span style="flex: 1 1 auto"></span>
+    <button mat-button *mgif ="auth.isAuthenicated">Welcome {{auth.getUserName}}</button>
+    <button mat-button *mgif ="auth.isAuthenicated"(click)="auth.logout()">Logout</button>
+    <button mat-button *mgif ="!auth.isAuthenicated" routerLink="/register">Register</button>
+    <button mat-button *mgif ="!auth.isAuthenicated" routerLink="/login">Login</button>
+</mat-toolbar>

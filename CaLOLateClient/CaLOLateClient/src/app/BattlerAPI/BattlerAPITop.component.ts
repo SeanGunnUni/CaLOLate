@@ -20,4 +20,6 @@ export class BattlerAPITopComponent implements OnInit {
     ngOnInit() {
         console.log('Started app');
     }
+      //
+
 }

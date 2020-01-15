@@ -146,6 +146,49 @@ namespace CaLOLateAPI.Models
         {
             Champion2.SetItem6(item);
         }
+
+        public string GetC1Abilty1Des()
+        {
+            return Champion1.GetAbilty1Des();
+        }
+        public string GetC1Abilty2Des()
+        {
+            return Champion1.GetAbilty1Des();
+        }
+        public string GetC1Abilty3Des()
+        {
+            return Champion1.GetAbilty1Des();
+        }
+        public string GetC1Abilty4Des()
+        {
+            return Champion1.GetAbilty1Des();
+        }
+        public string GetC1Abilty5Des()
+        {
+            return Champion1.GetAbilty1Des();
+        }
+
+
+        public string GetC2Abilty1Des()
+        {
+            return Champion2.GetAbilty1Des();
+        }
+        public string GetC2Abilty2Des()
+        {
+            return Champion2.GetAbilty1Des();
+        }
+        public string GetC2Abilty3Des()
+        {
+            return Champion2.GetAbilty1Des();
+        }
+        public string GetC2Abilty4Des()
+        {
+            return Champion2.GetAbilty1Des();
+        }
+        public string GetC2Abilty5Des()
+        {
+            return Champion2.GetAbilty1Des();
+        }
         //Get champ1 Items
 
         private Champion Champion1;
