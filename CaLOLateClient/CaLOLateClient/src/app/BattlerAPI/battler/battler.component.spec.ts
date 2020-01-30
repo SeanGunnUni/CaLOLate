@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BattlerAPITopComponent } from './BattlerAPITop.component';
+import { BattlerComponent } from './battler.component';
 
-describe('BattlerAPITopComponent', () => {
-  let component: BattlerAPITopComponent;
-  let fixture: ComponentFixture<BattlerAPITopComponent>;
+describe('BattlerComponent', () => {
+  let component: BattlerComponent;
+  let fixture: ComponentFixture<BattlerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BattlerAPITopComponent ]
+      declarations: [ BattlerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BattlerAPITopComponent);
+    fixture = TestBed.createComponent(BattlerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

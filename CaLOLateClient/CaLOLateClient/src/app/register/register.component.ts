@@ -29,11 +29,9 @@ export class RegisterComponent {
       localStorage.setItem('tokenValue',data.tokenValue);
     })
   }
-)
-
 }
 function matchingField(field1,field2){
-    return form =>{
+    return (form: { controls: { [x: string]: { value: any; }; }; }) =>{
       if(form.controls[field1].value !== form.controls[field2].value)
       return {matchingFields: true}
     }
