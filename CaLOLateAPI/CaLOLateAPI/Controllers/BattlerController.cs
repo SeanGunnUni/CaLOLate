@@ -52,6 +52,22 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
+        [Route("api/SetChamp2HealthPer/{healthPer}")]
+        public IHttpActionResult SetChamp2HealthPer(int healthPer)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                battle.SetChamp2HealthPer(healthPer);
+                return Ok("Champion 2 Health per set");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
         [Route("api/SetChamp1Level/{level}")]
         public IHttpActionResult SetChamp1Level(int level)
         {

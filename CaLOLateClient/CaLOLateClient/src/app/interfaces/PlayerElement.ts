@@ -1,6 +1,7 @@
 export interface Player {
     name: string,
-    level: string,
+    level: Number,
+    healthPer: Number,
     item1: string,
     item2: string,
     item3: string,

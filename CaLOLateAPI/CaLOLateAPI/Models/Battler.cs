@@ -7,6 +7,7 @@ namespace CaLOLateAPI.Models
 {
     public class Battler
     {
+        private int healthPer = 100;
         public Battler(String Name)
         {
             Champion1 = new Champion(Name);
@@ -190,7 +191,10 @@ namespace CaLOLateAPI.Models
             return Champion2.GetAbilty1Des();
         }
         //Get champ1 Items
-
+        public void SetChamp2HealthPer(int hpPer)
+        {
+            healthPer = hpPer;
+        }
         private Champion Champion1;
         private Champion Champion2;
         private double ChampionOneDamage;
@@ -223,6 +227,7 @@ namespace CaLOLateAPI.Models
             ChampionTwoDamageOutput();
             double HPChamp1 = (Champion1.GetHealthOutput() - ChampionTwoDamage);
             double HPChamp2 = (Champion2.GetHealthOutput() - ChampionOneDamage);
+            HPChamp2 = HPChamp2 / (healthPer / 100);
             if ((HPChamp1 >= 0) && (HPChamp2 <= 0))
             {
                 return WouldChampionOneComeOutWithAWin = true;

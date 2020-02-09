@@ -23,24 +23,29 @@ export class ChampionsService {
     return this.http.get(this.baseUrl);
   }
   
-  updatePlayer1Create(player : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetPlayer1/'+ player.name,
-    name);
+  updatePlayer1Create(player1 : Player){
+    return this.http.put<void>('http://localhost:49944/api/SetPlayer1/'+ player1.name,
+    player1.name);
   }
 
-  updatePlayer2Create(player : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetPlayer2/'+ player.name,
-    name);
+  updatePlayer2Create(player2 : Player){
+    return this.http.put<void>('http://localhost:49944/api/SetPlayer2/'+ player2.name,
+    player2.name);
   }
 
   updatePlayer1Level(player1 : Player){
     return this.http.put<void>('http://localhost:49944/api/SetChamp1Level/'+ player1.level,
-    level);
+    player1.level);
   }
 
   updatePlayer2Level(player2 : Player){
     return this.http.put<void>('http://localhost:49944/api/SetChamp2Level/'+ player2.level,
-    level);
+    player2.level);
+  }
+
+  updatePlayer2HealthPer(player2 : Player){
+    return this.http.put<void>('http://localhost:49944/api/SetChamp2HealthPer/'+ player2.healthPer,
+    player2.healthPer);
   }
 
   updatePlayer1Abilty1LevelDown(){
@@ -109,53 +114,53 @@ export class ChampionsService {
   ////
 
   updatePlayer1Item1(player1 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem1Champ1/'+ player1.item1,item1);
+    return this.http.put<void>('http://localhost:49944/api/SetItem1Champ1/'+ player1.item1,player1.item1);
   }
 
   updatePlayer1Item2(player1 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem2Champ1/'+ player1.item2,item2);
+    return this.http.put<void>('http://localhost:49944/api/SetItem2Champ1/'+ player1.item2,player1.item2);
   }
 
   updatePlayer1Item3(player1 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem3Champ1/'+ player1.item3,item3);
+    return this.http.put<void>('http://localhost:49944/api/SetItem3Champ1/'+ player1.item3,player1.item3);
   }
 
   updatePlayer1Item4(player1 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem4Champ1/'+ player1.item4,item4);
+    return this.http.put<void>('http://localhost:49944/api/SetItem4Champ1/'+ player1.item4,player1.item4);
   }
 
   updatePlayer1Item5(player1 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem5Champ1/'+ player1.item5,item5);
+    return this.http.put<void>('http://localhost:49944/api/SetItem5Champ1/'+ player1.item5,player1.item5);
   }
 
   updatePlayer1Item6(player1 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem6Champ1/'+ player1.item6,item6);
+    return this.http.put<void>('http://localhost:49944/api/SetItem6Champ1/'+ player1.item6,player1.item6);
   }
 
   ////
 
   updatePlayer2Item1(player2 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem1Champ2/'+ player2.item1,item1);
+    return this.http.put<void>('http://localhost:49944/api/SetItem1Champ2/'+ player2.item1,player2.item1);
   }
 
   updatePlayer2Item2(player2 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem2Champ2/'+ player2.item2,item2);
+    return this.http.put<void>('http://localhost:49944/api/SetItem2Champ2/'+ player2.item2,player2.item2);
   }
 
   updatePlayer2Item3(player2 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem3Champ2/'+ player2.item3,item3);
+    return this.http.put<void>('http://localhost:49944/api/SetItem3Champ2/'+ player2.item3,player2.item3);
   }
 
   updatePlayer2Item4(player2 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem4Champ2/'+ player2.item4,item4);
+    return this.http.put<void>('http://localhost:49944/api/SetItem4Champ2/'+ player2.item4,player2.item4);
   }
 
   updatePlayer2Item5(player2 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem5Champ1/'+ player2.item5,item5);
+    return this.http.put<void>('http://localhost:49944/api/SetItem5Champ1/'+ player2.item5,player2.item5);
   }
 
   updatePlayer2Item6(player2 : Player){
-    return this.http.put<void>('http://localhost:49944/api/SetItem6Champ1/'+ player2.item6,item6);
+    return this.http.put<void>('http://localhost:49944/api/SetItem6Champ1/'+ player2.item6,player2.item6);
   }
 
   getFinalAnswer(){
@@ -287,7 +292,127 @@ Champ1Abilty5Des(){
     localStorage.setItem('Champion1UltiInfo',data.toString());
   })
 }
+//////////////////////////////////
+getAllinformationAboutChampion2(){
+  this.Champ2Health();
+  this.Champ2AD();
+  this.Champ2AP();
+  this.Champ2Mana();
+  this.Champ2Abilty1Des();
+  this.Champ2Abilty2Des();
+  this.Champ2Abilty3Des();
+  this.Champ2Abilty4Des();
+  this.Champ2Abilty5Des();
+}
+get getChamp2Health(){
+  return localStorage.getItem('Champion2Health');
+}
+get getChamp2Mana(){
+  return localStorage.getItem('Champion2Mana');
+}
+get getChamp2AbiltyPower(){
+  return localStorage.getItem('Champion2AP');
+}
+get getChamp2AttackDamage(){
+  return localStorage.getItem('Champion2AD');
+}
+get getChamp2PassiveInformation(){
+  return localStorage.getItem('Champion2PassiveInfo');
+}
+get getChamp2Abilty1Information(){
+  return localStorage.getItem('Champion2Ab1Info');
+}
+get getChamp2Abilty2Information(){
+  return localStorage.getItem('Champion2Ab2Info');
+}
+get getChamp2Abilty3Information(){
+  return localStorage.getItem('Champion2Ab3Info');
+}
+get getChamp2UltimateInformation(){
+  return localStorage.getItem('Champion2UltiInfo');
+}
+get getItem1Champ2Information(){
+  return localStorage.getItem('Champion2Item1Info');
+}
+get getItem2Champ2Information(){
+  return localStorage.getItem('Champion2Item2Info');
+}
+get getItem3Champ2Information(){
+  return localStorage.getItem('Champion2Item3Info');
+}
+get getItem4Champ2Information(){
+  return localStorage.getItem('Champion2Item4Info');
+}
+get getItem5Champ2Information(){
+  return localStorage.getItem('Champion2Item5Info');
+}
+get getItem6Champ2Information(){
+  return localStorage.getItem('Champion2Item6Info');
+}
 
+
+Champ2Health(){
+  return this.http.get('http://localhost:49944/api/GetChamp2Health/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2Health',data.toString());
+  })
+}
+
+Champ2Mana(){
+  return this.http.get('http://localhost:49944/api/GetChamp2Mana/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2Mana',data.toString());
+  })
+}
+
+Champ2AP(){
+  return this.http.get('http://localhost:49944/api/GetChamp2AP/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2AP',data.toString());
+  })
+}
+
+Champ2AD(){
+  return this.http.get('http://localhost:49944/api/GetChamp2AD/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2AD',data.toString());
+  })
+}
+
+Champ2Abilty1Des(){
+  return this.http.get('http://localhost:49944/api/GetChamp2Abilty1Des/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2PassiveInfo',data.toString());
+  })
+}
+
+Champ2Abilty2Des(){
+  return this.http.get('http://localhost:49944/api/GetChamp2Abilty2Des/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2Abilty1Info',data.toString());
+  })
+}
+
+Champ2Abilty3Des(){
+  return this.http.get('http://localhost:49944/api/GetChamp2Abilty3Des/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2Abilty2Info',data.toString());
+  })
+}
+
+Champ2Abilty4Des(){
+  return this.http.get('http://localhost:49944/api/GetChamp2Abilty4Des/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2Abilty3Info',data.toString());
+  })
+}
+
+Champ2Abilty5Des(){
+  return this.http.get('http://localhost:49944/api/GetChamp2Abilty5Des/').subscribe((data)=>{
+    console.log('Data -', data);
+    localStorage.setItem('Champion2UltiInfo',data.toString());
+  })
+}
 
 
 /*Champ2Health(){

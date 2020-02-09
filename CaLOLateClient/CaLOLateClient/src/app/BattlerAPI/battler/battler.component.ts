@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ChampionsService } from 'src/app/champions.service';
+import { Player } from 'src/app/interfaces/PlayerElement';
+import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-battler',
@@ -6,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./battler.component.css']
 })
 export class BattlerComponent implements OnInit {
-
-  constructor() { }
-
+  champLevel ="";
+  champHealtPer = "";
+  championInformationHealthForm: FormGroup;
+  championInformationLevelForm: FormGroup;
+  constructor(private fb: FormBuilder,private service:ChampionsService,private player2:Player,private http: HttpClient) { 
+    player2.name = "";
+    this.championInformationHealthForm = fb.group({
+      champ2Heath: ['', Validators.maxLength[3]]
+    })
+    this.championInformationLevelForm = fb.group({
+      champ2Level: ['', Validators.maxLength[2]]
+    })
+  }
+  
+  Champ2 = "";
   ngOnInit() {
   }
   public listChampVSLevel: Array<string> = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18"];
@@ -21,12 +37,62 @@ export class BattlerComponent implements OnInit {
   public listItemsChampLevel: Array<string> = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18"];
   public listItemsBattlerLength: Array<string> = ["10 seconds", "20 seconds", "30 seconds", "40 seconds"];
   battlePlayerOneAnswer(){
-    localStorage.setItem('Part1Answered','true');
+    localStorage.setItem('PartChamp2PickAnswered','true');
   }
-  battlePlayerTwoAnswer(){
-    localStorage.setItem('Part2Answered','true');
+  clickAshe2(){
+    this.Champ2 = "Ashe";
+     this.player2.name = this.Champ2;
+     this.service.updatePlayer2Create(this.player2);
+     localStorage.setItem('Champion2Name',this.player2.name);
+     this.service.getAllinformationAboutChampion2();
+     localStorage.setItem('PartChamp2PickAnswered','false');
+     localStorage.setItem('PartChamp2Answered','true');
   }
-  //get filedPart1(){
-    //return !!localStorage.getItem('Part1Answered');
-  //}
+  clickAnnie2(){
+    this.Champ2 = "Annie";
+     this.player2.name = this.Champ2;
+     this.service.updatePlayer2Create(this.player2);
+     localStorage.setItem('Champion2Name',this.player2.name);
+     this.service.getAllinformationAboutChampion2();
+     localStorage.setItem('PartChamp2PickAnswered','false');
+     localStorage.setItem('PartChamp2Answered','true');
+  }
+  clickGaren2(){
+    this.Champ2 = "Garen";
+     this.player2.name = this.Champ2;
+     this.service.updatePlayer2Create(this.player2);
+     localStorage.setItem('Champion2Name',this.player2.name);
+     this.service.getAllinformationAboutChampion2();
+     localStorage.setItem('PartChamp2PickAnswered','false');
+     localStorage.setItem('PartChamp2Answered','true');
+  }
+  clickZilean2(){
+    this.Champ2 = "Zilean";
+     this.player2.name = this.Champ2;
+     this.service.updatePlayer2Create(this.player2);
+     localStorage.setItem('Champion2Name',this.player2.name);
+     this.service.getAllinformationAboutChampion2();
+     localStorage.setItem('PartChamp2PickAnswered','false');
+     localStorage.setItem('PartChamp2Answered','true');
+  }
+  battlePartThreeAnswer(){
+    this.champLevel = this.championInformationLevelForm.value;
+    this.champHealtPer = this.championInformationHealthForm.value;
+    this.player2.level = Number(this.champLevel);
+    this.player2.healthPer = Number(this.champHealtPer);
+    this.service.updatePlayer2Level(this.player2.level);
+    this.service.updatePlayer2HealthPer(this.player2.healthPer);
+    localStorage.setItem('Champion2Level',String(this.player2.level));
+    localStorage.setItem('Champion2HealthPer',String(this.player2.healthPer));
+  }
+
+  get editChamp2Pick(){
+    return !!localStorage.getItem('PartChamp2PickAnswered');
+  }
+  get editedPartTwo(){
+    return !!localStorage.getItem('PartChamp2Answered');
+  }
+  get editedFinal(){
+    return !!localStorage.getItem('Part2Answered');
+  }
 }
