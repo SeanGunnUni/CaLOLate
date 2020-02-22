@@ -16,54 +16,68 @@
         <div class="abilty-buttons">
             <h1>Abilty1</h1>
             <p>{{champions.getAbilty1Information}}</p>
-            <button mat-stroked-button (click)="">Abilty1</button>
+            <label>{{champions.getAbilty1Level}}</label>
+            <button mat-stroked-button (click)="levelUpAbilty1()">Up</button>
+            <button mat-stroked-button (click)="levelDownAbilty1()">Down</button>
         </div>
         <div class="abilty-buttons">
             <h1>Abilty2</h1>
             <p>{{champions.getAbilty2Information}}</p>
-            <button mat-stroked-button (click)="">Abilty2</button>
+            <label>{{champions.getAbilty2Level}}</label>
+            <button mat-stroked-button (click)="levelUpAbilty2()">Up</button>
+            <button mat-stroked-button (click)="levelDownAbilty2()">Down</button>
         </div>
         <div class="abilty-buttons">
             <h1>Abilty3</h1>
             <p>{{champions.getAbilty3Information}}</p>
-            <button mat-stroked-button (click)="">Abilty3</button>
+            <label>{{champions.getAbilty3Level}}</label>
+            <button mat-stroked-button (click)="levelUpAbilty3()">Up</button>
+            <button mat-stroked-button (click)="levelDownAbilty3()">Down</button>
         </div>
         <div class="abilty-buttons">
             <h1>Ultimate</h1>
             <p>{{champions.getUltimateInformation}}</p>
-            <button mat-stroked-button (click)="">Ultimate</button>
+            <label>{{champions.getAbiltyUltLevel}}</label>
+            <button mat-stroked-button (click)="levelUpAbilty4()">Up</button>
+            <button mat-stroked-button (click)="levelDownAbilty4()">Down</button>
         </div>
     </div>
     <div class="items-area">
         <div class="items-buttons">
             <h1>Item1</h1>
             <p>{{champions.getItem1Champ1Information}}</p>
-            <button mat-stroked-button (click)="">Item1</button>
+            <button mat-stroked-button (click)="Player1Item1Set()">Item1Set</button>
+            <button mat-stroked-button (click)="Player1Item1Remove()">Item1Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item2</h1>
             <p>{{champions.getItem2Champ1Information}}</p>
-            <button mat-stroked-button (click)="">Item2</button>
+            <button mat-stroked-button (click)="Player1Item2Set()">Item2Set</button>
+            <button mat-stroked-button (click)="Player1Item2Remove()">Item2Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item3</h1>
             <p>{{champions.getItem3Champ1Information}}</p>
-            <button mat-stroked-button (click)="">Item3</button>
+            <button mat-stroked-button (click)="Player1Item3Set()">Item3Set</button>
+            <button mat-stroked-button (click)="Player1Item3Remove()">Item3Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item4</h1>
             <p>{{champions.getItem4Champ1Information}}</p>
-            <button mat-stroked-button (click)="">Item4</button>
+            <button mat-stroked-button (click)="Player1Item4Set()">Item4Set</button>
+            <button mat-stroked-button (click)="Player1Item4Remove()">Item4Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item5</h1>
             <p>{{champions.getItem5Champ1Information}}</p>
-            <button mat-stroked-button (click)="">Item5</button>
+            <button mat-stroked-button (click)="Player1Item5Set()">Item5Set</button>
+            <button mat-stroked-button (click)="Player1Item5Remove()">Item5Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item6</h1>
             <p>{{champions.getItem6Champ1Information}}</p>
-            <button mat-stroked-button (click)="">Item6</button>
+            <button mat-stroked-button (click)="Player1Item6Set()">Item6Set</button>
+            <button mat-stroked-button (click)="Player1Item6Remove()">Item6Remove</button>
         </div>
     </div>
     <div class="timer">
@@ -107,33 +121,39 @@
     <div class="items-area">
         <div class="items-buttons">
             <h1>Item1</h1>
-            <p>{{Item1Information}}</p>
-            <button mat-stroked-button (click)="">Item1</button>
+            <p>{{champions.getItem1Champ2Information}}</p>
+            <button mat-stroked-button (click)="Player2Item1Set()">Item1Set</button>
+            <button mat-stroked-button (click)="Player2Item1Remove()">Item1Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item2</h1>
-            <p>{{Item2Information}}</p>
-            <button mat-stroked-button (click)="">Item2</button>
+            <p>{{champions.getItem2Champ2Information}}</p>
+            <button mat-stroked-button (click)="Player2Item2Set()">Item2Set</button>
+            <button mat-stroked-button (click)="Player2Item2Remove()">Item2Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item3</h1>
-            <p>{{Item3Information}}</p>
-            <button mat-stroked-button (click)="">Item3</button>
+            <p>{{champions.getItem3Champ2Information}}</p>
+            <button mat-stroked-button (click)="Player2Item3Set()">Item3Set</button>
+            <button mat-stroked-button (click)="Player2Item3Remove()">Item3Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item4</h1>
-            <p>{{Item4Information}}</p>
-            <button mat-stroked-button (click)="">Item4</button>
+            <p>{{champions.getItem4Champ2Information}}</p>
+            <button mat-stroked-button (click)="Player2Item4Set()">Item4Set</button>
+            <button mat-stroked-button (click)="Player2Item4Remove()">Item4Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item5</h1>
-            <p>{{Item5Information}}</p>
-            <button mat-stroked-button (click)="">Item5</button>
+            <p>{{champions.getItem5Champ2Information}}</p>
+            <button mat-stroked-button (click)="Player2Item5Set()">Item5Set</button>
+            <button mat-stroked-button (click)="Player2Item5Remove()">Item5Remove</button>
         </div>
         <div class="items-buttons">
             <h1>Item6</h1>
-            <p>{{Item6Information}}</p>
-            <button mat-stroked-button (click)="">Item6</button>
+            <p>{{champions.getItem6Champ2Information}}</p>
+            <button mat-stroked-button (click)="Player2Item6Set()">Item6Set</button>
+            <button mat-stroked-button (click)="Player2Item6Remove()">Item6Remove</button>
         </div>
     </div>
     <div class="battler-buttton">
@@ -142,11 +162,6 @@
 </div>
 <div [hidden]="!editedFinal" class="batterpartfinal">
     <div class="calculator-box">
-        <h1>Health Remaining: {{HealthRemaining}}</h1>
-        <h4>{{IfWinInformation}}</h4>
+        <h4>{{champions.IfWinInformation}}</h4>
     </div>
 </div>
-
-
-
-<button mat-button *mgif ="!auth.isAuthenicated" routerLink="/login">Login</button>

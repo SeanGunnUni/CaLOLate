@@ -16,13 +16,6 @@ export class ChampionsService {
 
   constructor(private http: HttpClient) { }
 
-  getALL2(){
-    return this.http.get(this.baseUrl);
-  }
-  getAll(){
-    return this.http.get(this.baseUrl);
-  }
-  
   updatePlayer1Create(player1 : Player){
     return this.http.put<void>('http://localhost:49944/api/SetPlayer1/'+ player1.name,
     player1.name);
@@ -163,10 +156,15 @@ export class ChampionsService {
     return this.http.put<void>('http://localhost:49944/api/SetItem6Champ1/'+ player2.item6,player2.item6);
   }
 
-  getFinalAnswer(){
+  updateFinalAnswer(){
     return this.http.get('http://localhost:49944/api/GetFinalAnswer/').subscribe((data)=>{
       console.log('Data -', data);
+      localStorage.setItem('FinalAnswer',data.toString());
     })
+  }
+
+  get IfWinInformation(){
+    return localStorage.getItem('FinalAnswer');
   }
 //
 getAllinformationAboutChampion(){
@@ -228,7 +226,24 @@ get getItem5Champ1Information(){
 get getItem6Champ1Information(){
   return localStorage.getItem('Champion1Item6Info');
 }
-
+get getAbilty1Level(){
+  return localStorage.getItem('Champion1Item1Level');
+}
+get getAbilty2Level(){
+  return localStorage.getItem('Champion1Item2Level');
+}
+get getAbilty3Level(){
+  return localStorage.getItem('Champion1Item3Level');
+}
+get getAbilty4Level(){
+  return localStorage.getItem('Champion1Item4Level');
+}
+get getAbilty5Level(){
+  return localStorage.getItem('Champion1Item5Level');
+}
+get getAbilty6Level(){
+  return localStorage.getItem('Champion1Item6Level');
+}
 
 Champ1Health(){
   return this.http.get('http://localhost:49944/api/GetChamp1Health/').subscribe((data)=>{
@@ -414,13 +429,6 @@ Champ2Abilty5Des(){
   })
 }
 
-
-/*Champ2Health(){
-  return this.http.get('http://localhost:49944/api/GetChamp2Health/').subscribe((data)=>{
-    console.log('Data -', data);
-    localStorage.setItem('Champion2Health',data.toString());
-  })
-}*/
 }
 
 
