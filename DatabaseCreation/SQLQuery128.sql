@@ -1,0 +1,72 @@
+USE [ItemsDB]
+GO
+
+INSERT INTO [dbo].[Item]
+           ([ItemID]
+           ,[ItemName]
+           ,[AP]
+           ,[AD]
+           ,[Movespeed]
+           ,[ActiveDamage]
+           ,[Armour]
+           ,[ArmourPenetrationFlat]
+           ,[ArmourPenetrationPecentage]
+           ,[AttackSpeed]
+           ,[CooldownReduction]
+           ,[CritDamage]
+           ,[CritStrike]
+           ,[Decription]
+           ,[HaveActive]
+           ,[Health]
+           ,[HealthReg]
+           ,[ImageOfItem]
+           ,[LifeSteal]
+           ,[MagicPenetrationFlat]
+           ,[MagicPenetrationPecentage]
+           ,[MagicResist]
+           ,[Mana]
+           ,[ManaReg]
+           ,[Tenacity]
+           ,[UniqueItem]
+           ,[UniqueActiveADRatioBonus]
+           ,[UniqueActiveADRatioFull]
+           ,[UniqueActiveADRatioFlat]
+           ,[UniqueActiveAPRatio]
+           ,[UniqueActiveDamage]
+           ,[UniqueActiveEffect])
+     VALUES
+           (1
+           ,'BFSword'
+           ,0
+           ,40
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,NULL
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0)
+GO
+
+

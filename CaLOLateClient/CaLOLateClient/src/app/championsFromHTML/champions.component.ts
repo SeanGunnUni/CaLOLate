@@ -35,25 +35,13 @@ export class ChampionsComponent implements OnInit {
     this.service.getAllinformationAboutChampion();
   }
   clickAnnie(){
-    this.Champ = "Annie";
-    this.player.name = this.Champ;
-    this.service.updatePlayer1Create(this.player);
-    localStorage.setItem('Champion1Name',this.player.name);
-    this.service.getAllinformationAboutChampion();
+    this.Champ = "Currently only Ashe works, since the program is still a prototype.";
   }
   clickGaren(){
-    this.Champ = "Garen";
-    this.player.name = this.Champ;
-    this.service.updatePlayer1Create(this.player);
-    localStorage.setItem('Champion1Name',this.player.name);
-    this.service.getAllinformationAboutChampion();
+    this.Champ = "Currently only Ashe works, since the program is still a prototype.";
   }
   clickZilean(){
-    this.Champ = "Zilean";
-    this.player.name = this.Champ;
-    this.service.updatePlayer1Create(this.player);
-    localStorage.setItem('Champion1Name',this.player.name);
-    this.service.getAllinformationAboutChampion();
+    this.Champ = "Currently only Ashe works, since the program is still a prototype.";
   }
 
 } 
