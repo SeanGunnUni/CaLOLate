@@ -120,10 +120,10 @@ export class BattlerComponent implements OnInit {
   battlePartThreeAnswer(){
     this.champLevel = this.championInformationLevelForm.value;
     this.champHealtPer = this.championInformationHealthForm.value;
-    this.player2.level = Number(this.champLevel);
-    this.player2.healthPer = Number(this.champHealtPer);
-    this.service.updatePlayer2Level(this.player2.level);
-    this.service.updatePlayer2HealthPer(this.player2.healthPer);
+    this.player2.level = +this.champLevel;
+    this.player2.healthPer = +this.champHealtPer;
+    //this.service.updatePlayer2Level(this.player2.level);
+   // this.service.updatePlayer2HealthPer(this.player2.healthPer);
     this.service.updateFinalAnswer();
     localStorage.setItem('Part2Answered','true');
   }

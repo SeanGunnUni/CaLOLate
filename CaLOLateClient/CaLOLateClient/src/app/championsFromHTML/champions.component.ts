@@ -1,8 +1,8 @@
-import { Component, OnInit , Injectable, Input} from '@angular/core';
+import { Component, OnInit, Injectable} from '@angular/core';
 import { ChampionsService } from '../champions.service';
-import { NoopAnimationPlayer } from '@angular/animations';
 import {Player} from '../interfaces/PlayerElement';
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-champions',
@@ -29,9 +29,6 @@ export class ChampionsComponent implements OnInit {
   
   clickAshe(){
     this.Champ = "Ashe";
-    this.service.getAll().subscribe((data) => { 
-      console.log('Result - ', data);
-    })
     this.player.name = this.Champ;
     this.service.updatePlayer1Create(this.player);
     localStorage.setItem('Champion1Name',this.player.name);
@@ -39,9 +36,6 @@ export class ChampionsComponent implements OnInit {
   }
   clickAnnie(){
     this.Champ = "Annie";
-    this.service.getAll().subscribe((data) => { 
-      console.log('Result - ', data);
-    })
     this.player.name = this.Champ;
     this.service.updatePlayer1Create(this.player);
     localStorage.setItem('Champion1Name',this.player.name);
@@ -49,9 +43,6 @@ export class ChampionsComponent implements OnInit {
   }
   clickGaren(){
     this.Champ = "Garen";
-    this.service.getAll().subscribe((data) => { 
-      console.log('Result - ', data);
-    })
     this.player.name = this.Champ;
     this.service.updatePlayer1Create(this.player);
     localStorage.setItem('Champion1Name',this.player.name);
@@ -59,9 +50,6 @@ export class ChampionsComponent implements OnInit {
   }
   clickZilean(){
     this.Champ = "Zilean";
-    this.service.getAll().subscribe((data) => { 
-      console.log('Result - ', data);
-    })
     this.player.name = this.Champ;
     this.service.updatePlayer1Create(this.player);
     localStorage.setItem('Champion1Name',this.player.name);

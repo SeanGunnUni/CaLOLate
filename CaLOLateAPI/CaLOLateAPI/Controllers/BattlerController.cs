@@ -18,7 +18,6 @@ namespace CaLOLateAPI.Controllers
     {
         Battler battle = new Battler("");
 
-
         [HttpPut]
         [Route("api/SetPlayer1/{name}")]
         public IHttpActionResult UpdatePlayer1(string name, [FromBody]Battler battler)
