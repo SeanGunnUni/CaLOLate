@@ -193,7 +193,8 @@ namespace CaLOLateAPI.Models
         //Get champ1 Items
         public void SetChamp2HealthPer(int hpPer)
         {
-            healthPer = hpPer;
+            if(hpPer >= 0 && hpPer <=1)
+                healthPer = hpPer;
         }
         private Champion Champion1;
         private Champion Champion2;
