@@ -1,8 +1,8 @@
 <mat-toolbar colour="primary">
     <button mat-button routerLink="/champions">Home</button>
     <span style="flex: 1 1 auto"></span>
-    <button mat-button *mgif ="auth.isAuthenicated">Welcome {{auth.getUserName}}</button>
-    <button mat-button *mgif ="auth.isAuthenicated"(click)="auth.logout()">Logout</button>
-    <button mat-button *mgif ="!auth.isAuthenicated" routerLink="/register">Register</button>
-    <button mat-button *mgif ="!auth.isAuthenicated" routerLink="/login">Login</button>
+    <button mat-button *ngIf="auth.isAuthenicated">Welcome {{auth.getUserName}}</button>
+    <button mat-button *ngIf="auth.isAuthenicated"(click)="auth.logout()">Logout</button>
+    <button mat-button *ngIf="!auth.isAuthenicated" routerLink="Register">Register</button>
+    <button mat-button *ngIf="!auth.isAuthenicated" routerLink="Login">Login</button>
 </mat-toolbar>

@@ -63,7 +63,6 @@ namespace CaLOLateAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            return null;
         }
 
         private JwtPackage CreateToken(User user)

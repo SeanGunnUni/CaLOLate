@@ -14,13 +14,13 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ChampionsComponent implements OnInit {
+  player: Player;
+  Champ: string;
 
 
-  constructor(private service:ChampionsService,private player:Player,private http: HttpClient) { 
-    player.name = "";
+  constructor(private service:ChampionsService,private http: HttpClient) { 
   }
-  title = "the title";
-  Champ = "";
+
 
   
   ngOnInit() {
@@ -29,10 +29,7 @@ export class ChampionsComponent implements OnInit {
   
   clickAshe(){
     this.Champ = "Ashe";
-    this.player.name = this.Champ;
-    this.service.updatePlayer1Create(this.player);
-    localStorage.setItem('Champion1Name',this.player.name);
-    this.service.getAllinformationAboutChampion();
+    localStorage.setItem('Champion1Name',this.Champ);
   }
   clickAnnie(){
     this.Champ = "Currently only Ashe works, since the program is still a prototype.";

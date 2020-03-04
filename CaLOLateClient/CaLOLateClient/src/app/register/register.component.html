@@ -13,7 +13,7 @@
             <input matInput placeholder="Confim Password" formControlName="confirmPassword">
         </mat-form-field>
         <br>
-        <span *ngif="registerForm.errors?.matchingFields">Passwords do not match.</span>
+        <span *ngIf ="registerForm.errors?.matchingFields">Passwords do not match.</span>
         <button mat-rasied-button color="primary" [disabled]="!registerForm.valid">Register</button>
     </form>
 

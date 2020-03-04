@@ -38,8 +38,9 @@ export class BattlerComponent implements OnInit {
   champHealtPer = "";
   championInformationHealthForm: FormGroup;
   championInformationLevelForm: FormGroup;
-  constructor(private fb: FormBuilder,private service:ChampionsService,private player2:Player,private player1:Player,private http: HttpClient) { 
-    player2.name = "";
+  player1: Player;
+  player2: Player;
+  constructor(private fb: FormBuilder,private service:ChampionsService,private http: HttpClient) { 
     this.championInformationHealthForm = fb.group({
       champ2Heath: ['', Validators.maxLength[3]]
     })
@@ -50,6 +51,12 @@ export class BattlerComponent implements OnInit {
   
   Champ2 = "";
   ngOnInit() {
+    console.log(localStorage.getItem('Champion1Name'));
+    var nameTemp = localStorage.getItem('Champion1Name');
+    PlayerTemp: this.Player1Item1Remove;
+    this.player1.name = nameTemp;
+    this.service.updatePlayer1Create(this.player1);
+    this.service.getAllinformationAboutChampion();   
     localStorage.setItem('Champion1Abilty6Level','0');
     localStorage.setItem('Champion1Abilty5Level','0');
     localStorage.setItem('Champion1Abilty4Level','0');

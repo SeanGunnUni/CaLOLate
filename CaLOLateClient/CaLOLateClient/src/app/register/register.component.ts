@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
 
@@ -14,7 +14,7 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder, private service: AuthService) {
 
     this.registerForm = fb.group({
-      userName: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     

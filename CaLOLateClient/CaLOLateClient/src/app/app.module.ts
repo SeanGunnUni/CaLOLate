@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { ChampionsComponent } from './championsFromHTML/champions.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { BattlerComponent } from './BattlerAPI/battler/battler.component';
 
 //services
 import {ChampionsService} from './champions.service';
@@ -14,11 +16,15 @@ import { HttpClientModule } from '@angular/common/http';
 import {AuthService} from './auth.service';
 
 //material design
+import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './materialMods/material.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { LoginComponent } from './login/login.component';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { PopupModule } from '@progress/kendo-angular-popup';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +32,9 @@ import { FormsModule} from '@angular/forms';
     ChampionsComponent,
     FooterComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    BattlerComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,12 @@ import { FormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    InputsModule,
+    PopupModule,
+    DropDownsModule
   ],
   providers: [ChampionsService, AuthService],
   bootstrap: [AppComponent],
