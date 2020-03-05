@@ -30,6 +30,7 @@ export class ChampionsComponent implements OnInit {
   clickAshe(){
     this.Champ = "Ashe";
     localStorage.setItem('Champion1Name',this.Champ);
+    console.log("first champion has been set.")
   }
   clickAnnie(){
     this.Champ = "Currently only Ashe works, since the program is still a prototype.";

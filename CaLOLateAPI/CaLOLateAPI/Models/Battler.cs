@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 
 namespace CaLOLateAPI.Models
@@ -190,6 +191,40 @@ namespace CaLOLateAPI.Models
         {
             return Champion2.GetAbilty1Des();
         }
+        public double GetChamp1HeathOutput()
+        {
+            return Champion1.GetHealthOutput();
+        }
+        public double GetChamp2HeathOutput()
+        {
+            return Champion2.GetHealthOutput();
+        }
+        public double GetChamp1ManaOutput()
+        {
+            return Champion1.GetManaOutput();
+        }
+        public double GetChamp2ManaOutput()
+        {
+            return Champion2.GetManaOutput();
+        }
+        public double GetChamp1APOutput()
+        {
+            return Champion1.GetAbiltyPower();
+        }
+        public double GetChamp2APOutput()
+        {
+            return Champion2.GetAbiltyPower();
+        }
+        public double GetChamp1AdOutput()
+        {
+            return Champion1.GetADOutput();
+        }
+        public double GetChamp2AdOutput()
+        {
+            return Champion2.GetADOutput();
+        }
+
+        
         //Get champ1 Items
         public void SetChamp2HealthPer(int hpPer)
         {
@@ -201,6 +236,8 @@ namespace CaLOLateAPI.Models
         private double ChampionOneDamage;
         private double ChampionTwoDamage;
         private bool WouldChampionOneComeOutWithAWin;
+
+        public String Username { get; set; }
 
         void ChampionOneDamageOutput()
         {

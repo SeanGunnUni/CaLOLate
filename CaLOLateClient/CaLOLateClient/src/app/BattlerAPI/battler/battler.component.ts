@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampionsService } from 'src/app/champions.service';
-import { Player } from 'src/app/interfaces/PlayerElement';
+import { PlayerClass } from 'src/app/interfaces/Player';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
   templateUrl: './battler.component.html',
   styleUrls: ['./battler.component.css']
 })
+
 export class BattlerComponent implements OnInit {
   champLevel ="";
   champAbilty1Level ="";
@@ -38,11 +39,12 @@ export class BattlerComponent implements OnInit {
   champHealtPer = "";
   championInformationHealthForm: FormGroup;
   championInformationLevelForm: FormGroup;
-  player1: Player;
-  player2: Player;
+  player1 = new PlayerClass(); 
+  
+  player2 = new PlayerClass();
   constructor(private fb: FormBuilder,private service:ChampionsService,private http: HttpClient) { 
     this.championInformationHealthForm = fb.group({
-      champ2Heath: ['', Validators.maxLength[3]]
+      champ2Health: ['', Validators.maxLength[3]]
     })
     this.championInformationLevelForm = fb.group({
       champ2Level: ['', Validators.maxLength[2]]
@@ -51,9 +53,7 @@ export class BattlerComponent implements OnInit {
   
   Champ2 = "";
   ngOnInit() {
-    console.log(localStorage.getItem('Champion1Name'));
     var nameTemp = localStorage.getItem('Champion1Name');
-    PlayerTemp: this.Player1Item1Remove;
     this.player1.name = nameTemp;
     this.service.updatePlayer1Create(this.player1);
     this.service.getAllinformationAboutChampion();   
@@ -63,18 +63,18 @@ export class BattlerComponent implements OnInit {
     localStorage.setItem('Champion1Abilty3Level','0');
     localStorage.setItem('Champion1Abilty2Level','0');
     localStorage.setItem('Champion1Abilty1Level','0');
-    localStorage.setItem('Champion1Item1','');
-    localStorage.setItem('Champion1Item2','');
-    localStorage.setItem('Champion1Item3','');
-    localStorage.setItem('Champion1Item4','');
-    localStorage.setItem('Champion1Item5','');
-    localStorage.setItem('Champion1Item6','');
-    localStorage.setItem('Champion2Item1','');
-    localStorage.setItem('Champion2Item2','');
-    localStorage.setItem('Champion2Item3','');
-    localStorage.setItem('Champion2Item4','');
-    localStorage.setItem('Champion2Item5','');
-    localStorage.setItem('Champion2Item6','');
+    localStorage.setItem('Champion1Item1','none');
+    localStorage.setItem('Champion1Item2','none');
+    localStorage.setItem('Champion1Item3','none');
+    localStorage.setItem('Champion1Item4','none');
+    localStorage.setItem('Champion1Item5','none');
+    localStorage.setItem('Champion1Item6','none');
+    localStorage.setItem('Champion2Item1','none');
+    localStorage.setItem('Champion2Item2','none');
+    localStorage.setItem('Champion2Item3','none');
+    localStorage.setItem('Champion2Item4','none');
+    localStorage.setItem('Champion2Item5','none');
+    localStorage.setItem('Champion2Item6','none');
   }
   public listChampVSLevel: Array<string> = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18"];
   public listChampVSHealthPercentage: Array<string> = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18",
@@ -202,7 +202,7 @@ export class BattlerComponent implements OnInit {
 
   Player1Item1Set(){
     this.champ1Item1 = localStorage.getItem('Champion1Item1');
-    if(this.champ1Item1 == ""){
+    if(this.champ1Item1 == "none"){
       this.player1.item1 = "BFSword";
       this.service.updatePlayer1Item1(this.player1);
       localStorage.setItem('Champion1Item1',this.player1.item1);
@@ -210,7 +210,7 @@ export class BattlerComponent implements OnInit {
   }
   Player1Item2Set(){
     this.champ1Item2 = localStorage.getItem('Champion1Item2');
-    if(this.champ1Item2 == ""){
+    if(this.champ1Item2 == "none"){
       this.player1.item2 = "BFSword";
       this.service.updatePlayer1Item2(this.player1);
       localStorage.setItem('Champion1Item2',this.player1.item2);
@@ -218,7 +218,7 @@ export class BattlerComponent implements OnInit {
   }
   Player1Item3Set(){
     this.champ1Item3 = localStorage.getItem('Champion1Item3');
-    if(this.champ1Item3 == ""){
+    if(this.champ1Item3 == "none"){
       this.player1.item3 = "BFSword";
       this.service.updatePlayer1Item1(this.player1);
       localStorage.setItem('Champion1Item3',this.player1.item3);
@@ -226,7 +226,7 @@ export class BattlerComponent implements OnInit {
   }
   Player1Item4Set(){
     this.champ1Item4 = localStorage.getItem('Champion1Item4');
-    if(this.champ1Item4 == ""){
+    if(this.champ1Item4 == "none"){
       this.player1.item4 = "BFSword";
       this.service.updatePlayer1Item4(this.player1);
       localStorage.setItem('Champion1Item4',this.player1.item4);
@@ -234,7 +234,7 @@ export class BattlerComponent implements OnInit {
   }
   Player1Item5Set(){
     this.champ1Item5 = localStorage.getItem('Champion1Item5');
-    if(this.champ1Item5 == ""){
+    if(this.champ1Item5 == "none"){
       this.player1.item5 = "BFSword";
       this.service.updatePlayer1Item5(this.player1);
       localStorage.setItem('Champion1Item5',this.player1.item5);
@@ -242,7 +242,7 @@ export class BattlerComponent implements OnInit {
   }
   Player1Item6Set(){
     this.champ1Item6 = localStorage.getItem('Champion1Item6');
-    if(this.champ1Item6 == ""){
+    if(this.champ1Item6 == "none"){
       this.player1.item6 = "BFSword";
       this.service.updatePlayer1Item6(this.player1);
       localStorage.setItem('Champion1Item6',this.player1.item6);
@@ -253,7 +253,7 @@ export class BattlerComponent implements OnInit {
   Player1Item1Remove(){
     this.champ1Item1 = localStorage.getItem('Champion1Item1');
     if(this.champ1Item1 == "BFSword"){
-      this.player1.item1 = "";
+      this.player1.item1 = "none";
       this.service.updatePlayer1Item1(this.player1);
       localStorage.setItem('Champion1Item1',this.player1.item1);
     }
@@ -261,7 +261,7 @@ export class BattlerComponent implements OnInit {
   Player1Item2Remove(){
     this.champ1Item2 = localStorage.getItem('Champion1Item2');
     if(this.champ1Item2 == "BFSword"){
-      this.player1.item2 = "";
+      this.player1.item2 = "none";
       this.service.updatePlayer1Item2(this.player1);
       localStorage.setItem('Champion1Item2',this.player1.item2);
     }
@@ -269,7 +269,7 @@ export class BattlerComponent implements OnInit {
   Player1Item3Remove(){
     this.champ1Item3 = localStorage.getItem('Champion1Item3');
     if(this.champ1Item3 == "BFSword"){
-      this.player1.item3 = "";
+      this.player1.item3 = "none";
       this.service.updatePlayer1Item1(this.player1);
       localStorage.setItem('Champion1Item3',this.player1.item3);
     }
@@ -277,7 +277,7 @@ export class BattlerComponent implements OnInit {
   Player1Item4Remove(){
     this.champ1Item4 = localStorage.getItem('Champion1Item4');
     if(this.champ1Item4 == "BFSword"){
-      this.player1.item4 = "";
+      this.player1.item4 = "none";
       this.service.updatePlayer1Item4(this.player1);
       localStorage.setItem('Champion1Item4',this.player1.item4);
     }
@@ -285,7 +285,7 @@ export class BattlerComponent implements OnInit {
   Player1Item5Remove(){
     this.champ1Item5 = localStorage.getItem('Champion1Item5');
     if(this.champ1Item5 == "BFSword"){
-      this.player1.item5 = "";
+      this.player1.item5 = "none";
       this.service.updatePlayer1Item5(this.player1);
       localStorage.setItem('Champion1Item5',this.player1.item5);
     }
@@ -293,7 +293,7 @@ export class BattlerComponent implements OnInit {
   Player1Item6Remove(){
     this.champ1Item6 = localStorage.getItem('Champion1Item6');
     if(this.champ1Item6 == "BFSword"){
-      this.player1.item6 = "";
+      this.player1.item6 = "none";
       this.service.updatePlayer1Item6(this.player1);
       localStorage.setItem('Champion1Item6',this.player1.item6);
     }
@@ -310,7 +310,7 @@ export class BattlerComponent implements OnInit {
 
   Player2Item1Set(){
     this.champ2Item1 = localStorage.getItem('Champion2Item1');
-    if(this.champ2Item1 == ""){
+    if(this.champ2Item1 == "none"){
       this.player2.item1 = "BFSword";
       this.service.updatePlayer2Item1(this.player2);
       localStorage.setItem('Champion2Item1',this.player2.item1);
@@ -318,7 +318,7 @@ export class BattlerComponent implements OnInit {
   }
   Player2Item2Set(){
     this.champ2Item2 = localStorage.getItem('Champion2Item2');
-    if(this.champ2Item2 == ""){
+    if(this.champ2Item2 == "none"){
       this.player2.item2 = "BFSword";
       this.service.updatePlayer2Item2(this.player2);
       localStorage.setItem('Champion2Item2',this.player2.item2);
@@ -326,7 +326,7 @@ export class BattlerComponent implements OnInit {
   }
   Player2Item3Set(){
     this.champ2Item3 = localStorage.getItem('Champion2Item3');
-    if(this.champ2Item3 == ""){
+    if(this.champ2Item3 == "none"){
       this.player2.item3 = "BFSword";
       this.service.updatePlayer2Item1(this.player2);
       localStorage.setItem('Champion2Item3',this.player2.item3);
@@ -334,7 +334,7 @@ export class BattlerComponent implements OnInit {
   }
   Player2Item4Set(){
     this.champ2Item4 = localStorage.getItem('Champion2Item4');
-    if(this.champ2Item4 == ""){
+    if(this.champ2Item4 == "none"){
       this.player2.item4 = "BFSword";
       this.service.updatePlayer2Item4(this.player2);
       localStorage.setItem('Champion2Item4',this.player2.item4);
@@ -342,7 +342,7 @@ export class BattlerComponent implements OnInit {
   }
   Player2Item5Set(){
     this.champ2Item5 = localStorage.getItem('Champion2Item5');
-    if(this.champ2Item5 == ""){
+    if(this.champ2Item5 == "none"){
       this.player2.item5 = "BFSword";
       this.service.updatePlayer2Item5(this.player2);
       localStorage.setItem('Champion2Item5',this.player2.item5);
@@ -350,7 +350,7 @@ export class BattlerComponent implements OnInit {
   }
   Player2Item6Set(){
     this.champ2Item6 = localStorage.getItem('Champion2Item6');
-    if(this.champ2Item6 == ""){
+    if(this.champ2Item6 == "none"){
       this.player2.item6 = "BFSword";
       this.service.updatePlayer2Item6(this.player2);
       localStorage.setItem('Champion2Item6',this.player2.item6);
@@ -361,7 +361,7 @@ export class BattlerComponent implements OnInit {
   Player2Item1Remove(){
     this.champ2Item1 = localStorage.getItem('Champion2Item1');
     if(this.champ2Item1 == "BFSword"){
-      this.player2.item1 = "";
+      this.player2.item1 = "none";
       this.service.updatePlayer2Item1(this.player2);
       localStorage.setItem('Champion2Item1',this.player2.item1);
     }
@@ -369,7 +369,7 @@ export class BattlerComponent implements OnInit {
   Player2Item2Remove(){
     this.champ2Item2 = localStorage.getItem('Champion2Item2');
     if(this.champ2Item2 == "BFSword"){
-      this.player2.item2 = "";
+      this.player2.item2 = "none";
       this.service.updatePlayer2Item2(this.player2);
       localStorage.setItem('Champion2Item2',this.player2.item2);
     }
@@ -377,7 +377,7 @@ export class BattlerComponent implements OnInit {
   Player2Item3Remove(){
     this.champ2Item3 = localStorage.getItem('Champion2Item3');
     if(this.champ2Item3 == "BFSword"){
-      this.player2.item3 = "";
+      this.player2.item3 = "none";
       this.service.updatePlayer2Item1(this.player2);
       localStorage.setItem('Champion2Item3',this.player2.item3);
     }
@@ -385,7 +385,7 @@ export class BattlerComponent implements OnInit {
   Player2Item4Remove(){
     this.champ1Item4 = localStorage.getItem('Champion2Item4');
     if(this.champ2Item4 == "BFSword"){
-      this.player2.item4 = "";
+      this.player2.item4 = "none";
       this.service.updatePlayer2Item4(this.player2);
       localStorage.setItem('Champion2Item4',this.player2.item4);
     }
@@ -393,7 +393,7 @@ export class BattlerComponent implements OnInit {
   Player2Item5Remove(){
     this.champ2Item5 = localStorage.getItem('Champion2Item5');
     if(this.champ2Item5 == "BFSword"){
-      this.player2.item5 = "";
+      this.player2.item5 = "none";
       this.service.updatePlayer2Item5(this.player2);
       localStorage.setItem('Champion2Item5',this.player2.item5);
     }
@@ -401,7 +401,7 @@ export class BattlerComponent implements OnInit {
   Player2Item6Remove(){
     this.champ2Item6 = localStorage.getItem('Champion2Item6');
     if(this.champ2Item6 == "BFSword"){
-      this.player2.item6 = "";
+      this.player2.item6 = "none";
       this.service.updatePlayer2Item6(this.player2);
       localStorage.setItem('Champion2Item6',this.player2.item6);
     }

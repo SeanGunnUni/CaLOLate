@@ -2,11 +2,8 @@
 using CaLOLateAPI.Models;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -64,6 +61,7 @@ namespace CaLOLateAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
 
         private JwtPackage CreateToken(User user)
         {

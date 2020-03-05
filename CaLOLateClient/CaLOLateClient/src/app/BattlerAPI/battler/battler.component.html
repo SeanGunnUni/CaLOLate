@@ -1,98 +1,104 @@
 <div class="batterpartone">
     <div class="champion-information">
-        <h1>Name: {{champions.getChampion1Name}}</h1>
-        <h1>Health: {{champions.getChamp1Health}}</h1>
-        <h1>Mana: {{champions.getChamp1Mana}}</h1>
-        <h1>Level: </h1>
+        <h4>Name: {{service.getChampion1Name}}</h4>
+        <h4>Health: {{service.getChamp1Health}}</h4>
+        <h4>Mana: {{service.getChamp1Mana}}</h4>
+        <h4>Level: </h4>
         <kendo-dropdownlist [data]="listItemsChampLevel"></kendo-dropdownlist>
-        <h1>Abilty Power: {{champions.getChamp1AbiltyPower}}</h1>
-        <h1>Attack Damage: {{champions.getChamp1AttackDamage}}</h1>
+        <h4>Abilty Power: {{service.getChamp1AbiltyPower}}</h4>
+        <h4>Attack Damage: {{service.getChamp1AttackDamage}}</h4>
     </div>
     <div class="abilty-area">
         <div class="abilty-buttons">
-            <h1>Passive</h1>
-            <p>{{champions.getPassiveInformation}}</p>
+            <h4>Passive</h4>
+            <p>{{service.getPassiveInformation}}</p>
         </div>
         <div class="abilty-buttons">
-            <h1>Abilty1</h1>
-            <p>{{champions.getAbilty1Information}}</p>
-            <label>{{champions.getAbilty1Level}}</label>
+            <h4>Abilty1</h4>
+            <p>{{service.getAbilty1Information}}</p>
+            <label>{{service.getAbilty1Level}}</label>
             <button mat-stroked-button (click)="levelUpAbilty1()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty1()">Down</button>
         </div>
         <div class="abilty-buttons">
-            <h1>Abilty2</h1>
-            <p>{{champions.getAbilty2Information}}</p>
-            <label>{{champions.getAbilty2Level}}</label>
+            <h4>Abilty2</h4>
+            <p>{{service.getAbilty2Information}}</p>
+            <label>{{service.getAbilty2Level}}</label>
             <button mat-stroked-button (click)="levelUpAbilty2()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty2()">Down</button>
         </div>
         <div class="abilty-buttons">
-            <h1>Abilty3</h1>
-            <p>{{champions.getAbilty3Information}}</p>
-            <label>{{champions.getAbilty3Level}}</label>
+            <h4>Abilty3</h4>
+            <p>{{service.getAbilty3Information}}</p>
+            <label>{{service.getAbilty3Level}}</label>
             <button mat-stroked-button (click)="levelUpAbilty3()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty3()">Down</button>
         </div>
         <div class="abilty-buttons">
-            <h1>Ultimate</h1>
-            <p>{{champions.getUltimateInformation}}</p>
-            <label>{{champions.getAbiltyUltLevel}}</label>
+            <h4>Ultimate</h4>
+            <p>{{service.getUltimateInformation}}</p>
+            <label>{{service.getAbiltyUltLevel}}</label>
             <button mat-stroked-button (click)="levelUpAbilty4()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty4()">Down</button>
         </div>
     </div>
     <div class="items-area">
         <div class="items-buttons">
-            <h1>Item1</h1>
-            <p>{{champions.getItem1Champ1Information}}</p>
+            <h4>Item1</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem1Champ1}}.</p>
             <button mat-stroked-button (click)="Player1Item1Set()">Item1Set</button>
             <button mat-stroked-button (click)="Player1Item1Remove()">Item1Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item2</h1>
-            <p>{{champions.getItem2Champ1Information}}</p>
+            <h4>Item2</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem2Champ1}}.</p>
             <button mat-stroked-button (click)="Player1Item2Set()">Item2Set</button>
             <button mat-stroked-button (click)="Player1Item2Remove()">Item2Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item3</h1>
-            <p>{{champions.getItem3Champ1Information}}</p>
+            <h4>Item3</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem3Champ1}}.</p>
             <button mat-stroked-button (click)="Player1Item3Set()">Item3Set</button>
             <button mat-stroked-button (click)="Player1Item3Remove()">Item3Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item4</h1>
-            <p>{{champions.getItem4Champ1Information}}</p>
+            <h4>Item4</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem4Champ1}}.</p>
             <button mat-stroked-button (click)="Player1Item4Set()">Item4Set</button>
             <button mat-stroked-button (click)="Player1Item4Remove()">Item4Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item5</h1>
-            <p>{{champions.getItem5Champ1Information}}</p>
+            <h4>Item5</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem5Champ1}}.</p>
             <button mat-stroked-button (click)="Player1Item5Set()">Item5Set</button>
             <button mat-stroked-button (click)="Player1Item5Remove()">Item5Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item6</h1>
-            <p>{{champions.getItem6Champ1Information}}</p>
+            <h4>Item6</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem6Champ1}}.</p>
             <button mat-stroked-button (click)="Player1Item6Set()">Item6Set</button>
             <button mat-stroked-button (click)="Player1Item6Remove()">Item6Remove</button>
         </div>
     </div>
     <div class="timer">
-        <h1>How long do you want the battle to last?</h1>
+        <h4>How long do you want the battle to last?</h4>
         <kendo-dropdownlist [data]="listItemsBattlerLength"></kendo-dropdownlist>
     </div>
     <div class="part1Finshed">
-        <h1>If you answered all the information about what you want your character to have, click the button below.</h1>
+        <h4>If you answered all the information about what you want your character to have, click the button below.</h4>
         <button mat-stroked-button (click)="battlePlayerOneAnswer()">Set player 2</button>
     </div>
 </div>
 <div [hidden]="!editChamp2Pick" class="battlerchamp2">
     <div class="champion-container">
         <div class="pick-champion-title">
-            <h1>Pick a champion to battle!</h1>
+            <h4>Pick a champion to battle!</h4>
         </div>
         <div class="champion-button-row">
             <button mat-stroked-button (click)="clickAshe2()">Ashe</button>
@@ -102,53 +108,59 @@
 <div [hidden]="!editedPartTwo" class="batterparttwo">
     <div class="champion-information">
         <form [formGroup]="championInformationHealthForm" (ngSubmit)="battlePartThreeAnswer()">
-            <h1>Name: {{ChampVSName}}</h1>
-            <h1>Health Maximum: {{ChampVSHealthMax}}</h1>
-            <h1>Health Percentage:</h1>
+            <h4>Name: {{ChampVSName}}</h4>
+            <h4>Health Maximum: {{ChampVSHealthMax}}</h4>
+            <h4>Health Percentage:</h4>
             <kendo-dropdownlist [data]="listChampVSHealthPercentage"  formControlName="champ2Health"></kendo-dropdownlist>
-            <h1>Current Health: {{ChampVSHealthCurrent}}</h1>
-            <h1>Level: </h1>
+            <h4>Current Health: {{ChampVSHealthCurrent}}</h4>
+            <h4>Level: </h4>
         </form>
         <form [formGroup]="championInformationLevelForm" (ngSubmit)="battlePartThreeAnswer()">
             <kendo-dropdownlist [data]="listChampVSLevel" formControlName="champ2Level"></kendo-dropdownlist>
-            <h1>Magic Resist: {{MagicResistFlat}} / {{MagicResistPrecentage}}</h1>
-            <h1>Armour: {{ArmourFlat}} / {{ArmourPrecentage}}</h1>
+            <h4>Magic Resist: {{MagicResistFlat}} / {{MagicResistPrecentage}}</h4>
+            <h4>Armour: {{ArmourFlat}} / {{ArmourPrecentage}}</h4>
         </form>
     </div>
     <div class="items-area">
         <div class="items-buttons">
-            <h1>Item1</h1>
-            <p>{{champions.getItem1Champ2Information}}</p>
+            <h4>Item1</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem1Champ2}}.</p>
             <button mat-stroked-button (click)="Player2Item1Set()">Item1Set</button>
             <button mat-stroked-button (click)="Player2Item1Remove()">Item1Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item2</h1>
-            <p>{{champions.getItem2Champ2Information}}</p>
+            <h4>Item2</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem2Champ2}}.</p>
             <button mat-stroked-button (click)="Player2Item2Set()">Item2Set</button>
             <button mat-stroked-button (click)="Player2Item2Remove()">Item2Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item3</h1>
-            <p>{{champions.getItem3Champ2Information}}</p>
+            <h4>Item3</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem3Champ2}}.</p>
             <button mat-stroked-button (click)="Player2Item3Set()">Item3Set</button>
             <button mat-stroked-button (click)="Player2Item3Remove()">Item3Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item4</h1>
-            <p>{{champions.getItem4Champ2Information}}</p>
+            <h4>Item4</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem4Champ2}}.</p>
             <button mat-stroked-button (click)="Player2Item4Set()">Item4Set</button>
             <button mat-stroked-button (click)="Player2Item4Remove()">Item4Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item5</h1>
-            <p>{{champions.getItem5Champ2Information}}</p>
+            <h4>Item5</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem5Champ2}}.</p>
             <button mat-stroked-button (click)="Player2Item5Set()">Item5Set</button>
             <button mat-stroked-button (click)="Player2Item5Remove()">Item5Remove</button>
         </div>
         <div class="items-buttons">
-            <h1>Item6</h1>
-            <p>{{champions.getItem6Champ2Information}}</p>
+            <h4>Item6</h4>
+            <p>Add or remove items for the champion.
+                Current item equiped is {{service.getItem6Champ2}}.</p>
             <button mat-stroked-button (click)="Player2Item6Set()">Item6Set</button>
             <button mat-stroked-button (click)="Player2Item6Remove()">Item6Remove</button>
         </div>
@@ -159,6 +171,6 @@
 </div>
 <div [hidden]="!editedFinal" class="batterpartfinal">
     <div class="calculator-box">
-        <h4>{{champions.IfWinInformation}}</h4>
+        <h4>Winner! {{service.IfWinInformation}}</h4>
     </div>
 </div>
