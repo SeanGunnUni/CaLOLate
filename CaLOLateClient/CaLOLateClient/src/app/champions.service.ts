@@ -200,13 +200,13 @@ get getPassiveInformation(){
   return localStorage.getItem('Champion1PassiveInfo');
 }
 get getAbilty1Information(){
-  return localStorage.getItem('Champion1Ab1Info');
+  return localStorage.getItem('Champion1Abilty1Info');
 }
 get getAbilty2Information(){
-  return localStorage.getItem('Champion1Ab2Info');
+  return localStorage.getItem('Champion1Abilty2Info');
 }
 get getAbilty3Information(){
-  return localStorage.getItem('Champion1Ab3Info');
+  return localStorage.getItem('Champion1Abilty3Info');
 }
 get getUltimateInformation(){
   return localStorage.getItem('Champion1UltiInfo');
@@ -267,6 +267,7 @@ get getItem6Champ1(){
 }
 
 Champ1Health(){
+  localStorage.setItem('Champion1Health',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1Health/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1Health',data.toString());
@@ -274,6 +275,7 @@ Champ1Health(){
 }
 
 Champ1Mana(){
+  localStorage.setItem('Champion1Mana',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1Mana/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1Mana',data.toString());
@@ -281,6 +283,7 @@ Champ1Mana(){
 }
 
 Champ1AP(){
+  localStorage.setItem('Champion1AP',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1AP/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1AP',data.toString());
@@ -288,6 +291,7 @@ Champ1AP(){
 }
 
 Champ1AD(){
+  localStorage.setItem('Champion1AD',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1AD/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1AD',data.toString());
@@ -295,6 +299,7 @@ Champ1AD(){
 }
 
 Champ1Abilty1Des(){
+  localStorage.setItem('Champion1PassiveInfo',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1Abilty1Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1PassiveInfo',data.toString());
@@ -302,6 +307,7 @@ Champ1Abilty1Des(){
 }
 
 Champ1Abilty2Des(){
+  localStorage.setItem('Champion1Abilty1Info',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1Abilty2Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1Abilty1Info',data.toString());
@@ -309,6 +315,7 @@ Champ1Abilty2Des(){
 }
 
 Champ1Abilty3Des(){
+  localStorage.setItem('Champion1Abilty2Info',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1Abilty3Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1Abilty2Info',data.toString());
@@ -316,6 +323,7 @@ Champ1Abilty3Des(){
 }
 
 Champ1Abilty4Des(){
+  localStorage.setItem('Champion1Abilty3Info',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1Abilty4Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1Abilty3Info',data.toString());
@@ -323,6 +331,7 @@ Champ1Abilty4Des(){
 }
 
 Champ1Abilty5Des(){
+  localStorage.setItem('Champion1UltiInfo',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp1Abilty5Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion1UltiInfo',data.toString());
@@ -356,13 +365,13 @@ get getChamp2PassiveInformation(){
   return localStorage.getItem('Champion2PassiveInfo');
 }
 get getChamp2Abilty1Information(){
-  return localStorage.getItem('Champion2Ab1Info');
+  return localStorage.getItem('Champion2Abilty1Info');
 }
 get getChamp2Abilty2Information(){
-  return localStorage.getItem('Champion2Ab2Info');
+  return localStorage.getItem('Champion2Abilty2Info');
 }
 get getChamp2Abilty3Information(){
-  return localStorage.getItem('Champion2Ab3Info');
+  return localStorage.getItem('Champion2Abilty3Info');
 }
 get getChamp2UltimateInformation(){
   return localStorage.getItem('Champion2UltiInfo');
@@ -406,6 +415,7 @@ get getItem6Champ2(){
 
 
 Champ2Health(){
+  localStorage.setItem('Champion2Health',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2Health/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2Health',data.toString());
@@ -413,6 +423,7 @@ Champ2Health(){
 }
 
 Champ2Mana(){
+  localStorage.setItem('Champion2Mana',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2Mana/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2Mana',data.toString());
@@ -420,6 +431,7 @@ Champ2Mana(){
 }
 
 Champ2AP(){
+   localStorage.setItem('Champion2AP',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2AP/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2AP',data.toString());
@@ -427,6 +439,7 @@ Champ2AP(){
 }
 
 Champ2AD(){
+  localStorage.setItem('Champion2AD',"0");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2AD/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2AD',data.toString());
@@ -434,6 +447,7 @@ Champ2AD(){
 }
 
 Champ2Abilty1Des(){
+  localStorage.setItem('Champion2PassiveInfo',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2Abilty1Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2PassiveInfo',data.toString());
@@ -441,6 +455,7 @@ Champ2Abilty1Des(){
 }
 
 Champ2Abilty2Des(){
+  localStorage.setItem('Champion2Abilty1Info',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2Abilty2Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2Abilty1Info',data.toString());
@@ -448,6 +463,7 @@ Champ2Abilty2Des(){
 }
 
 Champ2Abilty3Des(){
+  localStorage.setItem('Champion2Abilty2Info',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2Abilty3Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2Abilty2Info',data.toString());
@@ -455,6 +471,7 @@ Champ2Abilty3Des(){
 }
 
 Champ2Abilty4Des(){
+  localStorage.setItem('Champion2Abilty3Info',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2Abilty4Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2Abilty3Info',data.toString());
@@ -462,6 +479,7 @@ Champ2Abilty4Des(){
 }
 
 Champ2Abilty5Des(){
+  localStorage.setItem('Champion2UltiInfo',"none");
   return this.http.get('http://localhost:49944/battler/api/GetChamp2Abilty5Des/').subscribe((data)=>{
     console.log('Data -', data);
     localStorage.setItem('Champion2UltiInfo',data.toString());

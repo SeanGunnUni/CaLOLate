@@ -1,0 +1,125 @@
+.batterpartone {
+
+    width: 100%;
+    float: left;
+  }
+  .champion-information {
+    height: 25%;
+  }
+
+  .battlerchamp2 {
+
+    width: 100%;
+    float: left;
+  }
+  .champion-information-h41 {
+
+    width: 20%;
+    float: left;
+  }
+  .champion-information-h4 {
+    padding-left: 20px;
+    width: 14%;
+    float: left;
+  }
+  .champion-information-line1{
+      width: 100;
+  }
+
+  .champion-information-h4kd{
+    float: left;
+  }
+  .champion-information-kd {
+      float: left;
+      padding-top: 30px;
+      margin-right: 5%;
+  }
+  .abilty-buttons{
+      float: left;
+      width: 20%;
+  }
+  .items-buttons {
+    float: left;
+    width: 16.6%;
+  }
+
+  .timer{
+      margin-left: 40%;
+      width: 30%;
+  }
+  .middle{
+    margin-left: 40%;
+    width: 30%;
+  }
+  .champion-container{
+    margin-left: 40%;
+    width: 30%;
+  }
+
+  .part1Finshed{
+    margin-left: 40%;
+    width: 30%;
+}
+
+  .champion-information-part2level{
+      width: 20%;
+  }
+
+
+  .batterparttwo {
+    width: 100%;
+    float: left;
+  }
+
+  .batterpartfinal {
+    width: 100%;
+    float: left;
+  }
+
+  .batterparttwo {
+
+    width: 100%;
+    float: left;
+  }
+
+  .champion-information-h412 {
+
+    width: 11.1%;
+    float: left;
+  }
+  .champion-information-h42 {
+    padding-left: 20px;
+    width: 10.7%;
+    float: left;
+  }
+
+  .champion-information-h4kd{
+    float: left;
+  }
+  .champion-information-kd2 {
+      float: left;
+      padding-top: 30px;
+  }
+
+  .battler-buttton{
+      float: left;
+      padding-top: 30px;
+    margin-left: 40%;
+    width: 30%;
+  }
+
+  .champion-information{
+      float: left;
+      width: 100%;
+  }
+  .items-area {
+      float: left;
+      width: 100%;
+  }
+
+  .batterpartfinal{
+    float: left;
+    padding-top: 30px;
+  margin-left: 40%;
+  width: 30%;
+  }

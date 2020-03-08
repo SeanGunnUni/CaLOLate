@@ -1,16 +1,18 @@
 <div class="batterpartone">
     <div class="champion-information">
-        <h4>Name: {{service.getChampion1Name}}</h4>
-        <h4>Health: {{service.getChamp1Health}}</h4>
-        <h4>Mana: {{service.getChamp1Mana}}</h4>
-        <h4>Level: </h4>
-        <kendo-dropdownlist [data]="listItemsChampLevel"></kendo-dropdownlist>
-        <h4>Abilty Power: {{service.getChamp1AbiltyPower}}</h4>
-        <h4>Attack Damage: {{service.getChamp1AttackDamage}}</h4>
+        <div class="champion-information-line1">
+            <h4 class="champion-information-h41">Name: {{service.getChampion1Name}}</h4>
+            <h4 class="champion-information-h4">Health: {{service.getChamp1Health}}</h4>
+            <h4 class="champion-information-h4">Mana: {{service.getChamp1Mana}}</h4>
+            <h4 class="champion-information-h4kd">Level: </h4>
+            <kendo-dropdownlist class="champion-information-kd" [data]="listItemsChampLevel"></kendo-dropdownlist>
+            <h4 class="champion-information-h4">Abilty Power: {{service.getChamp1AbiltyPower}}</h4>
+            <h4 class="champion-information-h4">Attack Damage: {{service.getChamp1AttackDamage}}</h4>
+        </div>
     </div>
     <div class="abilty-area">
         <div class="abilty-buttons">
-            <h4>Passive</h4>
+            <h4 >Passive</h4>
             <p>{{service.getPassiveInformation}}</p>
         </div>
         <div class="abilty-buttons">
@@ -88,11 +90,11 @@
     </div>
     <div class="timer">
         <h4>How long do you want the battle to last?</h4>
-        <kendo-dropdownlist [data]="listItemsBattlerLength"></kendo-dropdownlist>
+        <kendo-dropdownlist class="middle"[data]="listItemsBattlerLength"></kendo-dropdownlist>
     </div>
     <div class="part1Finshed">
         <h4>If you answered all the information about what you want your character to have, click the button below.</h4>
-        <button mat-stroked-button (click)="battlePlayerOneAnswer()">Set player 2</button>
+        <button class="middle" mat-stroked-button (click)="battlePlayerOneAnswer()">Set player 2</button>
     </div>
 </div>
 <div [hidden]="!editChamp2Pick" class="battlerchamp2">
@@ -101,24 +103,25 @@
             <h4>Pick a champion to battle!</h4>
         </div>
         <div class="champion-button-row">
-            <button mat-stroked-button (click)="clickAshe2()">Ashe</button>
+            <button class="middle" mat-stroked-button (click)="clickAshe2()">Ashe</button>
         </div>
     </div>
 </div>
 <div [hidden]="!editedPartTwo" class="batterparttwo">
     <div class="champion-information">
         <form [formGroup]="championInformationHealthForm" (ngSubmit)="battlePartThreeAnswer()">
-            <h4>Name: {{ChampVSName}}</h4>
-            <h4>Health Maximum: {{ChampVSHealthMax}}</h4>
-            <h4>Health Percentage:</h4>
-            <kendo-dropdownlist [data]="listChampVSHealthPercentage"  formControlName="champ2Health"></kendo-dropdownlist>
-            <h4>Current Health: {{ChampVSHealthCurrent}}</h4>
-            <h4>Level: </h4>
+            <h4 class="champion-information-h412">Name: {{ChampVSName}}</h4>
+            <h4 class="champion-information-h42">Health Maximum: {{ChampVSHealthMax}}</h4>
+            <h4 class="champion-information-h42">Health Percentage:</h4>
+            <kendo-dropdownlist class="champion-information-kd2" [data]="listChampVSHealthPercentage"  formControlName="champ2Health"></kendo-dropdownlist>
+            <h4 class="champion-information-h42">Current Health: {{ChampVSHealthCurrent}}</h4>
+            
         </form>
         <form [formGroup]="championInformationLevelForm" (ngSubmit)="battlePartThreeAnswer()">
-            <kendo-dropdownlist [data]="listChampVSLevel" formControlName="champ2Level"></kendo-dropdownlist>
-            <h4>Magic Resist: {{MagicResistFlat}} / {{MagicResistPrecentage}}</h4>
-            <h4>Armour: {{ArmourFlat}} / {{ArmourPrecentage}}</h4>
+            <h4 class="champion-information-h42">Level: </h4>
+            <kendo-dropdownlist class="champion-information-kd2" [data]="listChampVSLevel" formControlName="champ2Level"></kendo-dropdownlist>
+            <h4 class="champion-information-h42">Magic Resist: {{MagicResistFlat}} / {{MagicResistPrecentage}}</h4>
+            <h4 class="champion-information-h42">Armour: {{ArmourFlat}} / {{ArmourPrecentage}}</h4>
         </form>
     </div>
     <div class="items-area">
