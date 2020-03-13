@@ -16,7 +16,7 @@ namespace CaLOLateAPI.Controllers
     public class BattlerController : ApiController
     {
         [HttpPut]
-        [Route("api/SetPlayer1/{name}")]
+        [Route("SetPlayer1/{name}")]
         public IHttpActionResult UpdatePlayer1(string name, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -32,7 +32,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetPlayer2/{name}")]
+        [Route("SetPlayer2/{name}")]
         public IHttpActionResult UpdatePlayer2(string name, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -48,7 +48,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetChamp2HealthPer/{healthPer}")]
+        [Route("SetChamp2HealthPer/{healthPer}")]
         public IHttpActionResult SetChamp2HealthPer(int healthPer, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -64,7 +64,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetChamp1Level/{level}")]
+        [Route("SetChamp1Level/{level}")]
         public IHttpActionResult SetChamp1Level(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -80,7 +80,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetChamp2Level/{level}")]
+        [Route("SetChamp2Level/{level}")]
         public IHttpActionResult SetChamp2Level(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -96,7 +96,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty1Champion1/{level}")]
+        [Route("LeveLDownAbilty1Champion1/{level}")]
         public IHttpActionResult LeveLDownAbilty1Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -112,7 +112,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty2Champion1/{level}")]
+        [Route("LeveLDownAbilty2Champion1/{level}")]
         public IHttpActionResult LeveLDownAbilty2Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -128,7 +128,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty3Champion1/{level}")]
+        [Route("LeveLDownAbilty3Champion1/{level}")]
         public IHttpActionResult LeveLDownAbilty3Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -144,7 +144,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty4Champion1/{level}")]
+        [Route("LeveLDownAbilty4Champion1/{level}")]
         public IHttpActionResult LeveLDownAbilty4Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -160,7 +160,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty1Champion2/{level}")]
+        [Route("LeveLDownAbilty1Champion2/{level}")]
         public IHttpActionResult LeveLDownAbilty1Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -176,7 +176,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty2Champion2/{level}")]
+        [Route("LeveLDownAbilty2Champion2/{level}")]
         public IHttpActionResult LeveLDownAbilty2Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -192,7 +192,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty3Champion2/{level}")]
+        [Route("LeveLDownAbilty3Champion2/{level}")]
         public IHttpActionResult LeveLDownAbilty3Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -208,7 +208,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLDownAbilty4Champion2/{level}")]
+        [Route("LeveLDownAbilty4Champion2/{level}")]
         public IHttpActionResult LeveLDownAbilty4Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -224,7 +224,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty1Champion1/{level}")]
+        [Route("LeveLUpAbilty1Champion1/{level}")]
         public IHttpActionResult LeveLUpAbilty1Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -241,7 +241,7 @@ namespace CaLOLateAPI.Controllers
 
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty2Champion1/{level}")]
+        [Route("LeveLUpAbilty2Champion1/{level}")]
         public IHttpActionResult LeveLUpAbilty2Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -258,7 +258,7 @@ namespace CaLOLateAPI.Controllers
 
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty3Champion1/{level}")]
+        [Route("LeveLUpAbilty3Champion1/{level}")]
         public IHttpActionResult LeveLUpAbilty3Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -275,7 +275,7 @@ namespace CaLOLateAPI.Controllers
 
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty4Champion1/{level}")]
+        [Route("LeveLUpAbilty4Champion1/{level}")]
         public IHttpActionResult LeveLUpAbilty4Champion1(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -292,7 +292,7 @@ namespace CaLOLateAPI.Controllers
 
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty1Champion2/{level}")]
+        [Route("LeveLUpAbilty1Champion2/{level}")]
         public IHttpActionResult LeveLUpAbilty1Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -308,7 +308,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty2Champion2/{level}")]
+        [Route("LeveLUpAbilty2Champion2/{level}")]
         public IHttpActionResult LeveLUpAbilty2Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -324,7 +324,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty3Champion2/{level}")]
+        [Route("LeveLUpAbilty3Champion2/{level}")]
         public IHttpActionResult LeveLUpAbilty3Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -340,7 +340,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/LeveLUpAbilty4Champion2/{level}")]
+        [Route("LeveLUpAbilty4Champion2/{level}")]
         public IHttpActionResult LeveLUpAbilty4Champion2(int level, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -356,7 +356,7 @@ namespace CaLOLateAPI.Controllers
         }
         //
         [HttpPut]
-        [Route("api/SetItem1Champ1/{item}")]
+        [Route("SetItem1Champ1/{item}")]
         public IHttpActionResult SetItem1Champ1(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -372,7 +372,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem2Champ1/{item}")]
+        [Route("SetItem2Champ1/{item}")]
         public IHttpActionResult SetItem2Champ1(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -388,7 +388,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem3Champ1/{item}")]
+        [Route("SetItem3Champ1/{item}")]
         public IHttpActionResult SetItem3Champ1(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -404,7 +404,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem4Champ1/{item}")]
+        [Route("SetItem4Champ1/{item}")]
         public IHttpActionResult SetItem4Champ1(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -420,7 +420,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem5Champ1/{item}")]
+        [Route("SetItem5Champ1/{item}")]
         public IHttpActionResult SetItem5Champ1(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -436,7 +436,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem6Champ1/{item}")]
+        [Route("SetItem6Champ1/{item}")]
         public IHttpActionResult SetItem6Champ1(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -452,7 +452,7 @@ namespace CaLOLateAPI.Controllers
         }
         //
         [HttpPut]
-        [Route("api/SetItem1Champ2/{item}")]
+        [Route("SetItem1Champ2/{item}")]
         public IHttpActionResult SetItem1Champ2(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -468,7 +468,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem2Champ2/{item}")]
+        [Route("SetItem2Champ2/{item}")]
         public IHttpActionResult SetItem2Champ2(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -484,7 +484,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem3Champ2/{item}")]
+        [Route("SetItem3Champ2/{item}")]
         public IHttpActionResult SetItem3Champ2(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -500,7 +500,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem4Champ2/{item}")]
+        [Route("SetItem4Champ2/{item}")]
         public IHttpActionResult SetItem4Champ2(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -516,7 +516,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem5Champ2/{item}")]
+        [Route("SetItem5Champ2/{item}")]
         public IHttpActionResult SetItem5Champ2(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -532,7 +532,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/SetItem6Champ2/{item}")]
+        [Route("SetItem6Champ2/{item}")]
         public IHttpActionResult SetItem6Champ2(string item, [FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -548,7 +548,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetFinalAnswer")]
+        [Route("GetFinalAnswer")]
         public IHttpActionResult GetFinalResult([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -568,7 +568,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp1Abilty1Des/")]
+        [Route("GetChamp1Abilty1Des/")]
         public IHttpActionResult GetChamp1Abilty1Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -584,7 +584,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2Abilty1Des/")]
+        [Route("GetChamp2Abilty1Des/")]
         public IHttpActionResult GetChamp2Abilty1Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -598,10 +598,10 @@ namespace CaLOLateAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        //TODO: MOVE VALUES FROM CHAMPION CONTOLLER INTO HERE AND CHANGE THE API CALL IN CLIENT
+        
 
         [HttpGet]
-        [Route("api/GetChamp1Abilty2Des/")]
+        [Route("GetChamp1Abilty2Des/")]
         public IHttpActionResult GetChamp1Abilty2Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -617,7 +617,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2Abilty2Des/")]
+        [Route("GetChamp2Abilty2Des/")]
         public IHttpActionResult GetChamp2Abilty2Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -633,7 +633,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp1Abilty3Des/")]
+        [Route("GetChamp1Abilty3Des/")]
         public IHttpActionResult GetChamp1Abilty3Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -649,7 +649,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2Abilty3Des/")]
+        [Route("GetChamp2Abilty3Des/")]
         public IHttpActionResult GetChamp2Abilty3Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -665,7 +665,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp1Abilty4Des/")]
+        [Route("GetChamp1Abilty4Des/")]
         public IHttpActionResult GetChamp1Abilty4Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -681,7 +681,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2Abilty4Des/")]
+        [Route("GetChamp2Abilty4Des/")]
         public IHttpActionResult GetChamp2Abilty4Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -697,7 +697,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp1Abilty5Des/")]
+        [Route("GetChamp1Abilty5Des/")]
         public IHttpActionResult GetChamp1Abilty5Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -713,7 +713,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2Abilty5Des/")]
+        [Route("GetChamp2Abilty5Des/")]
         public IHttpActionResult GetChamp2Abilty5Des([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -728,9 +728,9 @@ namespace CaLOLateAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        //TODO:HERE START
+
         [HttpGet]
-        [Route("api/GetChamp1Health/")]
+        [Route("GetChamp1Health/")]
         public IHttpActionResult GetChamp1Health([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -746,7 +746,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2Health/")]
+        [Route("GetChamp2Health/")]
         public IHttpActionResult GetChamp2Health([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -762,7 +762,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp1Mana/")]
+        [Route("GetChamp1Mana/")]
         public IHttpActionResult GetChamp1Mana([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -778,7 +778,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2Mana/")]
+        [Route("GetChamp2Mana/")]
         public IHttpActionResult GetChamp2Mana([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -794,7 +794,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp1AP/")]
+        [Route("GetChamp1AP/")]
         public IHttpActionResult GetChamp1AP([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -810,7 +810,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2AP/")]
+        [Route("GetChamp2AP/")]
         public IHttpActionResult GetChamp2AP([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -826,7 +826,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp1AD/")]
+        [Route("GetChamp1AD/")]
         public IHttpActionResult GetChamp1AD([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -842,7 +842,7 @@ namespace CaLOLateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetChamp2AD/")]
+        [Route("GetChamp2AD/")]
         public IHttpActionResult GetChamp2AD([FromBody]Battler battler)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
