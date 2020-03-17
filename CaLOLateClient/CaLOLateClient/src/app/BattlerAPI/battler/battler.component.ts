@@ -56,9 +56,11 @@ export class BattlerComponent implements OnInit {
     var nameTemp = localStorage.getItem('Champion1Name');
     this.player1.name = nameTemp;
     this.service.updatePlayer1Create(this.player1);
-    this.service.getAllinformationAboutChampion();   
-    localStorage.setItem('Champion1Abilty6Level','0');
-    localStorage.setItem('Champion1Abilty5Level','0');
+    this.service.getAllinformationAboutChampion();
+    localStorage.setItem('Champion1Level','0');
+    localStorage.setItem('Champion2Level','0');
+    localStorage.setItem('Champion2HealthPers','0');
+    localStorage.setItem('BattleLength','0');
     localStorage.setItem('Champion1Abilty4Level','0');
     localStorage.setItem('Champion1Abilty3Level','0');
     localStorage.setItem('Champion1Abilty2Level','0');
@@ -76,15 +78,19 @@ export class BattlerComponent implements OnInit {
     localStorage.setItem('Champion2Item5','none');
     localStorage.setItem('Champion2Item6','none');
   }
-  public listChampVSLevel: Array<string> = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18"];
-  public listChampVSHealthPercentage: Array<string> = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18",
-  "19", "20", "21", "22", "23", "24","25", "26", "27", "28", "29", "30","31", "32", "33", "34", "35", "36",
-  "37", "38", "39", "40", "41", "42","43", "44", "45", "46", "47", "48","49", "50", "51", "52", "53", "54",
-  "55", "56", "57", "58", "59", "60","61", "62", "63", "64", "65", "66","67", "68", "69", "70", "71", "72",
-  "73", "74", "75", "76", "77", "78","79", "80", "81", "82", "83", "84","85", "86", "87", "88", "89", "90",
-  "91", "92", "93", "94", "95", "96","97", "98", "99", "100"];
-  public listItemsChampLevel: Array<string> = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18"];
+  public listChampVSLevel: Array<string> = ["0","1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18"];
+  public listChampVSHealthPercentage: Array<string> = ["1%", "2%", "3%", "4%", "5%", "6%","7%", "8%", "9%", "10%", "11%", "12%","13%", "14%", "15%", "16%", "17%", "18%",
+  "19%", "20%", "21%", "22%", "23%", "24%","25%", "26%", "27%", "28%", "29%", "30%","31%", "32%", "33%", "34%", "35%", "36%",
+  "37%", "38%", "39%", "40%", "41%", "42%","43%", "44%", "45%", "46%", "47%", "48%","49%", "50%", "51%", "52%", "53%", "54%",
+  "55%", "56%", "57%", "58%", "59%", "60%","61%", "62%", "63%", "64%", "65%", "66%","67%", "68%", "69%", "70%", "71%", "72%",
+  "73%", "74%", "75%", "76%", "77%", "78%","79%", "80%", "81%", "82%", "83%", "84%","85%", "86%", "87%", "88%", "89%", "90%",
+  "91%", "92%", "93%", "94%", "95%", "96%","97%", "98%", "99%", "100%"];
+  public listItemsChampLevel: Array<string> = ["0","1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18"];
   public listItemsBattlerLength: Array<string> = ["10 seconds", "20 seconds", "30 seconds", "40 seconds"];
+  public selectedChamp1Level: string = '0';
+  public selectedChamp2Level: string = '0';
+  public selectedChamp2HealthPer: string = '100%';
+  public selectedOverallTime: string = '10 seconds';
   battlePlayerOneAnswer(){
     localStorage.setItem('PartChamp2PickAnswered','true');
   }
@@ -126,9 +132,11 @@ export class BattlerComponent implements OnInit {
   }
   battlePartThreeAnswer(){
     this.champLevel = this.championInformationLevelForm.value;
+    localStorage.setItem('Champion1Level', this.selectedChamp1Level);
     this.champHealtPer = this.championInformationHealthForm.value;
-    this.player2.level = +this.champLevel;
-    this.player2.healthPer = +this.champHealtPer;
+    localStorage.setItem('Champion2Level', this.selectedChamp2Level);
+    localStorage.setItem('Champion2HealthPers', this.selectedChamp2HealthPer);
+    localStorage.setItem('BattleLength', this.selectedOverallTime);
     //this.service.updatePlayer2Level(this.player2.level);
    // this.service.updatePlayer2HealthPer(this.player2.healthPer);
     this.service.updateFinalAnswer();
@@ -143,7 +151,7 @@ export class BattlerComponent implements OnInit {
     }
   }
   levelUpAbilty2(){
-    this.champAbilty2Level = localStorage.getItem('Champion1Item2Level');
+    this.champAbilty2Level = localStorage.getItem('Champion1Abilty2Level');
     if(Number(this.champAbilty2Level) <6){
       this.service.updatePlayer1Abilty2LevelUp();
       this.champAbilty2Levelt = Number(this.champAbilty2Level) + 1;
@@ -151,7 +159,7 @@ export class BattlerComponent implements OnInit {
     }
   }
   levelUpAbilty3(){
-    this.champAbilty3Level = localStorage.getItem('Champion1Item3Level');
+    this.champAbilty3Level = localStorage.getItem('Champion1Abilty3Level');
     if(Number(this.champAbilty3Level) <6){
       this.service.updatePlayer1Abilty3LevelUp();
       this.champAbilty3Levelt = Number(this.champAbilty3Level) + 1;
@@ -159,8 +167,8 @@ export class BattlerComponent implements OnInit {
     }
   }
   levelUpAbilty4(){
-    this.champAbilty4Level = localStorage.getItem('Champion1Item4Level');
-    if(Number(this.champAbilty4Level) <6){
+    this.champAbilty4Level = localStorage.getItem('Champion1Abilty4Level');
+    if(Number(this.champAbilty4Level) <3){
       this.service.updatePlayer1Abilty4LevelUp();
       this.champAbilty4Levelt = Number(this.champAbilty4Level) + 1;
       localStorage.setItem('Champion1Abilty4Level',this.champAbilty4Levelt.toString());
@@ -168,7 +176,7 @@ export class BattlerComponent implements OnInit {
   }
 
   levelDownAbilty1(){
-    this.champAbilty1Level = localStorage.getItem('Champion1Item1Level');
+    this.champAbilty1Level = localStorage.getItem('Champion1Abilty1Level');
     if(Number(this.champAbilty1Level) >0){
       this.service.updatePlayer1Abilty1LevelDown();
       this.champAbilty1Levelt = Number(this.champAbilty1Level) - 1;
@@ -176,7 +184,7 @@ export class BattlerComponent implements OnInit {
     }
   }
   levelDownAbilty2(){
-    this.champAbilty2Level = localStorage.getItem('Champion1Item2Level');
+    this.champAbilty2Level = localStorage.getItem('Champion1Abilty2Level');
     if(Number(this.champAbilty2Level) >0){
       this.service.updatePlayer1Abilty2LevelDown();
       this.champAbilty2Levelt = Number(this.champAbilty2Level) - 1;
@@ -184,7 +192,7 @@ export class BattlerComponent implements OnInit {
     }
   }
   levelDownAbilty3(){
-    this.champAbilty3Level = localStorage.getItem('Champion1Item3Level');
+    this.champAbilty3Level = localStorage.getItem('Champion1Abilty3Level');
     if(Number(this.champAbilty3Level) >0){
       this.service.updatePlayer1Abilty3LevelDown();
       this.champAbilty3Levelt = Number(this.champAbilty3Level) - 1;
@@ -192,7 +200,7 @@ export class BattlerComponent implements OnInit {
     }
   }
   levelDownAbilty4(){
-    this.champAbilty4Level = localStorage.getItem('Champion1Item4Level');
+    this.champAbilty4Level = localStorage.getItem('Champion1Abilty4Level');
     if(Number(this.champAbilty4Level) >0){
       this.service.updatePlayer1Abilty4LevelDown();
       this.champAbilty4Levelt = Number(this.champAbilty4Level) - 1;

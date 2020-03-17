@@ -5,7 +5,7 @@
             <h4 class="champion-information-h4">Health: {{service.getChamp1Health}}</h4>
             <h4 class="champion-information-h4">Mana: {{service.getChamp1Mana}}</h4>
             <h4 class="champion-information-h4kd">Level: </h4>
-            <kendo-dropdownlist class="champion-information-kd" [data]="listItemsChampLevel"></kendo-dropdownlist>
+            <kendo-dropdownlist class="champion-information-kd" [data]="listItemsChampLevel" [(ngModel)]="selectedChamp1Level"></kendo-dropdownlist>
             <h4 class="champion-information-h4">Abilty Power: {{service.getChamp1AbiltyPower}}</h4>
             <h4 class="champion-information-h4">Attack Damage: {{service.getChamp1AttackDamage}}</h4>
         </div>
@@ -18,28 +18,28 @@
         <div class="abilty-buttons">
             <h4>Abilty1</h4>
             <p>{{service.getAbilty1Information}}</p>
-            <label>{{service.getAbilty1Level}}</label>
+            <p>{{service.getAbilty1Level}}</p>
             <button mat-stroked-button (click)="levelUpAbilty1()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty1()">Down</button>
         </div>
         <div class="abilty-buttons">
             <h4>Abilty2</h4>
             <p>{{service.getAbilty2Information}}</p>
-            <label>{{service.getAbilty2Level}}</label>
+            <p>{{service.getAbilty2Level}}</p>
             <button mat-stroked-button (click)="levelUpAbilty2()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty2()">Down</button>
         </div>
         <div class="abilty-buttons">
             <h4>Abilty3</h4>
             <p>{{service.getAbilty3Information}}</p>
-            <label>{{service.getAbilty3Level}}</label>
+            <p>{{service.getAbilty3Level}}</p>
             <button mat-stroked-button (click)="levelUpAbilty3()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty3()">Down</button>
         </div>
         <div class="abilty-buttons">
             <h4>Ultimate</h4>
             <p>{{service.getUltimateInformation}}</p>
-            <label>{{service.getAbiltyUltLevel}}</label>
+            <p>{{service.getAbilty4Level}}</p>
             <button mat-stroked-button (click)="levelUpAbilty4()">Up</button>
             <button mat-stroked-button (click)="levelDownAbilty4()">Down</button>
         </div>
@@ -90,7 +90,7 @@
     </div>
     <div class="timer">
         <h4>How long do you want the battle to last?</h4>
-        <kendo-dropdownlist class="middle"[data]="listItemsBattlerLength"></kendo-dropdownlist>
+        <kendo-dropdownlist class="middle"[data]="listItemsBattlerLength" [(ngModel)]="selectedOverallTime"></kendo-dropdownlist>
     </div>
     <div class="part1Finshed">
         <h4>If you answered all the information about what you want your character to have, click the button below.</h4>
@@ -113,13 +113,13 @@
             <h4 class="champion-information-h412">Name: {{ChampVSName}}</h4>
             <h4 class="champion-information-h42">Health Maximum: {{ChampVSHealthMax}}</h4>
             <h4 class="champion-information-h42">Health Percentage:</h4>
-            <kendo-dropdownlist class="champion-information-kd2" [data]="listChampVSHealthPercentage"  formControlName="champ2Health"></kendo-dropdownlist>
+            <kendo-dropdownlist class="champion-information-kd2" [data]="listChampVSHealthPercentage" [(ngModel)]="selectedChamp2HealthPer" formControlName="champ2Health"></kendo-dropdownlist>
             <h4 class="champion-information-h42">Current Health: {{ChampVSHealthCurrent}}</h4>
             
         </form>
         <form [formGroup]="championInformationLevelForm" (ngSubmit)="battlePartThreeAnswer()">
             <h4 class="champion-information-h42">Level: </h4>
-            <kendo-dropdownlist class="champion-information-kd2" [data]="listChampVSLevel" formControlName="champ2Level"></kendo-dropdownlist>
+            <kendo-dropdownlist class="champion-information-kd2" [data]="listChampVSLevel" [(ngModel)]="selectedChamp2Level" formControlName="champ2Level"></kendo-dropdownlist>
             <h4 class="champion-information-h42">Magic Resist: {{MagicResistFlat}} / {{MagicResistPrecentage}}</h4>
             <h4 class="champion-information-h42">Armour: {{ArmourFlat}} / {{ArmourPrecentage}}</h4>
         </form>

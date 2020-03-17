@@ -231,22 +231,22 @@ export class ChampionsService {
     return localStorage.getItem('Champion1Item6Info');
   }
   get getAbilty1Level() {
-    return localStorage.getItem('Champion1Item1Level');
+    return localStorage.getItem('Champion1Abilty1Level');
   }
   get getAbilty2Level() {
-    return localStorage.getItem('Champion1Item2Level');
+    return localStorage.getItem('Champion1Abilty2Level');
   }
   get getAbilty3Level() {
-    return localStorage.getItem('Champion1Item3Level');
+    return localStorage.getItem('Champion1Abilty3Level');
   }
   get getAbilty4Level() {
-    return localStorage.getItem('Champion1Item4Level');
+    return localStorage.getItem('Champion1Abilty4Level');
   }
   get getAbilty5Level() {
-    return localStorage.getItem('Champion1Item5Level');
+    return localStorage.getItem('Champion1Abilty5Level');
   }
   get getAbilty6Level() {
-    return localStorage.getItem('Champion1Item6Level');
+    return localStorage.getItem('Champion1Abilty6Level');
   }
   get getItem1Champ1() {
     return localStorage.getItem('Champion1Item1');
